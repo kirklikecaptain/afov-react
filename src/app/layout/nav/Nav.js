@@ -89,7 +89,7 @@ const StyledNav = styled.header`
 		justify-content: center;
 		align-items: center;
 		padding: 20px;
-		background: #222;
+		background-color: #222;
 
 		.logo-link {
 			display: block;
@@ -132,6 +132,7 @@ const StyledNav = styled.header`
 	}
 
 	@media (max-width: 599px) {
+
 		.link-group {
 			display: ${props => (props.isOpen ? 'block' : 'none')};
 			position: absolute;
@@ -195,16 +196,7 @@ const StyledNav = styled.header`
 				display: flex;
 				align-items: center;
 				&[aria-current] {
-					&::after {
-						content: '';
-						background: white;
-						position: absolute;
-						height: 7px;
-						width: 100%;
-						right: 0;
-						bottom: 0;
-						left: 0;
-					}
+					background: #444;
 				}
 			}
 		}
@@ -224,12 +216,11 @@ const StyledNav = styled.header`
 	@media (min-width: 1400px) {
 		overflow: scroll;
 		background: #333;
-		position: absolute;
+		position: fixed;
 		top: 0;
 		left: 0;
 		bottom: 0;
 		width: 230px;
-		box-shadow: 2px 0px 2px rgba(0,0,0,.2);
 		z-index: 1000;
 
 		nav {
@@ -257,22 +248,7 @@ const StyledNav = styled.header`
 			}
 
 			a {
-				padding: 30px 40px;
-				&[aria-current] {
-					background: #444;
-					&::after {
-						content: '';
-						background: white;
-						position: absolute;
-						height: 100%;
-						width: 10px;
-						right: 0;
-						top: 0;
-						bottom: 0;
-						left: unset;
-						border: 0;
-					}
-				}
+				padding: 40px;
 			}
 		}
 	}

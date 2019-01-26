@@ -1,16 +1,28 @@
 import React, { Component } from 'react';
 import { withRouteData } from 'react-static';
 import { hot } from 'react-hot-loader/root';
-import { Link } from '@reach/router';
+import GridContainer from '../../common/GridContainer'
+import VideoCard from '../../common/VideoCard'
 
 class MusicIndex extends Component {
 	render() {
 		return (
-			<div>
+			<div >
 				<h1>Music</h1>
-				{this.props.music.map(video => (
-					<div key={video.sys.id}>{video.fields.title}</div>
-				))}
+				<GridContainer>
+					{this.props.music.map(video => (
+						<VideoCard
+							key={video.sys.id}
+							songTitle={video.fields.title}
+							artistName={video.fields.artist.fields.artistName}
+							postDate={video.fields.uploadDate}
+							thumbnail={video.fields.thumbnail.fields.file.url}
+							artistPhoto={video.fields.artist.fields.photo.fields.file.url}
+							color={video.fields.artist.fields.color}
+							videoUrl={`/${video.fields.artist.fields.slug}/${video.fields.slug}`}
+						/>
+					))}
+				</GridContainer>
 			</div>
 		);
 	}

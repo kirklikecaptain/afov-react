@@ -1,155 +1,186 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-import { Link } from '@reach/router';
-import Youtube from 'react-youtube';
+import {Link} from '@reach/router'
+import Youtube from 'react-youtube'
+import styled from 'styled-components'
+import Fade from 'react-reveal/Fade'
+import { IoIosMicrophone, IoMdMusicalNotes } from 'react-icons/io'
+
 
 class VideoHero extends Component {
 	state = {
-		player: null
-	};
-
-	hexToRgbA(hex){
-    var c;
-    if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
-        c= hex.substring(1).split('');
-        if(c.length== 3){
-            c= [c[0], c[0], c[1], c[1], c[2], c[2]];
-        }
-        c= '0x'+c.join('');
-        return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+',1)';
-    }
-    throw new Error('Bad Hex');
+		isLoading: true,
 	}
 
-	onReady = event => {
-		// access to player in all event handlers via event.target
-		event.target.mute();
-		this.setState({ player: event.target });
-	};
+	_onPlay = () => {
+		this.setState({isLoading: false})
+	}
 
-	onPlay = () => {
-		this.state.player.setPlaybackQuality('small');
-	};
+	_onReady = (event) => {
+    // access to player in all event handlers via event.target
+		event.target.setPlaybackQuality('small');
+	}
 
-	onEnd = event => {
-		event.target.playVideo();
-	};
+	_onEnd = (event) => {
+		event.target.seekTo(30)
+	}
 
 	render() {
-		const { artist, title, color, videoUrl, videoId } = this.props;
-		const videoOptions = {
-			playerVars: {
-				// https://developers.google.com/youtube/player_parameters
+		const { bandName, songTitle, color, path, videoId } = this.props
+		const opts = {
+      playerVars: { // https://developers.google.com/youtube/player_parameters
+				modestbranding: 0,
+				autohide: 1,
 				autoplay: 1,
-				controls: 0,
+				start: 40,
+				end: 160,
 				rel: 0,
-				showInfo: 0,
-				autoHide: 0,
-				enableJsApi: 1,
-				cc_load_policy: 0
-			}
+				controls: 0,
+				showinfo: 0,
+				mute: 1,
+				origin: window.location
+      }
 		};
+
+
 		return (
-			<div>
-				<StyledWrapper color={color}>
-					<div className='vid'>
-						<iframe
-							frameBorder='0'
-							src={`https://youtube.com/embed/${videoId}?start=60&modestbranding=1&autoplay=1&loop=1&controls=0&showinfo=0&autohide=1&mute=1&vq=hd720&playlist=${videoId}`}
-						/>
-						<div className='cover' />
-						<div className="cover-gradient" />
-					</div>
-					<div className='text-box'>
-						<div className='text'>
-							<h1>{artist}</h1>
-							<p className='song-title'>{title}</p>
-							<p>
-								{color} / {videoId}
-							</p>
-							<StyledCta color={color} to={videoUrl}>
+			<StyledYTContainer color={color} isLoading={this.state.isLoading}>
+				<Youtube
+					videoId={videoId}
+					opts={opts}
+					onReady={this._onReady}
+					onPlay={this._onPlay}
+					onEnd={this._onEnd}
+					className='VID'
+					containerClassName='CONT'
+				/>
+				<div className="overlay"></div>
+				<div className="overlay2"></div>
+				<Fade left duration={400} delay={1000} distance='100px'>
+					<div className="text-container">
+						<div className="text">
+							<h1>{songTitle}</h1>
+							<h2 className='slab'>{bandName}</h2>
+							<Link className='cta-button' to={path}>
+								{this.props.videoType === 'Interview' ? <IoIosMicrophone className='icon' /> : <IoMdMusicalNotes className='icon' />}
 								Watch Now
-							</StyledCta>
+							</Link>
 						</div>
 					</div>
-				</StyledWrapper>
-			</div>
+				</Fade>
+
+			</StyledYTContainer>
 		);
 	}
 }
 
 export default VideoHero;
 
-const StyledCta = styled(Link)`
-	display: inline-block;
-	padding: 10px 20px;
-	background: ${props => (props.color ? props.color : '#333')};
-	border-radius: 3px;
-	text-decoration: none;
-	color: rgba(255, 255, 255, 1);
-	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-`;
-
-const StyledWrapper = styled.div`
+const StyledYTContainer = styled.div`
 	position: relative;
-	background: white;
-
-	.vid {
-		position: relative;
-		width: 900px;
+	background: black;
+	height: 300px;
+	overflow: hidden;
+	@media (min-width: 600px) {
 		height: 500px;
+	}
+
+	.CONT {
+		height: 300px;
+		@media (min-width: 600px) {
+		height: 500px;
+	}
 		overflow: hidden;
-		background: white;
-		iframe {
-			display: block;
-			width: 100%;
-			height: 100%;
-			transform: scale(1.6);
+		opacity: ${props => props.isLoading ? '0' : '1'};
+		transition: all 3s ease;
+	}
+
+	.VID {
+		height: 500px;
+		width: 100%;
+		transform: scale(2.2);
+		@media (min-width: 600px) {
+			transform: scale(1.7);
 		}
 	}
 
-	.cover {
+	.text-container {
 		position: absolute;
 		top: 0;
 		right: 0;
 		bottom: 0;
 		left: 0;
-		background-image: linear-gradient(to left, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+		padding: 50px;
+		display: flex;
+		align-items: center;
 	}
 
-	.cover-gradient {
+	.cta-button {
+		background: white;
+		font-size: 1rem;
+		color: black;
+		padding: 16px 30px 16px 20px;
+		display: inline-block;
+		margin-top: 20px;
+		border-radius: 6px;
+		text-decoration: none;
+		vertical-align: middle;
+		line-height: 2em;
+		transition: all .3s ease;
+		&:hover {
+			box-shadow: 0 19px 38px rgba(0,0,0,0.2), 0 15px 12px rgba(0,0,0,0.1);
+		}
+		&:hover .icon {
+			color: ${props => props.color ? props.color : '#333'};
+		}
+
+		.icon {
+			font-size: 2em;
+			margin-right: 14px;
+			margin-top: -2px;
+			color: #bbb;
+			transition: all .3s ease;
+		}
+	}
+
+	.text {
+		padding: 30px;
+		transition: all .3s ease;
+		max-width: 70%;
+
+		h1 {
+			font-size: 4em;
+			font-weight: 700;
+			transition: all .3s ease;
+			margin: 0;
+			color: white;
+		}
+
+		h2 {
+			color: white;
+			font-size: 4em;
+			margin: 0;
+		}
+	}
+
+	.overlay {
+		background: ${props => props.color ? props.color : '#333'};
 		position: absolute;
 		top: 0;
 		right: 0;
 		bottom: 0;
 		left: 0;
 		mix-blend-mode: color;
-		background-image: linear-gradient(to left, transparent, ${props => props.color ? props.color : '#333'});
+		opacity: 1;
 	}
 
-	.text-box {
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		display: flex;
-		align-items: center;
-		justify-content: flex-end;
-		padding-right: 400px;
-
-		.song-title {
-			color: ${props => (props.color ? props.color : '#333')};
+	@media (min-width: 1700px) {
+		.overlay2 {
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background: linear-gradient(to right, black, black, transparent, transparent, black, black);
 		}
 	}
-
-	.text {
-		width: 500px;
-		background: white;
-		padding: 30px;
-		border-left: solid 4px ${props => (props.color ? props.color : '#333')};
-		h1 {
-			margin: 0 0 10px 0;
-		}
-	}
-`;
+`

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import {Link} from '@reach/router'
+import Img from './Img'
 
 class VideoCard extends Component {
 	render() {
@@ -11,10 +12,13 @@ class VideoCard extends Component {
 					<img src={thumbnail + '?w=400'} className='thumb' alt='Photo' />
 					<div className="overlay"></div>
 				</div>
-				<h2>{songTitle}</h2>
-				<div className='artist-row'>
-					<img src={artistPhoto + '?w=60'} className='avatar' alt='Band Photo' />
-					<h3>{artistName}</h3>
+
+				<div className='card-text'>
+					<h2>{songTitle}</h2>
+					<div className='artist-row'>
+						<img src={artistPhoto + '?w=60'} className='avatar' alt='Band Photo' />
+						<h3 className='slab'>{artistName}</h3>
+					</div>
 				</div>
 			</StyledCard>
 		);
@@ -27,14 +31,16 @@ const StyledCard = styled(Link)`
 	display: block;
 	text-decoration: none;
 	color: #333;
+	min-width: 0;
+	overflow: hidden;
+	&:hover h2 {
+		color: ${props => props.color ? props.color : '#333'};
+	}
+
 	&:hover {
 		.overlay {
 			opacity: 0;
 		}
-	}
-
-	h2 {
-		margin: 10px 0 0 0;
 	}
 
 	.thumb-box {
@@ -66,12 +72,28 @@ const StyledCard = styled(Link)`
 		margin-right: 10px;
 	}
 
+	.card-text {
+		padding: 0px 5px;
+
+	}
+
+	h2 {
+		margin: 10px 0 0 0;
+		transition: .3s all ease;
+		text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 100%;
+	}
+
 	.artist-row {
 		display: flex;
 		align-items: center;
 		padding-top: 10px;
+
 		h3 {
 			margin: 0;
+			color: #666;
 		}
 	}
 `;

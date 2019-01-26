@@ -17,7 +17,7 @@ export default {
 			{
 				path: 'artists',
 				component: 'src/app/pages/artist-index/ArtistIndex.js',
-				getData: () => ({ allArtists })
+				getData: () => ({ allArtists, allVideos })
 			},
 			{
 				path: 'videos',
