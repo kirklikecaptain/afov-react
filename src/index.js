@@ -9,17 +9,17 @@ export default App;
 
 // Render your app
 if (typeof document !== 'undefined') {
-	const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate || ReactDOM.render;
+  const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate || ReactDOM.render;
 
-	const render = Comp => {
-		renderMethod(<Comp />, document.getElementById('root'));
-	};
+  const render = Comp => {
+    renderMethod(<Comp />, document.getElementById('root'));
+  };
 
-	// Render!
-	render(App);
+  // Render!
+  render(App);
 
-	// Hot Module Replacement
-	if (module.hot) {
-		module.hot.accept('./app', () => render(require('./app').default));
-	}
+  // Hot Module Replacement
+  if (module.hot) {
+    module.hot.accept('./app', () => render(require('./app').default));
+  }
 }
