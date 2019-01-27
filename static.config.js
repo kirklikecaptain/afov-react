@@ -1,8 +1,8 @@
 import getRouteData from './src/utils/getRouteData'
 
 export default {
-  siteRoot: 'https://www.afistfulofvinyl.com',
-	stagingSiteRoot: 'https://staging-www.goguardian.com',
+  siteRoot: 'https://adoring-fermat-3d4eac.netlify.com',
+	// stagingSiteRoot: 'https://adoring-fermat-3d4eac.netlify.com/',
   getSiteData: () => ({
     title: 'A Fistful of Website',
 	}),
