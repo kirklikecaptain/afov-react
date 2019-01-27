@@ -26,6 +26,8 @@ class VideoHero extends Component {
   render() {
     const { bandName, songTitle, color, path, videoId } = this.props;
     const opts = {
+			width: '100%',
+			height: '500',
       playerVars: {
         // https://developers.google.com/youtube/player_parameters
         modestbranding: 0,
@@ -36,7 +38,8 @@ class VideoHero extends Component {
         rel: 0,
         controls: 0,
         showinfo: 0,
-        mute: 1
+				mute: 1,
+				origin: 'https://adoring-fermat-3d4eac.netlify.com/'
       }
     };
 
