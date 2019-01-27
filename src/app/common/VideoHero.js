@@ -56,7 +56,7 @@ class VideoHero extends Component {
         />
         <div className='overlay' />
         <div className='overlay2' />
-        <Fade ssrFadeout left duration={400} delay={1000} distance='100px'>
+        <Fade ssrReveal left duration={400} delay={1000} distance='100px'>
           <div className='text-container'>
             <div className='text'>
               <h1>{songTitle}</h1>
