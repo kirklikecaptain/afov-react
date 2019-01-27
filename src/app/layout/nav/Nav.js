@@ -247,7 +247,7 @@ const StyledNav = styled.header`
       }
 
       a {
-        padding: 40px;
+        padding: 20px 40px;
       }
     }
   }

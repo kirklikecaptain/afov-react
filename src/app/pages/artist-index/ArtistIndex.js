@@ -23,8 +23,7 @@ class ArtistIndex extends Component {
                   this.props.allVideos.filter(
                     video => video.fields.artist.fields.artistName === artist.fields.artistName
                   ).length
-                }{' '}
-                Videos
+                } Videos
               </p>
             </Card>
           ))}
@@ -56,6 +55,7 @@ const Card = styled(Link)`
     margin-top: -100px;
     display: inline-block;
     width: 200px;
+		height: 200px;
     border-radius: 50%;
     border: 10px white solid;
   }

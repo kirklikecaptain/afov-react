@@ -167,15 +167,20 @@ const StyledYTContainer = styled.div`
   }
 
   .overlay {
-    background: ${props => (props.color ? props.color : '#333')};
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    mix-blend-mode: color;
-    opacity: 1;
+		mix-blend-mode: color;
+		background: ${props => (props.color ? props.color : '#333')};
   }
+
+	@media not all and (min-resolution:.001dpcm) {
+		.overlay {
+			display: none;
+		}
+	}
 
   @media (min-width: 1700px) {
     .overlay2 {

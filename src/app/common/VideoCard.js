@@ -10,7 +10,7 @@ class VideoCard extends Component {
       <StyledCard to={videoUrl} color={color} className='card'>
         <div className='thumb-box'>
           <img src={thumbnail + '?w=400'} className='thumb' alt='Photo' />
-          <div className='overlay' />
+          <div className='overlay safari_only' />
         </div>
 
         <div className='card-text'>
@@ -59,10 +59,15 @@ const StyledCard = styled(Link)`
     bottom: 0;
     left: 0;
     background: ${props => (props.color ? props.color : '#333')};
-    opacity: 1;
     mix-blend-mode: color;
     transition: 0.3s all ease;
   }
+
+	@media not all and (min-resolution:.001dpcm) {
+		.overlay {
+			display: none;
+		}
+	}
 
   .avatar {
     border-radius: 50%;
