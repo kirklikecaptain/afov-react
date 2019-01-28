@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const MissionStatement = () => {
 	return (
 		<StyledSection>
-			<h1 className='slab'>A Fistful of Vinyl offers artists a platform to reach new audiences and provides a place for music lovers to find their next favorite musicians.</h1>
+			<h1 className='slab'>A Fistful of Vinyl offers artists a platform to better reach new audiences and provides music lovers a place to find their next favorite musicians.</h1>
 		</StyledSection>
 	);
 }
@@ -12,7 +12,7 @@ const MissionStatement = () => {
 export default MissionStatement;
 
 const StyledSection = styled.div`
-	background: #f7f7f7;
+	background: #e9e9e9;
 	color: #222;
 	padding: 3em 1em;
 	text-align: center;
