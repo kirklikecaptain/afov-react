@@ -8,8 +8,8 @@ import GridContainer from '../../common/GridContainer';
 class InterviewIndex extends Component {
   render() {
     return (
-      <div>
-        <h1>Interviews</h1>
+      <div className='container'>
+        <h1 className='no-top'>Interviews</h1>
         <GridContainer>
           {this.props.interviews.map(video => (
             <VideoCard

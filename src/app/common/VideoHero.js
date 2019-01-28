@@ -10,31 +10,29 @@ class VideoHero extends Component {
     isLoading: true
   };
 
-  _onPlay = () => {
-    this.setState({ isLoading: false });
+
+  _onPlay = event => {
+		this.setState({ isLoading: false });
+		setTimeout(() => {
+				event.target.seekTo(40)
+			}, 120000)
   };
 
   _onReady = event => {
     // access to player in all event handlers via event.target
     event.target.setPlaybackQuality('small');
-  };
-
-  _onEnd = event => {
-    event.target.seekTo(40);
-  };
+  }
 
   render() {
     const { bandName, songTitle, color, path, videoId } = this.props;
     const opts = {
 			width: '100%',
 			height: '500',
-      playerVars: {
-        // https://developers.google.com/youtube/player_parameters
+      playerVars: { // https://developers.google.com/youtube/player_parameters
         modestbranding: 0,
         autohide: 1,
         autoplay: 1,
         start: 40,
-        end: 160,
         rel: 0,
         controls: 0,
         showinfo: 0,
@@ -50,7 +48,6 @@ class VideoHero extends Component {
           opts={opts}
           onReady={this._onReady}
           onPlay={this._onPlay}
-          onEnd={this._onEnd}
           className='video-frame'
           containerClassName='video-container'
         />
@@ -59,8 +56,8 @@ class VideoHero extends Component {
         <Fade ssrReveal left duration={400} delay={1000} distance='100px'>
           <div className='text-container'>
             <div className='text'>
-              <h1>{songTitle}</h1>
-              <h2 className='slab'>{bandName}</h2>
+              <h2>{songTitle}</h2>
+              <h3 className='slab'>{bandName}</h3>
               <Link className='cta-button' to={path}>
                 {this.props.videoType === 'Interview' ? (
                   <IoIosMicrophone className='icon' />
@@ -151,7 +148,7 @@ const StyledYTContainer = styled.div`
     transition: all 0.3s ease;
     max-width: 70%;
 
-    h1 {
+    h2 {
       font-size: 4em;
       font-weight: 700;
       transition: all 0.3s ease;
@@ -159,7 +156,7 @@ const StyledYTContainer = styled.div`
       color: white;
     }
 
-    h2 {
+    h3 {
       color: white;
       font-size: 4em;
       margin: 0;

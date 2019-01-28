@@ -7,8 +7,8 @@ import VideoCard from '../../common/VideoCard';
 class MusicIndex extends Component {
   render() {
     return (
-      <div>
-        <h1>Music</h1>
+      <div className='container'>
+        <h1 className='no-top'>Music</h1>
         <GridContainer>
           {this.props.music.map(video => (
             <VideoCard

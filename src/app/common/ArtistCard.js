@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import {Link} from '@reach/router'
+import bg from '../../assets/asfalt-light.png';
 
 class ArtistCard extends Component {
   render() {
+		const { color, path, image, artistName, videoCount } = this.props
     return (
-      <StyledCard>
-        <div className='top' />
-        <img src='avatar' alt='avatar' />
-        <div className='text' />
+      <StyledCard to={path} color={color}>
+				<div className='header' />
+				<img src={image} alt='' />
+				<h2 className='slab'>{artistName}</h2>
+				<p>
+					{videoCount} Videos
+				</p>
       </StyledCard>
     );
   }
@@ -15,4 +21,26 @@ class ArtistCard extends Component {
 
 export default ArtistCard;
 
-const StyledCard = styled.div``;
+const StyledCard = styled(Link)`
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  color: #333;
+
+  .header {
+    height: 130px;
+    border-radius: 10px 10px 0 0;
+    background-color: ${props => (props.color ? props.color : '#333')};
+    background-image: url(${bg});
+    background-repeat: repeat;
+  }
+  img {
+    margin-top: -100px;
+    display: inline-block;
+    width: 200px;
+		height: 200px;
+    border-radius: 50%;
+    border: 10px white solid;
+  }
+`;
+

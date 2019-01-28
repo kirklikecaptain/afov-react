@@ -9,7 +9,7 @@ export default async function getRouteData() {
   try {
     // page content queries
     const allArtists = await getAll('artist', 'fields.artistName');
-    const allVideos = await getAll('video');
+    const allVideos = await getAll('video', '-fields.uploadDate');
     // returns an array of case study objects that will be used
     // to programmatically build pages using a template component
 
