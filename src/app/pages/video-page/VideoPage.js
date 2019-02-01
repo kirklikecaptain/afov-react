@@ -1,23 +1,29 @@
 import React, { Component } from 'react';
-import { Link } from '@reach/router';
 import { hot } from 'react-hot-loader/root';
 import { withRouteData } from 'react-static';
+import styled from 'styled-components';
+import VideoPlayer from '../../common/VideoPlayer';
+import RelatedVideos from '../../common/RelatedVideos';
 
 class VideoPage extends Component {
   render() {
     const { video, otherVideos } = this.props;
-    console.log(video);
-
     return (
-      <div>
-        <h1>{video.fields.title}</h1>
-        <h3>More by {video.fields.artist.fields.artistName}</h3>
-        {otherVideos.map(video => (
-          <p key={video.sys.id}>{video.fields.title}</p>
-        ))}
-      </div>
+      <StyledLayout>
+        <VideoPlayer video={video} />
+        {otherVideos.length > 0 && <RelatedVideos artist={video.fields.artist.fields.artistName} relatedVideos={otherVideos} />}
+      </StyledLayout>
     );
   }
 }
 
 export default hot(withRouteData(VideoPage));
+
+const StyledLayout = styled.div`
+  @media (min-width: 1000px) {
+    padding: 1.5em;
+    display: grid;
+    grid-gap: 1.5em;
+    grid-template-columns: auto 350px;
+  }
+`;

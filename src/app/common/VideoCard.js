@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from '@reach/router';
-import Img from './Img';
 
 class VideoCard extends Component {
+
   render() {
     const { songTitle, artistName, thumbnail, artistPhoto, color, videoUrl } = this.props;
     return (
@@ -12,13 +12,14 @@ class VideoCard extends Component {
           <img src={thumbnail + '?w=400'} className='thumb' alt='Photo' />
           <div className='overlay safari_only' />
         </div>
-
         <div className='card-text'>
           <h2>{songTitle}</h2>
-          <div className='artist-row'>
-            <img src={artistPhoto + '?w=60'} className='avatar' alt='Band Photo' />
-            <h3 className='slab'>{artistName}</h3>
-          </div>
+					{artistName && (
+						<div className='artist-row'>
+							<img src={artistPhoto + '?w=60'} className='avatar' alt='Band Photo' />
+							<h3 className='slab'>{artistName}</h3>
+          	</div>
+					)}
         </div>
       </StyledCard>
     );
@@ -33,8 +34,9 @@ const StyledCard = styled(Link)`
   color: #333;
   min-width: 0;
   overflow: hidden;
+	margin-bottom: 20px;
   &:hover h2 {
-    color: ${props => (props.color ? props.color : '#333')};
+    color: ${props => props.color ? props.color : '#333'};
   }
 
   &:hover {
