@@ -12,13 +12,13 @@ const MissionStatement = () => {
 export default MissionStatement;
 
 const StyledSection = styled.div`
-	background: #e9e9e9;
+	border-bottom: solid 1px #ddd;
 	color: #222;
-	padding: 3em 1em;
+	padding: 4em 1em;
 	text-align: center;
 	h1 {
 		font-size: 1.7em;
-		margin: 0 auto 20px auto;
+		margin: 0 auto;
 		max-width: 25em;
 		line-height: 1.5em;
 	}

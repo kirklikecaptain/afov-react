@@ -6,8 +6,8 @@ import { Link } from '@reach/router';
 class Booking extends Component {
   render() {
     return (
-      <div>
-        <h1>Booking</h1>
+      <div className='container'>
+        <h1 className='no-top'>Booking</h1>
       </div>
     );
   }

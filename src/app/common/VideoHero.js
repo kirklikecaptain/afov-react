@@ -10,36 +10,40 @@ class VideoHero extends Component {
     isLoading: true
   };
 
-
   _onPlay = event => {
-		this.setState({ isLoading: false });
-		setTimeout(() => {
-				event.target.seekTo(40)
-			}, 120000)
+    // access to player in all event handlers via event.target
+    this.setState({ isLoading: false });
+    // loop the video by seeking back to 'start' at 40s mark after 2m
+    // this creates a cleaner loop than using the YT option
+    setTimeout(() => {
+      event.target.seekTo(40);
+    }, 120000);
   };
 
   _onReady = event => {
-    // access to player in all event handlers via event.target
+    // lower playback quality for faster load times
     event.target.setPlaybackQuality('small');
-  }
+  };
 
   render() {
     const { bandName, songTitle, color, path, videoId } = this.props;
     const opts = {
-			width: '100%',
-			height: '500',
-      playerVars: { // https://developers.google.com/youtube/player_parameters
-        modestbranding: 0,
+      width: '100%',
+      height: '500',
+      playerVars: {
+        // https://developers.google.com/youtube/player_parameters
+        modestbranding: 1,
         autohide: 1,
         autoplay: 1,
         start: 40,
         rel: 0,
         controls: 0,
         showinfo: 0,
-				mute: 1,
-				origin: 'https://adoring-fermat-3d4eac.netlify.com/'
+        mute: 1,
+        origin: 'https://adoring-fermat-3d4eac.netlify.com/'
       }
-    };
+		};
+
 
     return (
       <StyledYTContainer color={color} isLoading={this.state.isLoading}>
@@ -169,24 +173,30 @@ const StyledYTContainer = styled.div`
     right: 0;
     bottom: 0;
     left: 0;
-		mix-blend-mode: color;
-		background: ${props => (props.color ? props.color : '#333')};
+    mix-blend-mode: color;
+    background: ${props => (props.color ? props.color : '#333')};
   }
 
-	@media not all and (min-resolution:.001dpcm) {
-		.overlay {
+  @media not all and (min-resolution: 0.001dpcm) {
+    .overlay {
+      display: none;
+    }
+
+		.overlay2 {
 			display: none;
 		}
-	}
+  }
 
   @media (min-width: 1700px) {
+		background: ${props => props.color ? props.color : 'black'};
+
     .overlay2 {
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
       left: 0;
-      background: linear-gradient(to right, black, black, transparent, transparent, black, black);
+			background: ${props => props.color ? `linear-gradient(to right, ${props.color}, ${props.color}, transparent, transparent, ${props.color}, ${props.color})` : 'linear-gradient(to right, black, black, transparent, transparent, black, black)'};
     }
   }
 `;

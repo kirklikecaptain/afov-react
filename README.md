@@ -1,3 +1,3 @@
-# React-Static - Basic Template
+# A Fistful of Website 2.0
 
-To use this template, run `react-static create` and use the `basic` template.
+Coming soon, a real readme!
