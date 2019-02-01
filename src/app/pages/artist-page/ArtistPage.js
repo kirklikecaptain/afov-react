@@ -42,6 +42,7 @@ export default hot(withRouteData(ArtistPage));
 
 const StyledInfo = styled.div`
 	display: flex;
+	align-items: flex-start;
 	margin-bottom: 1.5em;
 
 	h1 {
