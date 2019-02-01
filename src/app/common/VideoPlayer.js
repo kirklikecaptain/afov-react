@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import { Head } from 'react-static';
 import {Link } from '@reach/router'
 import Youtube from 'react-youtube'
+import VideoStats from './VideoStats';
 
 class VideoPlayer extends Component {
 
   render() {
 		const { title, artist, videoId, uploadDate } = this.props.video.fields;
-		const opts = {
+		const options = {
       playerVars: {
         // https://developers.google.com/youtube/player_parameters
         modestbranding: 1,
@@ -26,7 +27,7 @@ class VideoPlayer extends Component {
 				</Head>
 				<Youtube
 					videoId={videoId}
-          opts={opts}
+          opts={options}
           className='video-frame'
           containerClassName='video-container'
 				/>
@@ -38,7 +39,7 @@ class VideoPlayer extends Component {
 						</div>
 					</Link>
 					<p>Venue</p>
-					<p>Views Likes Comments UploadDate Share</p>
+					<VideoStats videoId={videoId}/>
 					<p>Video Long Description</p>
 					<p>Artist Long Description</p>
 					<p>Contributors</p>
