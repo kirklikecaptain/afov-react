@@ -9,6 +9,7 @@ class VideoPlayer extends Component {
   render() {
     const { title, artist, videoId, uploadDate } = this.props.video.fields;
     const options = {
+			host: 'https://www.youtube.com',
       playerVars: {
         // https://developers.google.com/youtube/player_parameters
         modestbranding: 1,
