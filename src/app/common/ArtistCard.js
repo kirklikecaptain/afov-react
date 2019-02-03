@@ -1,19 +1,17 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import {Link} from '@reach/router'
+import { Link } from '@reach/router';
 import bg from '../../assets/asfalt-light.png';
 
 class ArtistCard extends Component {
   render() {
-		const { color, path, image, artistName, videoCount } = this.props
+    const { color, path, image, artistName, videoCount } = this.props;
     return (
       <StyledCard to={path} color={color}>
-				<div className='header' />
-				<img src={image} alt='' />
-				<h2 className='slab'>{artistName}</h2>
-				<p>
-					{videoCount} Videos
-				</p>
+        <div className='header' />
+        <img src={image} alt='' />
+        <h2 className='slab'>{artistName}</h2>
+        <p>{videoCount} Videos</p>
       </StyledCard>
     );
   }
@@ -38,9 +36,9 @@ const StyledCard = styled(Link)`
     margin-top: -100px;
     display: inline-block;
     width: 200px;
-		height: 200px;
+    height: 200px;
     border-radius: 50%;
-    border: 10px white solid;
+    border: 6px white solid;
+		background: white;
   }
 `;
-

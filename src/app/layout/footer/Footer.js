@@ -13,5 +13,5 @@ const StyledFooter = styled.footer`
   display: block;
   background: black;
   color: white;
-	min-height: 500px;
+  min-height: 500px;
 `;

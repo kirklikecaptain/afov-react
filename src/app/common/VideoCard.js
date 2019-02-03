@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { Link } from '@reach/router';
 
 class VideoCard extends Component {
-
   render() {
     const { songTitle, artistName, thumbnail, artistPhoto, color, videoUrl } = this.props;
     return (
@@ -14,12 +13,12 @@ class VideoCard extends Component {
         </div>
         <div className='card-text'>
           <h2>{songTitle}</h2>
-					{artistName && (
-						<div className='artist-row'>
-							<img src={artistPhoto + '?w=60'} className='avatar' alt='Band Photo' />
-							<h3 className='slab'>{artistName}</h3>
-          	</div>
-					)}
+          {artistName && (
+            <div className='artist-row'>
+              <img src={artistPhoto + '?w=60'} className='avatar' alt='Band Photo' />
+              <h3 className='slab'>{artistName}</h3>
+            </div>
+          )}
         </div>
       </StyledCard>
     );
@@ -34,9 +33,9 @@ const StyledCard = styled(Link)`
   color: #333;
   min-width: 0;
   overflow: hidden;
-	margin-bottom: 20px;
+  margin-bottom: 20px;
   &:hover h2 {
-    color: ${props => props.color ? props.color : '#333'};
+    color: ${props => (props.color ? props.color : '#333')};
   }
 
   &:hover {
@@ -65,11 +64,11 @@ const StyledCard = styled(Link)`
     transition: 0.3s all ease;
   }
 
-	@media not all and (min-resolution:.001dpcm) {
-		.overlay {
-			display: none;
-		}
-	}
+  @media not all and (min-resolution: 0.001dpcm) {
+    .overlay {
+      display: none;
+    }
+  }
 
   .avatar {
     border-radius: 50%;

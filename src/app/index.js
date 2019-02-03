@@ -41,24 +41,28 @@ function App(props) {
 export default withSiteData(App);
 
 const StyledContainer = styled.div`
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: normal;
+  }
 
-	h1, h2, h3, h4, h5, h6 {
-		font-weight: normal;
-	}
+  .slab {
+    font-family: 'Roboto Slab', serif;
+  }
 
-	.slab {
-		font-family: 'Roboto Slab', serif;
-	}
-
-	.no-top {
-		margin-top: 0;
-	}
+  .no-top {
+    margin-top: 0;
+  }
 
   .container {
     margin: 0 auto;
-		max-width: 1200px;
-		padding: 1em;
-	}
+    max-width: 1200px;
+    padding: 1em;
+  }
 
   .noselect {
     -webkit-touch-callout: none; /* iOS Safari */
@@ -81,24 +85,24 @@ const StyledContainer = styled.div`
     }
 
     .container {
-			margin: 0;
-			max-width: 100%;
-			padding: 1.5em;
+      margin: 0;
+      max-width: 100%;
+      padding: 1.5em;
     }
-	}
+  }
 
-		/* Minimizes browser scrollbar */
+  /* Minimizes browser scrollbar */
 
-	html {
-		overflow: scroll;
-		overflow-x: hidden;
-	}
-	::-webkit-scrollbar {
-			width: 0px;  /* remove scrollbar space */
-			background: transparent;  /* optional: just make scrollbar invisible */
-	}
-	/* how position indicator in black */
-	::-webkit-scrollbar-thumb {
-			background: #333;
-	}
+  html {
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+  ::-webkit-scrollbar {
+    width: 0px; /* remove scrollbar space */
+    background: transparent; /* optional: just make scrollbar invisible */
+  }
+  /* how position indicator in black */
+  ::-webkit-scrollbar-thumb {
+    background: #333;
+  }
 `;

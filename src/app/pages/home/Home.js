@@ -21,24 +21,24 @@ class HomePage extends React.Component {
           videoId={heroVideo.fields.videoId}
           videoType={heroVideo.fields.videoType}
         />
-				<MissionStatement />
-				<div className='container'>
-					<h2 className='no-top'>Recent Videos</h2>
-					<GridContainer>
-						{recentVideos.map(video => (
-							<VideoCard
-								key={video.sys.id}
-								songTitle={video.fields.title}
-								artistName={video.fields.artist.fields.artistName}
-								postDate={video.fields.uploadDate}
-								thumbnail={video.fields.thumbnail.fields.file.url}
-								artistPhoto={video.fields.artist.fields.photo.fields.file.url}
-								color={video.fields.artist.fields.color}
-								videoUrl={`/${video.fields.artist.fields.slug}/${video.fields.slug}`}
-							/>
-						))}
-					</GridContainer>
-				</div>
+        <MissionStatement />
+        <div className='container'>
+          <h2 className='no-top'>Recent Videos</h2>
+          <GridContainer>
+            {recentVideos.map(video => (
+              <VideoCard
+                key={video.sys.id}
+                songTitle={video.fields.title}
+                artistName={video.fields.artist.fields.artistName}
+                postDate={video.fields.uploadDate}
+                thumbnail={video.fields.thumbnail.fields.file.url}
+                artistPhoto={video.fields.artist.fields.photo.fields.file.url}
+                color={video.fields.artist.fields.color}
+                videoUrl={`/${video.fields.artist.fields.slug}/${video.fields.slug}`}
+              />
+            ))}
+          </GridContainer>
+        </div>
       </>
     );
   }

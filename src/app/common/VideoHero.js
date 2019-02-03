@@ -42,8 +42,7 @@ class VideoHero extends Component {
         mute: 1,
         origin: 'https://adoring-fermat-3d4eac.netlify.com/'
       }
-		};
-
+    };
 
     return (
       <StyledYTContainer color={color} isLoading={this.state.isLoading}>
@@ -182,13 +181,13 @@ const StyledYTContainer = styled.div`
       display: none;
     }
 
-		.overlay2 {
-			display: none;
-		}
+    .overlay2 {
+      display: none;
+    }
   }
 
   @media (min-width: 1700px) {
-		background: ${props => props.color ? props.color : 'black'};
+    background: ${props => (props.color ? props.color : 'black')};
 
     .overlay2 {
       position: absolute;
@@ -196,7 +195,12 @@ const StyledYTContainer = styled.div`
       right: 0;
       bottom: 0;
       left: 0;
-			background: ${props => props.color ? `linear-gradient(to right, ${props.color}, ${props.color}, transparent, transparent, ${props.color}, ${props.color})` : 'linear-gradient(to right, black, black, transparent, transparent, black, black)'};
+      background: ${props =>
+        props.color
+          ? `linear-gradient(to right, ${props.color}, ${props.color}, transparent, transparent, ${props.color}, ${
+              props.color
+            })`
+          : 'linear-gradient(to right, black, black, transparent, transparent, black, black)'};
     }
   }
 `;

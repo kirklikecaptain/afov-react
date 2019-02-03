@@ -11,7 +11,9 @@ class VideoPage extends Component {
     return (
       <StyledLayout>
         <VideoPlayer video={video} />
-        {otherVideos.length > 0 && <RelatedVideos artist={video.fields.artist.fields.artistName} relatedVideos={otherVideos} />}
+        {otherVideos.length > 0 && (
+          <RelatedVideos artist={video.fields.artist.fields.artistName} relatedVideos={otherVideos} />
+        )}
       </StyledLayout>
     );
   }
