@@ -41,8 +41,7 @@ class VideoHero extends Component {
         showinfo: 0,
         mute: 1,
         enablejsapi: 1,
-				// origin: 'https://adoring-fermat-3d4eac.netlify.com',
-				widget_referrer: 'https://adoring-fermat-3d4eac.netlify.com'
+				origin: 'https://adoring-fermat-3d4eac.netlify.com',
       }
     };
 
