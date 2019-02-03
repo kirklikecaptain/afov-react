@@ -15,7 +15,7 @@ class VideoCard extends Component {
           <h2>{songTitle}</h2>
           {artistName && (
             <div className='artist-row'>
-              <img src={artistPhoto + '?w=60'} className='avatar' alt='Band Photo' />
+              <img src={`'https:${artistPhoto}?w=60`} className='avatar' alt='Band Photo' />
               <h3 className='slab'>{artistName}</h3>
             </div>
           )}

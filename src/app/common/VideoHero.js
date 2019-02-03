@@ -40,7 +40,9 @@ class VideoHero extends Component {
         controls: 0,
         showinfo: 0,
         mute: 1,
-        origin: 'https://adoring-fermat-3d4eac.netlify.com/'
+        enablejsapi: 1,
+				origin: 'https://adoring-fermat-3d4eac.netlify.com',
+				widget_referrer: 'https://adoring-fermat-3d4eac.netlify.com'
       }
     };
 

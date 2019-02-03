@@ -14,8 +14,10 @@ class VideoPlayer extends Component {
         modestbranding: 1,
         rel: 0,
         autoplay: 0,
-        color: 'white',
-        origin: 'https://adoring-fermat-3d4eac.netlify.com/'
+				color: 'white',
+				enablejsapi: 1,
+				origin: 'https://adoring-fermat-3d4eac.netlify.com',
+				widget_referrer: 'https://adoring-fermat-3d4eac.netlify.com'
       }
     };
 
