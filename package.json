@@ -2,7 +2,6 @@
   "name": "afov-react",
   "version": "2.0.0",
   "main": "index.js",
-  "private": true,
   "scripts": {
     "start": "react-static start",
     "stage": "react-static build --staging",
