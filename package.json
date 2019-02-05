@@ -15,6 +15,7 @@
     "axios": "0.18.0",
     "contentful": "7.0.5",
     "default-passive-events": "^1.0.10",
+    "dotenv": "^6.2.0",
     "googleapis": "^37.1.0",
     "prop-types": "15.6.2",
     "react": "16.6.3",

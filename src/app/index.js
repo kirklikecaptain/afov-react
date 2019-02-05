@@ -1,9 +1,12 @@
 import React from 'react';
 import { Root, Routes, Head, withSiteData } from 'react-static';
 import styled from 'styled-components';
+
 import 'sanitize.css';
 
 import './index.css';
+
+
 
 import Footer from './layout/footer/Footer';
 import Nav from './layout/nav/Nav';

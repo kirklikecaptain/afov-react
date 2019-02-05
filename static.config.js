@@ -1,4 +1,7 @@
 import getRouteData from './src/utils/getRouteData'
+import dotenv from 'dotenv';
+dotenv.config();
+
 
 export default {
   siteRoot: 'https://adoring-fermat-3d4eac.netlify.com/',

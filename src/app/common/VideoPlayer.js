@@ -11,14 +11,13 @@ class VideoPlayer extends Component {
     const options = {
 			host: 'https://www.youtube.com',
       playerVars: {
-        // https://developers.google.com/youtube/player_parameters
         modestbranding: 1,
         rel: 0,
         autoplay: 0,
 				color: 'white',
 				enablejsapi: 1,
-				origin: 'https://adoring-fermat-3d4eac.netlify.com',
-				widget_referrer: 'https://adoring-fermat-3d4eac.netlify.com'
+				origin: 'https://adoring-fermat-3d4eac.netlify.com' // TODO: fix console errors wtf why
+				// more options here - https://developers.google.com/youtube/player_parameters
       }
     };
 

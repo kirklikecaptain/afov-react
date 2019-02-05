@@ -1,8 +1,10 @@
 import { createClient } from 'contentful';
+import dotenv from 'dotenv';
+dotenv.config();
 
 export const client = createClient({
-  space: 'iy94k83j702j',
-  accessToken: 'a48fe13b92bcd2badeb15681a391c72d3c220283d86c07655dd0f9ae3db2e951'
+  space: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 });
 
 export default async function getRouteData() {
