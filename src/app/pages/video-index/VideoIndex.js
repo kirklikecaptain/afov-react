@@ -1,34 +1,41 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader/root';
 import { withRouteData } from 'react-static';
-import { Link } from '@reach/router'
-import styled from 'styled-components'
-import GridContainer from '../../components/GridContainer'
-import VideoCard from '../../components/VideoCard'
+import { Link } from '@reach/router';
+import styled from 'styled-components';
+import GridContainer from '../../components/GridContainer';
+import VideoCard from '../../components/VideoCard';
 
 class VideoIndex extends Component {
-
-	printPages() {
-		let links = []
-		for (let i = 1; i < this.props.totalPages + 1; i++) {
-			if (i === this.props.currentPage) {
-				links.push(<span className='page current' key={i}>{this.props.currentPage}</span>)
-			} else {
-				links.push(<Link className='page link' key={i} to={`/videos/page/${i}`}>{i}</Link>) //change this to pure values
-			}
-		}
-		return links
-	}
+  printPages() {
+    let links = [];
+    for (let i = 1; i < this.props.totalPages + 1; i++) {
+      if (i === this.props.currentPage) {
+        links.push(
+          <span className='page current' key={i}>
+            {this.props.currentPage}
+          </span>
+        );
+      } else {
+        links.push(
+          <Link className='page link' key={i} to={`/videos/page/${i}`}>
+            {i}
+          </Link>
+        ); //change this to pure values
+      }
+    }
+    return links;
+  }
 
   render() {
     return (
       <div className='container'>
-				<StyledHeader>
-					<h1 className='no-top'>All Videos</h1>
-					<div className='pagination'>Page {this.printPages()}</div>
-				</StyledHeader>
-				<GridContainer gap='20px'>
-					{this.props.allVideos.map(video => (
+        <StyledHeader>
+          <h1 className='no-top'>All Videos</h1>
+          <div className='pagination'>Page {this.printPages()}</div>
+        </StyledHeader>
+        <GridContainer gap='20px'>
+          {this.props.allVideos.map(video => (
             <VideoCard
               key={video.sys.id}
               songTitle={video.fields.title}
@@ -39,8 +46,8 @@ class VideoIndex extends Component {
               color={video.fields.artist.fields.color}
               videoUrl={`/${video.fields.artist.fields.slug}/${video.fields.slug}`}
             />
-					))}
-				</GridContainer>
+          ))}
+        </GridContainer>
       </div>
     );
   }
@@ -49,29 +56,29 @@ class VideoIndex extends Component {
 export default hot(withRouteData(VideoIndex));
 
 const StyledHeader = styled.div`
-	display: flex;
-	align-items: flex-start;
+  display: flex;
+  align-items: flex-start;
 
-	.pagination {
-		padding-top: 3px;
-		padding-left: 30px;
-		color: #999;
-	}
+  .pagination {
+    padding-top: 3px;
+    padding-left: 30px;
+    color: #999;
+  }
 
-	.page {
-		display: inline-block;
-		padding: 5px;
-		margin: 5px;
-	}
-	.link {
-		color: black;
-		text-decoration: none;
-		&:hover {
-			text-decoration: underline;
-		}
-	}
-	.current {
-		padding: 5px;
-		color: red;
-	}
-`
+  .page {
+    display: inline-block;
+    padding: 5px;
+    margin: 5px;
+  }
+  .link {
+    color: black;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  .current {
+    padding: 5px;
+    color: red;
+  }
+`;

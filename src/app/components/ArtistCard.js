@@ -10,10 +10,12 @@ class ArtistCard extends Component {
       <StyledCard to={path} color={color}>
         <div className='header' />
         <img src={image} alt='' />
-				<div className='info'>
-					<h2 className='slab'>{artistName}</h2>
-					<p>{videoCount} {videoCount === 1 ? 'Video' : 'Videos'}</p>
-				</div>
+        <div className='info'>
+          <h2 className='slab'>{artistName}</h2>
+          <p>
+            {videoCount} {videoCount === 1 ? 'Video' : 'Videos'}
+          </p>
+        </div>
       </StyledCard>
     );
   }
@@ -26,28 +28,29 @@ const StyledCard = styled(Link)`
   display: block;
   text-decoration: none;
   color: #333;
-	border-radius: 0px;
-	overflow: hidden;
-	transition: all .2s ease;
-	border-bottom: 5px solid transparent;
+  border-radius: 0px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  border-bottom: 5px solid transparent;
 
-	&:hover {
-		border-bottom: 5px solid ${props => (props.color ? props.color : '#333')};
-	}
+  &:hover {
+    border-bottom: 5px solid ${props => (props.color ? props.color : '#333')};
+  }
 
-	&:hover .header, &:hover p {
-		filter: saturate(100%);
-	}
+  &:hover .header,
+  &:hover p {
+    filter: saturate(100%);
+  }
 
   .header {
-		position: relative;
-		opacity: 1;
+    position: relative;
+    opacity: 1;
     height: 120px;
     background-color: ${props => (props.color ? props.color : '#333')};
     background-image: url(${bg});
     background-repeat: repeat;
-		filter: saturate(20%);
-		z-index: -100;
+    filter: saturate(20%);
+    z-index: -100;
   }
 
   img {
@@ -57,20 +60,20 @@ const StyledCard = styled(Link)`
     height: 200px;
     border-radius: 50%;
     border: 7px white solid;
-		background: white;
-		transition: border .2s ease;
+    background: white;
+    transition: border 0.2s ease;
   }
 
-	h2 {
-		margin: 20px auto 15px auto;
-	}
-	p {
-		color: white;
-		background: ${props => (props.color ? props.color : '#333')};
-		margin: 0px auto 20px auto;
-		display: inline-block;
-		padding: 5px 10px;
-		border-radius: 5px;
-		filter: saturate(20%);
-	}
+  h2 {
+    margin: 20px auto 15px auto;
+  }
+  p {
+    color: white;
+    background: ${props => (props.color ? props.color : '#333')};
+    margin: 0px auto 20px auto;
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 5px;
+    filter: saturate(20%);
+  }
 `;

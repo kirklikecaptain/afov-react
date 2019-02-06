@@ -9,15 +9,15 @@ class VideoPlayer extends Component {
   render() {
     const { title, artist, videoId, uploadDate } = this.props.video.fields;
     const options = {
-			host: 'https://www.youtube.com',
+      host: 'https://www.youtube.com',
       playerVars: {
         modestbranding: 1,
         rel: 0,
         autoplay: 0,
-				color: 'white',
-				enablejsapi: 1,
-				origin: 'https://adoring-fermat-3d4eac.netlify.com' // TODO: fix console errors wtf why
-				// more options here - https://developers.google.com/youtube/player_parameters
+        color: 'white',
+        enablejsapi: 1,
+        origin: 'https://adoring-fermat-3d4eac.netlify.com' // TODO: fix console errors wtf why
+        // more options here - https://developers.google.com/youtube/player_parameters
       }
     };
 

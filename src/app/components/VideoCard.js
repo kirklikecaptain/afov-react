@@ -46,18 +46,18 @@ const StyledCard = styled(Link)`
 
   .thumb-box {
     position: relative;
-		padding-bottom: 56.25%;
-		overflow: hidden;
-		width: 100%;
+    padding-bottom: 56.25%;
+    overflow: hidden;
+    width: 100%;
   }
 
   .thumb {
-		position: absolute;
-		top: 0;
-		left: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
     display: block;
     width: 100%;
-		transition: .2s transform ease;
+    transition: 0.2s transform ease;
   }
 
   .overlay {

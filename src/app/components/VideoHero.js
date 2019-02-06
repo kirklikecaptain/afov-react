@@ -41,7 +41,7 @@ class VideoHero extends Component {
         showinfo: 0,
         mute: 1,
         enablejsapi: 1,
-				origin: 'https://adoring-fermat-3d4eac.netlify.com',
+        origin: 'https://adoring-fermat-3d4eac.netlify.com'
       }
     };
 
@@ -91,11 +91,11 @@ const StyledYTContainer = styled.div`
 
   .video-container {
     height: 500px;
-		transform: scale(2.2);
-		width: 100%;
+    transform: scale(2.2);
+    width: 100%;
     @media (min-width: 600px) {
       height: 500px;
-			transform: scale(2);
+      transform: scale(2);
     }
     overflow: hidden;
     opacity: ${props => (props.isLoading ? '0' : '1')};

@@ -4,8 +4,8 @@ import { Link } from '@reach/router';
 import {
   IoIosMicrophone,
   IoMdPeople,
-	IoMdMenu,
-	IoMdTv,
+  IoMdMenu,
+  IoMdTv,
   IoMdClose,
   IoMdMusicalNotes,
   IoMdMail,
@@ -38,7 +38,7 @@ class Nav extends Component {
             <button onClick={e => this.toggleNav(e)}>{this.state.isOpen ? <IoMdClose /> : <IoMdMenu />}</button>
           </div>
           <div className='link-group'>
-						<Link onClick={this.closeNav} to='/videos'>
+            <Link onClick={this.closeNav} to='/videos'>
               <span className='icon'>
                 <IoMdTv />
               </span>
@@ -255,11 +255,11 @@ const StyledNav = styled.header`
 
       a {
         padding: 20px 40px;
-				&[aria-current] {
+        &[aria-current] {
           background: #444;
-					.icon {
-						color: white;
-					}
+          .icon {
+            color: white;
+          }
         }
       }
     }

@@ -6,8 +6,6 @@ import 'sanitize.css';
 
 import './index.css';
 
-
-
 import Footer from './layout/footer/Footer';
 import Nav from './layout/nav/Nav';
 
