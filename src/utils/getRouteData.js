@@ -2,7 +2,7 @@ import { createClient } from 'contentful';
 import dotenv from 'dotenv';
 dotenv.config();
 
-export const client = createClient({
+const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 });
@@ -27,7 +27,7 @@ export default async function getRouteData() {
   }
 }
 
-export async function getOne(modelName, order) {
+async function getOne(modelName, order) {
   const { items } = await client.getEntries({
     content_type: modelName,
     order: order ? order : '-sys.updatedAt'
@@ -35,7 +35,7 @@ export async function getOne(modelName, order) {
   return items;
 }
 
-export async function getAll(modelName, order) {
+async function getAll(modelName, order) {
   const { items } = await client.getEntries({
     content_type: modelName,
     order: order ? order : '-sys.updatedAt'

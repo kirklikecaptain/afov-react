@@ -56,7 +56,7 @@ class VideoHero extends Component {
           containerClassName='video-container'
         />
         <div className='overlay' />
-        <div className='overlay2' />
+        {/* <div className='overlay2' /> */}
         <Fade ssrReveal left duration={400} delay={1000} distance='100px'>
           <div className='text-container'>
             <div className='text'>
@@ -82,7 +82,7 @@ export default VideoHero;
 
 const StyledYTContainer = styled.div`
   position: relative;
-  background: black;
+  background: ${props => (props.color ? props.color : '#333')};
   height: 300px;
   overflow: hidden;
   @media (min-width: 600px) {
@@ -90,23 +90,26 @@ const StyledYTContainer = styled.div`
   }
 
   .video-container {
-    height: 300px;
+    height: 500px;
+		transform: scale(2.2);
+		width: 100%;
     @media (min-width: 600px) {
       height: 500px;
+			transform: scale(2);
     }
     overflow: hidden;
     opacity: ${props => (props.isLoading ? '0' : '1')};
     transition: all 3s ease;
   }
 
-  .video-container {
+  /* .video-container {
     height: 500px;
     width: 100%;
     transform: scale(2.2);
     @media (min-width: 600px) {
-      transform: scale(1.7);
+
     }
-  }
+  } */
 
   .text-container {
     position: absolute;

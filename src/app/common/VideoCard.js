@@ -46,9 +46,15 @@ const StyledCard = styled(Link)`
 
   .thumb-box {
     position: relative;
+		padding-bottom: 56.25%;
+		overflow: hidden;
+		width: 100%;
   }
 
   .thumb {
+		position: absolute;
+		top: 0;
+		left: 0;
     display: block;
     width: 100%;
   }
@@ -61,7 +67,7 @@ const StyledCard = styled(Link)`
     left: 0;
     background: ${props => (props.color ? props.color : '#333')};
     mix-blend-mode: color;
-    transition: 0.3s all ease;
+    transition: 0.25s all ease-in;
   }
 
   @media not all and (min-resolution: 0.001dpcm) {

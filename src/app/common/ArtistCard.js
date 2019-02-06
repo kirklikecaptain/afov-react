@@ -11,7 +11,7 @@ class ArtistCard extends Component {
         <div className='header' />
         <img src={image} alt='' />
         <h2 className='slab'>{artistName}</h2>
-        <p>{videoCount} Videos</p>
+        <p>{videoCount} {videoCount === 1 ? 'Video' : 'Videos'}</p>
       </StyledCard>
     );
   }
@@ -27,7 +27,7 @@ const StyledCard = styled(Link)`
 
   .header {
     height: 130px;
-    border-radius: 10px 10px 0 0;
+    border-radius: 4px 4px 0 0;
     background-color: ${props => (props.color ? props.color : '#333')};
     background-image: url(${bg});
     background-repeat: repeat;

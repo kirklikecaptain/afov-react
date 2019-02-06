@@ -9,7 +9,6 @@ import VideoCard from '../../common/VideoCard';
 class ArtistPage extends Component {
   render() {
 		const { videos, artist } = this.props;
-		console.log(artist)
     return (
       <div className='container'>
         <StyledInfo color={artist.fields.color}>
@@ -53,10 +52,14 @@ const StyledInfo = styled.div`
 
   img {
     margin-right: 1.5em;
-    max-width: 180px;
+    width: 180px;
+		height: 180px;
+		border-radius: 50%;
+		background: ${props => (props.color ? props.color : '#333')};
   }
 
   a {
     color: ${props => (props.color ? props.color : '#333')};
+		font-weight: bolder;
   }
 `;
