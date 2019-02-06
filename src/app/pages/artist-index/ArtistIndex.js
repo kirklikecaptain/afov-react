@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { withRouteData } from 'react-static';
 import { hot } from 'react-hot-loader/root';
-import GridContainer from '../../common/GridContainer';
-import ArtistCard from '../../common/ArtistCard';
+import GridContainer from '../../components/GridContainer';
+import ArtistCard from '../../components/ArtistCard';
 
 class ArtistIndex extends Component {
   render() {

@@ -3,8 +3,8 @@ import { withRouteData } from 'react-static';
 import { hot } from 'react-hot-loader/root';
 import styled from 'styled-components';
 import Markdown from 'react-markdown';
-import GridContainer from '../../common/GridContainer';
-import VideoCard from '../../common/VideoCard';
+import GridContainer from '../../components/GridContainer';
+import VideoCard from '../../components/VideoCard';
 
 class ArtistPage extends Component {
   render() {

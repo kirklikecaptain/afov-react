@@ -6,16 +6,16 @@ class VideoCard extends Component {
   render() {
     const { songTitle, artistName, thumbnail, artistPhoto, color, videoUrl } = this.props;
     return (
-      <StyledCard to={videoUrl} color={color} className='card'>
+      <StyledCard to={videoUrl} color={color} thumbnail={thumbnail} className='card'>
         <div className='thumb-box'>
-          <img src={thumbnail + '?w=400'} className='thumb' alt='Photo' />
+          <img src={thumbnail + '?w=400'} className='thumb' alt='' />
           <div className='overlay safari_only' />
         </div>
         <div className='card-text'>
           <h2>{songTitle}</h2>
           {artistName && (
             <div className='artist-row'>
-              <img src={artistPhoto + '?w=60'} className='avatar' alt='Band Photo' />
+              <img src={artistPhoto + '?w=60'} className='avatar' alt='' />
               <h3 className='slab'>{artistName}</h3>
             </div>
           )}
@@ -57,6 +57,7 @@ const StyledCard = styled(Link)`
 		left: 0;
     display: block;
     width: 100%;
+		transition: .2s transform ease;
   }
 
   .overlay {
@@ -67,7 +68,7 @@ const StyledCard = styled(Link)`
     left: 0;
     background: ${props => (props.color ? props.color : '#333')};
     mix-blend-mode: color;
-    transition: 0.25s all ease-in;
+    transition: 0.25s all ease;
   }
 
   @media not all and (min-resolution: 0.001dpcm) {

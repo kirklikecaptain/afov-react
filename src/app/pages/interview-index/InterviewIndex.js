@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { withRouteData } from 'react-static';
 import { hot } from 'react-hot-loader/root';
-import { Link } from '@reach/router';
-import VideoCard from '../../common/VideoCard';
-import GridContainer from '../../common/GridContainer';
+import VideoCard from '../../components/VideoCard';
+import GridContainer from '../../components/GridContainer';
 
 class InterviewIndex extends Component {
   render() {

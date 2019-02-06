@@ -1,10 +1,10 @@
 import React from 'react';
 import { withRouteData } from 'react-static';
 import { hot } from 'react-hot-loader/root';
-import VideoCard from '../../common/VideoCard';
-import GridContainer from '../../common/GridContainer';
-import VideoHero from '../../common/VideoHero';
-import MissionStatement from '../../common/MissionStatement';
+import VideoCard from '../../components/VideoCard';
+import GridContainer from '../../components/GridContainer';
+import VideoHero from '../../components/VideoHero';
+import MissionStatement from '../../components/MissionStatement';
 
 class HomePage extends React.Component {
   render() {

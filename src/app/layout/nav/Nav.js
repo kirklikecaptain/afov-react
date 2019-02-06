@@ -4,7 +4,8 @@ import { Link } from '@reach/router';
 import {
   IoIosMicrophone,
   IoMdPeople,
-  IoMdMenu,
+	IoMdMenu,
+	IoMdTv,
   IoMdClose,
   IoMdMusicalNotes,
   IoMdMail,
@@ -37,6 +38,12 @@ class Nav extends Component {
             <button onClick={e => this.toggleNav(e)}>{this.state.isOpen ? <IoMdClose /> : <IoMdMenu />}</button>
           </div>
           <div className='link-group'>
+						<Link onClick={this.closeNav} to='/videos'>
+              <span className='icon'>
+                <IoMdTv />
+              </span>
+              All Videos
+            </Link>
             <Link onClick={this.closeNav} to='/music'>
               <span className='icon'>
                 <IoMdMusicalNotes />
@@ -195,7 +202,7 @@ const StyledNav = styled.header`
         display: flex;
         align-items: center;
         &[aria-current] {
-          background: #444;
+          background: #333;
         }
       }
     }
@@ -204,7 +211,7 @@ const StyledNav = styled.header`
   @media (min-width: 600px) and (max-width: 700px) {
     .link-group {
       a {
-        font-size: 14px;
+        font-size: 12px;
         padding: 0 16px;
       }
     }
@@ -248,6 +255,12 @@ const StyledNav = styled.header`
 
       a {
         padding: 20px 40px;
+				&[aria-current] {
+          background: #444;
+					.icon {
+						color: white;
+					}
+        }
       }
     }
   }

@@ -1,3 +1,4 @@
+import { makePageRoutes } from 'react-static/node'
 import getRouteData from './src/utils/getRouteData'
 import dotenv from 'dotenv';
 dotenv.config();
@@ -9,7 +10,8 @@ export default {
     title: 'A Fistful of Website',
 	}),
   getRoutes: async () => {
-    const { allArtists, allVideos } = await getRouteData()
+		const { allArtists, allVideos } = await getRouteData()
+		const totalVideoCount = allVideos.length
     return [
       {
         path: '/',
@@ -21,11 +23,29 @@ export default {
 				component: 'src/app/pages/artist-index/ArtistIndex.js',
 				getData: () => ({ allArtists, allVideos })
 			},
-			{
-				path: 'videos',
-				component: 'src/app/pages/video-index/VideoIndex.js',
-				getData: () => ({ allVideos })
-			},
+			...makePageRoutes({
+				items: allVideos,
+				pageSize: 12,
+				pageToken: 'page',
+				route: {
+					path: 'videos',
+					component: 'src/app/pages/video-index/VideoIndex.js'
+				},
+				decorate: (allVideos, i, totalPages) => ({
+          // For each page, supply the posts, page and totalPages
+          getData: () => ({
+            allVideos,
+            currentPage: i,
+						totalPages,
+						totalVideoCount
+          }),
+        }),
+			}),
+			// {
+			// 	path: 'videos',
+			// 	component: 'src/app/pages/video-index/VideoIndex.js',
+			// 	getData: () => ({ allVideos })
+			// },
 			...allArtists.map(artist => {
 				const filteredVideos = allVideos.filter(video => video.fields.artist.fields.artistName === artist.fields.artistName )
 				return {

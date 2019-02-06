@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { hot } from 'react-hot-loader/root';
 import { withRouteData } from 'react-static';
 import styled from 'styled-components';
-import VideoPlayer from '../../common/VideoPlayer';
-import RelatedVideos from '../../common/RelatedVideos';
+import VideoPlayer from '../../components/VideoPlayer';
+import RelatedVideos from '../../components/RelatedVideos';
 
 class VideoPage extends Component {
   render() {

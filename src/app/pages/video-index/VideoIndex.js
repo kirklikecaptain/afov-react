@@ -1,22 +1,77 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader/root';
-import { Link } from '@reach/router/';
 import { withRouteData } from 'react-static';
+import { Link } from '@reach/router'
+import styled from 'styled-components'
+import GridContainer from '../../components/GridContainer'
+import VideoCard from '../../components/VideoCard'
 
-class AllSessions extends Component {
+class VideoIndex extends Component {
+
+	printPages() {
+		let links = []
+		for (let i = 1; i < this.props.totalPages + 1; i++) {
+			if (i === this.props.currentPage) {
+				links.push(<span className='page current' key={i}>{this.props.currentPage}</span>)
+			} else {
+				links.push(<Link className='page link' key={i} to={`/videos/page/${i}`}>{i}</Link>) //change this to pure values
+			}
+		}
+		return links
+	}
+
   render() {
     return (
-      <div>
-        {this.props.allVideos.map(video => (
-          <div key={video.sys.id}>
-            <h2>{video.fields.artist.fields.artistName}</h2>
-            <p>{video.fields.title}</p>
-            <Link to={`/${video.fields.artist.fields.slug}/${video.fields.slug}`}>Link to video</Link>
-          </div>
-        ))}
+      <div className='container'>
+				<StyledHeader>
+					<h1 className='no-top'>All Videos</h1>
+					<div className='pagination'>Page {this.printPages()}</div>
+				</StyledHeader>
+				<GridContainer gap='20px'>
+					{this.props.allVideos.map(video => (
+            <VideoCard
+              key={video.sys.id}
+              songTitle={video.fields.title}
+              artistName={video.fields.artist.fields.artistName}
+              postDate={video.fields.uploadDate}
+              thumbnail={video.fields.thumbnail.fields.file.url}
+              artistPhoto={video.fields.artist.fields.photo.fields.file.url}
+              color={video.fields.artist.fields.color}
+              videoUrl={`/${video.fields.artist.fields.slug}/${video.fields.slug}`}
+            />
+					))}
+				</GridContainer>
       </div>
     );
   }
 }
 
-export default hot(withRouteData(AllSessions));
+export default hot(withRouteData(VideoIndex));
+
+const StyledHeader = styled.div`
+	display: flex;
+	align-items: flex-start;
+
+	.pagination {
+		padding-top: 3px;
+		padding-left: 30px;
+		color: #999;
+	}
+
+	.page {
+		display: inline-block;
+		padding: 5px;
+		margin: 5px;
+	}
+	.link {
+		color: black;
+		text-decoration: none;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	.current {
+		padding: 5px;
+		color: red;
+	}
+`
