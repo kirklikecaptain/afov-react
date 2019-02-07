@@ -7,7 +7,7 @@ dotenv.config();
 export default {
   siteRoot: 'https://adoring-fermat-3d4eac.netlify.com/',
   getSiteData: () => ({
-    title: 'A Fistful of Website',
+    title: 'A Fistful of Vinyl',
 	}),
   getRoutes: async () => {
 		const { allArtists, allVideos } = await getRouteData()

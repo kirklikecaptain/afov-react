@@ -91,7 +91,8 @@ const StyledYTContainer = styled.div`
 
   .video-container {
     height: 500px;
-    transform: scale(2.2);
+		transform: scale(2.2);
+		background: ${props => (props.color ? props.color : '#333')};
     width: 100%;
     @media (min-width: 600px) {
       height: 500px;

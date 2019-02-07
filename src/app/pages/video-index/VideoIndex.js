@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { hot } from 'react-hot-loader/root';
-import { withRouteData } from 'react-static';
+import { withRouteData, Head } from 'react-static';
 import { Link } from '@reach/router';
 import styled from 'styled-components';
 import GridContainer from '../../components/GridContainer';
@@ -29,26 +29,31 @@ class VideoIndex extends Component {
 
   render() {
     return (
-      <div className='container'>
-        <StyledHeader>
-          <h1 className='no-top'>All Videos</h1>
-          <div className='pagination'>Page {this.printPages()}</div>
-        </StyledHeader>
-        <GridContainer gap='20px'>
-          {this.props.allVideos.map(video => (
-            <VideoCard
-              key={video.sys.id}
-              songTitle={video.fields.title}
-              artistName={video.fields.artist.fields.artistName}
-              postDate={video.fields.uploadDate}
-              thumbnail={video.fields.thumbnail.fields.file.url}
-              artistPhoto={video.fields.artist.fields.photo.fields.file.url}
-              color={video.fields.artist.fields.color}
-              videoUrl={`/${video.fields.artist.fields.slug}/${video.fields.slug}`}
-            />
-          ))}
-        </GridContainer>
-      </div>
+			<>
+				<Head>
+					<title>All Videos | A Fistful of Vinyl</title>
+				</Head>
+				<div className='container'>
+					<StyledHeader>
+						<h1 className='no-top'>All Videos</h1>
+						<div className='pagination'>Page {this.printPages()}</div>
+					</StyledHeader>
+					<GridContainer gap='20px'>
+						{this.props.allVideos.map(video => (
+							<VideoCard
+								key={video.sys.id}
+								songTitle={video.fields.title}
+								artistName={video.fields.artist.fields.artistName}
+								postDate={video.fields.uploadDate}
+								thumbnail={video.fields.thumbnail.fields.file.url}
+								artistPhoto={video.fields.artist.fields.photo.fields.file.url}
+								color={video.fields.artist.fields.color}
+								videoUrl={`/${video.fields.artist.fields.slug}/${video.fields.slug}`}
+							/>
+						))}
+					</GridContainer>
+				</div>
+			</>
     );
   }
 }
@@ -62,7 +67,6 @@ const StyledHeader = styled.div`
   .pagination {
     padding-top: 3px;
     padding-left: 30px;
-    color: #999;
   }
 
   .page {

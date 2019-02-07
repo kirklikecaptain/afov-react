@@ -220,14 +220,21 @@ const StyledNav = styled.header`
   /* part of this layout lives in app/index.js */
 
   @media (min-width: 1400px) {
-    overflow: scroll;
+		overflow-y: scroll;
+		overflow-x: hidden;
     background: #333;
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
-    width: 230px;
-    z-index: 1000;
+		width: 230px;
+		-ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+		z-index: 1000;
+
+		&::-webkit-scrollbar {
+    	display: none;
+		}
 
     nav {
       display: block;

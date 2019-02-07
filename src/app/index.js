@@ -4,8 +4,6 @@ import styled from 'styled-components';
 
 import 'sanitize.css';
 
-import './index.css';
-
 import Footer from './layout/footer/Footer';
 import Nav from './layout/nav/Nav';
 
@@ -63,7 +61,7 @@ const StyledContainer = styled.div`
     margin: 0 auto;
     max-width: 1200px;
     padding: 1em;
-  }
+	}
 
   .noselect {
     -webkit-touch-callout: none; /* iOS Safari */
