@@ -92,7 +92,6 @@ const StyledYTContainer = styled.div`
   .video-container {
     height: 500px;
 		transform: scale(2.2);
-		background: ${props => (props.color ? props.color : '#333')};
     width: 100%;
     @media (min-width: 600px) {
       height: 500px;
@@ -102,15 +101,6 @@ const StyledYTContainer = styled.div`
     opacity: ${props => (props.isLoading ? '0' : '1')};
     transition: all 3s ease;
   }
-
-  /* .video-container {
-    height: 500px;
-    width: 100%;
-    transform: scale(2.2);
-    @media (min-width: 600px) {
-
-    }
-  } */
 
   .text-container {
     position: absolute;

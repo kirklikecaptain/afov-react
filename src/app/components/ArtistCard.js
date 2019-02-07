@@ -31,11 +31,6 @@ const StyledCard = styled(Link)`
   border-radius: 0px;
   overflow: hidden;
   transition: all 0.2s ease;
-  border-bottom: 5px solid transparent;
-
-  &:hover {
-    border-bottom: 5px solid ${props => (props.color ? props.color : '#333')};
-  }
 
   &:hover .header,
   &:hover p {

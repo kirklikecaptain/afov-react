@@ -26,6 +26,7 @@
     "react-reveal": "1.2.2",
     "react-slick": "0.23.2",
     "react-static": "6.3.0",
+    "react-static-plugin-google-analytics": "0.0.0",
     "react-static-plugin-styled-components": "6.0.8",
     "react-youtube": "^7.9.0",
     "sanitize.css": "8.0.0",

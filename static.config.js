@@ -103,6 +103,7 @@ export default {
     ]
   },
   plugins: [
-    'react-static-plugin-styled-components'
+		'react-static-plugin-styled-components',
+		['react-static-plugin-google-analytics', {id: 'UA-117674715-3'}]
   ]
 }
