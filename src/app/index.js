@@ -1,5 +1,5 @@
 import React from 'react';
-import { Root, Routes, Head, withSiteData } from 'react-static';
+import { Root, Routes, Head, Body, withSiteData } from 'react-static';
 import styled from 'styled-components';
 
 import 'sanitize.css';
@@ -15,7 +15,7 @@ if (typeof window !== 'undefined') {
   const WebFont = require('webfontloader');
   WebFont.load({
     google: {
-      families: ['Roboto Slab: 400, 700', 'Roboto']
+      families: ['Roboto Slab: 400, 700: latin', 'Roboto: 400: latin']
     }
   });
 }
@@ -26,14 +26,36 @@ function App(props) {
       <Head>
         <title>{props.title}</title>
 				<meta name="google-site-verification" content="N-gAFfxmn6FI9m99GPh7jUF2XA3aDpfVAhNlbdWxdJU" />
+				<script
+					dangerouslySetInnerHTML={{
+						__html: `
+							(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+							new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+							j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+							'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+							})(window,document,'script','dataLayer','GTM-K7XWHDW');
+						`
+					}}
+				/>
       </Head>
-      <StyledContainer>
-        <Nav />
-        <div className='main-content'>
-          <Routes />
-          <Footer />
-        </div>
-      </StyledContainer>
+			<Body>
+				<noscript>
+					<iframe
+						title="google-tag-manager"
+						src="https://www.googletagmanager.com/ns.html?id=GTM-K7XWHDW"
+						height="0"
+						width="0"
+						style={{ display: "none", visibility: "hidden" }}
+					/>
+				</noscript>
+				<StyledContainer>
+					<Nav />
+					<div className='main-content'>
+						<Routes />
+						<Footer />
+					</div>
+				</StyledContainer>
+			</Body>
     </Root>
   );
 }

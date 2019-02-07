@@ -41,11 +41,6 @@ export default {
           }),
         }),
 			}),
-			// {
-			// 	path: 'videos',
-			// 	component: 'src/app/pages/video-index/VideoIndex.js',
-			// 	getData: () => ({ allVideos })
-			// },
 			...allArtists.map(artist => {
 				const filteredVideos = allVideos.filter(video => video.fields.artist.fields.artistName === artist.fields.artistName )
 				return {
@@ -103,7 +98,6 @@ export default {
     ]
   },
   plugins: [
-		'react-static-plugin-styled-components',
-		['react-static-plugin-google-analytics', {id: process.env.GOOGLE_ANALYTICS}]
+		'react-static-plugin-styled-components'
   ]
 }
