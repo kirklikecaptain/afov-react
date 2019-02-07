@@ -25,7 +25,6 @@ function App(props) {
     <Root>
       <Head>
         <title>{props.title}</title>
-				<meta name="google-site-verification" content="N-gAFfxmn6FI9m99GPh7jUF2XA3aDpfVAhNlbdWxdJU" />
       </Head>
 			<StyledContainer>
 				<Nav />

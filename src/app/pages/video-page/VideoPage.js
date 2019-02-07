@@ -6,6 +6,11 @@ import VideoPlayer from '../../components/VideoPlayer';
 import RelatedVideos from '../../components/RelatedVideos';
 
 class VideoPage extends Component {
+	componentDidMount(){
+		if (process.env.REACT_STATIC_ENV === 'production') {
+			gtag('config', 'UA-117674715-4', {'page_path': `/${this.props.video.fields.artist.fields.slug}/${this.props.video.fields.slug}`});
+		}
+	}
   render() {
     const { video, otherVideos } = this.props;
     return (
