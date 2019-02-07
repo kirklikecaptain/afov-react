@@ -1,5 +1,5 @@
 import React from 'react';
-import { Root, Routes, Head, Body, withSiteData } from 'react-static';
+import { Root, Routes, Head, withSiteData } from 'react-static';
 import styled from 'styled-components';
 
 import 'sanitize.css';
@@ -15,7 +15,7 @@ if (typeof window !== 'undefined') {
   const WebFont = require('webfontloader');
   WebFont.load({
     google: {
-      families: ['Roboto Slab: 400, 700: latin', 'Roboto: 400: latin']
+      families: ['Roboto Slab: 400, 700', 'Roboto: 400']
     }
   });
 }
