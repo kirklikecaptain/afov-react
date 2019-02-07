@@ -26,7 +26,7 @@ function App(props) {
       <Head>
         <title>{props.title}</title>
 				<meta name="google-site-verification" content="N-gAFfxmn6FI9m99GPh7jUF2XA3aDpfVAhNlbdWxdJU" />
-				<script
+				{/* <script
 					dangerouslySetInnerHTML={{
 						__html: `
 							(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -36,9 +36,9 @@ function App(props) {
 							})(window,document,'script','dataLayer','GTM-K7XWHDW');
 						`
 					}}
-				/>
+				/> */}
       </Head>
-			<Body>
+			{/* <Body>
 				<noscript>
 					<iframe
 						title="google-tag-manager"
@@ -47,7 +47,7 @@ function App(props) {
 						width="0"
 						style={{ display: "none", visibility: "hidden" }}
 					/>
-				</noscript>
+				</noscript> */}
 				<StyledContainer>
 					<Nav />
 					<div className='main-content'>
@@ -55,7 +55,7 @@ function App(props) {
 						<Footer />
 					</div>
 				</StyledContainer>
-			</Body>
+			{/* </Body> */}
     </Root>
   );
 }
