@@ -26,7 +26,7 @@ function App(props) {
       <Head>
         <title>{props.title}</title>
 				<meta name="google-site-verification" content="N-gAFfxmn6FI9m99GPh7jUF2XA3aDpfVAhNlbdWxdJU" />
-				{/* <script
+				<script
 					dangerouslySetInnerHTML={{
 						__html: `
 							(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -36,26 +36,24 @@ function App(props) {
 							})(window,document,'script','dataLayer','GTM-K7XWHDW');
 						`
 					}}
-				/> */}
+				/>
       </Head>
-			{/* <Body>
-				<noscript>
-					<iframe
-						title="google-tag-manager"
-						src="https://www.googletagmanager.com/ns.html?id=GTM-K7XWHDW"
-						height="0"
-						width="0"
-						style={{ display: "none", visibility: "hidden" }}
-					/>
-				</noscript> */}
-				<StyledContainer>
-					<Nav />
-					<div className='main-content'>
-						<Routes />
-						<Footer />
-					</div>
-				</StyledContainer>
-			{/* </Body> */}
+			<noscript>
+				<iframe
+					title="google-tag-manager"
+					src="https://www.googletagmanager.com/ns.html?id=GTM-K7XWHDW"
+					height="0"
+					width="0"
+					style={{ display: "none", visibility: "hidden" }}
+				/>
+			</noscript> */}
+			<StyledContainer>
+				<Nav />
+				<div className='main-content'>
+					<Routes />
+					<Footer />
+				</div>
+			</StyledContainer>
     </Root>
   );
 }
