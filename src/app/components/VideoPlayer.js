@@ -25,7 +25,7 @@ class VideoPlayer extends Component {
     return (
       <StyledVideoPlayer color={artist.fields.color}>
         <Head>
-          <script src='https://apis.google.com/js/platform.js' />
+          {/* <script src='https://apis.google.com/js/platform.js' /> */}
         </Head>
         <Youtube
 					videoId={videoId}
@@ -46,9 +46,9 @@ class VideoPlayer extends Component {
           <p>Video Long Description</p>
           <p>Artist Long Description</p>
           <p>Contributors</p>
-          <div className='subscribe'>
+          {/* <div className='subscribe'>
             <div className='g-ytsubscribe' data-channel='afistfulofvinyl' data-layout='full' data-count='default' />
-          </div>
+          </div> */}
         </div>
       </StyledVideoPlayer>
     );
