@@ -9,14 +9,15 @@ class VideoPlayer extends Component {
   render() {
     const { title, artist, videoId, uploadDate } = this.props.video.fields;
     const options = {
-      // host: 'https://www.youtube.com',
+      host: 'http://www.youtube.com',
       playerVars: {
         modestbranding: 1,
         rel: 0,
         autoplay: 0,
         color: 'white',
         enablejsapi: 1,
-        // origin: 'https://adoring-fermat-3d4eac.netlify.com' // TODO: fix console errors wtf why
+        origin: "https://adoring-fermat-3d4eac.netlify.com/",
+				widget_referrer: "https://adoring-fermat-3d4eac.netlify.com/"
         // more options here - https://developers.google.com/youtube/player_parameters
       }
     };
@@ -26,7 +27,12 @@ class VideoPlayer extends Component {
         <Head>
           <script src='https://apis.google.com/js/platform.js' />
         </Head>
-        <Youtube videoId={videoId} opts={options} className='video-frame' containerClassName='video-container' />
+        <Youtube
+					videoId={videoId}
+					opts={options}
+					className='video-frame'
+					containerClassName='video-container'
+				/>
         <div className='video-info'>
           <h1>{title}</h1>
           <Link to={`/${artist.fields.slug}`}>

@@ -6,12 +6,6 @@ import VideoPlayer from '../../components/VideoPlayer';
 import RelatedVideos from '../../components/RelatedVideos';
 
 class VideoPage extends Component {
-	componentDidMount(){
-		if (process.env.REACT_STATIC_ENV === 'production') {
-			dataLayer.push({event: 'pageview'});
-			console.log('PageView')
-		}
-	}
   render() {
     const { video, otherVideos } = this.props;
     return (
