@@ -10,7 +10,7 @@ class VideoHero extends Component {
     isLoading: true
   };
 
-  _onPlay = event => {
+  onPlay = event => {
     // access to player in all event handlers via event.target
     this.setState({ isLoading: false });
     // loop the video by seeking back to 'start' at 40s mark after 2m
@@ -20,7 +20,7 @@ class VideoHero extends Component {
     }, 120000);
   };
 
-  _onReady = event => {
+  onReady = event => {
     // lower playback quality for faster load times
     event.target.setPlaybackQuality('small');
   };
@@ -30,7 +30,7 @@ class VideoHero extends Component {
     const opts = {
       width: '100%',
       height: '500',
-      host: 'https://www.youtube.com',
+      // host: 'https://www.youtube.com',
       playerVars: {
         // https://developers.google.com/youtube/player_parameters
         modestbranding: 1,
@@ -41,7 +41,7 @@ class VideoHero extends Component {
         showinfo: 0,
         mute: 1,
         enablejsapi: 1,
-        origin: 'https://adoring-fermat-3d4eac.netlify.com'
+        // origin: 'https://adoring-fermat-3d4eac.netlify.com'
       }
     };
 
@@ -50,13 +50,13 @@ class VideoHero extends Component {
         <Youtube
           videoId={videoId}
           opts={opts}
-          onReady={this._onReady}
-          onPlay={this._onPlay}
+          onReady={this.onReady}
+          onPlay={this.onPlay}
           className='video-frame'
           containerClassName='video-container'
         />
         <div className='overlay' />
-        {/* <div className='overlay2' /> */}
+        <div className='overlay2' />
         <Fade ssrReveal left duration={400} delay={1000} distance='100px'>
           <div className='text-container'>
             <div className='text'>
@@ -181,7 +181,7 @@ const StyledYTContainer = styled.div`
     }
   }
 
-  @media (min-width: 1700px) {
+  @media (min-width: 1900px) {
     background: ${props => (props.color ? props.color : 'black')};
 
     .overlay2 {
@@ -192,10 +192,10 @@ const StyledYTContainer = styled.div`
       left: 0;
       background: ${props =>
         props.color
-          ? `linear-gradient(to right, ${props.color}, ${props.color}, transparent, transparent, ${props.color}, ${
+          ? `linear-gradient(to right, ${props.color}, ${props.color}, transparent, transparent, transparent, ${props.color}, ${
               props.color
             })`
-          : 'linear-gradient(to right, black, black, transparent, transparent, black, black)'};
+          : 'linear-gradient(to right, black, black, transparent, transparent, transparent, black, black)'};
     }
   }
 `;
