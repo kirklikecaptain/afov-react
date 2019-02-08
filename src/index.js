@@ -12,7 +12,7 @@ export default App;
 if (typeof document !== 'undefined') {
 
 	const tagManagerArgs = {
-		gtmId: 'UA-117674715-4'
+		gtmId: 'GTM-K7XWHDW'
 	}
 
 	TagManager.initialize(tagManagerArgs)
