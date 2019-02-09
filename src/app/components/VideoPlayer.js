@@ -6,18 +6,19 @@ import Youtube from 'react-youtube';
 import VideoStats from './VideoStats';
 
 class VideoPlayer extends Component {
+
   render() {
     const { title, artist, videoId, uploadDate } = this.props.video.fields;
     const options = {
-      // host: 'https://www.youtube.com',
+      host: 'https://www.youtube.com',
       playerVars: {
         modestbranding: 1,
         rel: 0,
         autoplay: 0,
         color: 'white',
         enablejsapi: 1,
-        origin: process.env.REACT_STATIC_ENV === 'development' ? "http://localhost:3000" : "https://adoring-fermat-3d4eac.netlify.com",
-				widget_referrer: process.env.REACT_STATIC_ENV === 'development' ? "http://localhost:3000" : "https://adoring-fermat-3d4eac.netlify.com"
+        origin: "https://adoring-fermat-3d4eac.netlify.com",
+				widget_referrer: "https://adoring-fermat-3d4eac.netlify.com"
         // more options here - https://developers.google.com/youtube/player_parameters
       }
     };
@@ -25,8 +26,7 @@ class VideoPlayer extends Component {
     return (
       <StyledVideoPlayer color={artist.fields.color}>
         <Head>
-          {/* <script src='https://apis.google.com/js/platform.js' /> */}
-					<script src="https://www.youtube.com/player_api" />
+          <script src='https://apis.google.com/js/platform.js' />
         </Head>
         <Youtube
 					videoId={videoId}
@@ -47,9 +47,9 @@ class VideoPlayer extends Component {
           <p>Video Long Description</p>
           <p>Artist Long Description</p>
           <p>Contributors</p>
-          {/* <div className='subscribe'>
+          <div className='subscribe'>
             <div className='g-ytsubscribe' data-channel='afistfulofvinyl' data-layout='full' data-count='default' />
-          </div> */}
+          </div>
         </div>
       </StyledVideoPlayer>
     );

@@ -24,14 +24,14 @@ class VideoHero extends Component {
   onReady = event => {
     // lower playback quality for faster load times
     event.target.setPlaybackQuality('small');
-  };
+	};
 
   render() {
     const { bandName, songTitle, color, path, videoId } = this.props;
     const opts = {
       width: '100%',
       height: '500',
-      // host: 'https://www.youtube.com',
+      host: 'https://www.youtube.com',
       playerVars: {
         // https://developers.google.com/youtube/player_parameters
         modestbranding: 1,
@@ -42,45 +42,40 @@ class VideoHero extends Component {
         showinfo: 0,
         mute: 1,
         enablejsapi: 1,
-        origin: process.env.REACT_STATIC_ENV === 'development' ? "http://localhost:3000" : "https://adoring-fermat-3d4eac.netlify.com",
-				widget_referrer: process.env.REACT_STATIC_ENV === 'development' ? "http://localhost:3000" : "https://adoring-fermat-3d4eac.netlify.com"
+        origin: "https://adoring-fermat-3d4eac.netlify.com",
+				widget_referrer: "https://adoring-fermat-3d4eac.netlify.com"
       }
     };
 
     return (
-			<>
-				<Head>
-					<script src="https://www.youtube.com/player_api"></script>
-				</Head>
-				<StyledYTContainer color={color} isLoading={this.state.isLoading}>
-					<Youtube
-						videoId={videoId}
-						opts={opts}
-						onReady={this.onReady}
-						onPlay={this.onPlay}
-						className='video-frame'
-						containerClassName='video-container'
-					/>
-					<div className='overlay' />
-					<div className='overlay2' />
-					<Fade ssrReveal left duration={400} delay={1000} distance='100px'>
-						<div className='text-container'>
-							<div className='text'>
-								<h2>{songTitle}</h2>
-								<h3 className='slab'>{bandName}</h3>
-								<Link className='cta-button' to={path}>
-									{this.props.videoType === 'Interview' ? (
-										<IoIosMicrophone className='icon' />
-									) : (
-										<IoMdMusicalNotes className='icon' />
-									)}
-									Watch Now
-								</Link>
-							</div>
+			<StyledYTContainer color={color} isLoading={this.state.isLoading}>
+				<Youtube
+					videoId={videoId}
+					opts={opts}
+					onReady={this.onReady}
+					onPlay={this.onPlay}
+					className='video-frame'
+					containerClassName='video-container'
+				/>
+				<div className='overlay' />
+				<div className='overlay2' />
+				<Fade ssrReveal left duration={400} delay={1000} distance='100px'>
+					<div className='text-container'>
+						<div className='text'>
+							<h2>{songTitle}</h2>
+							<h3 className='slab'>{bandName}</h3>
+							<Link className='cta-button' to={path}>
+								{this.props.videoType === 'Interview' ? (
+									<IoIosMicrophone className='icon' />
+								) : (
+									<IoMdMusicalNotes className='icon' />
+								)}
+								Watch Now
+							</Link>
 						</div>
-					</Fade>
-				</StyledYTContainer>
-			</>
+					</div>
+				</Fade>
+			</StyledYTContainer>
     );
   }
 }
