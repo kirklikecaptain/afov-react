@@ -31,7 +31,6 @@ class VideoHero extends Component {
     const opts = {
       width: '100%',
       height: '500',
-      host: 'https://www.youtube.com',
       playerVars: {
         // https://developers.google.com/youtube/player_parameters
         modestbranding: 1,
@@ -42,8 +41,8 @@ class VideoHero extends Component {
         showinfo: 0,
         mute: 1,
         enablejsapi: 1,
-        origin: "https://adoring-fermat-3d4eac.netlify.com",
-				widget_referrer: "https://adoring-fermat-3d4eac.netlify.com"
+        // origin: "https://adoring-fermat-3d4eac.netlify.com",
+				// widget_referrer: "https://adoring-fermat-3d4eac.netlify.com"
       }
     };
 
