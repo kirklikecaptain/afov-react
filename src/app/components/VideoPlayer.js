@@ -17,7 +17,7 @@ class VideoPlayer extends Component {
         autoplay: 0,
         color: 'white',
         enablejsapi: 1,
-        // origin: "https://adoring-fermat-3d4eac.netlify.com",
+        origin: "https://adoring-fermat-3d4eac.netlify.com",
 				// widget_referrer: "https://adoring-fermat-3d4eac.netlify.com"
         // more options here - https://developers.google.com/youtube/player_parameters
       }
