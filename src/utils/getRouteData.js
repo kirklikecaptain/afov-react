@@ -38,7 +38,8 @@ async function getOne(modelName, order) {
 async function getAll(modelName, order) {
   const { items } = await client.getEntries({
     content_type: modelName,
-    order: order ? order : '-sys.updatedAt'
+		order: order ? order : '-sys.updatedAt',
+		limit: 1000,
   });
   return items;
 }

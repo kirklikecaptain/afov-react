@@ -5,6 +5,7 @@ import Youtube from 'react-youtube';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
 import { IoIosMicrophone, IoMdMusicalNotes } from 'react-icons/io';
+import texture from '../../assets/asfalt-light.png'
 
 class VideoHero extends Component {
   state = {
@@ -16,9 +17,6 @@ class VideoHero extends Component {
     this.setState({ isLoading: false });
     // loop the video by seeking back to 'start' at 40s mark after 2m
     // this creates a cleaner loop than using the YT option
-    setTimeout(() => {
-      event.target.seekTo(40);
-    }, 120000);
   };
 
   onReady = event => {
@@ -28,29 +26,31 @@ class VideoHero extends Component {
 
   render() {
     const { bandName, songTitle, color, path, videoId } = this.props;
-    const opts = {
-      width: '100%',
-      height: '500',
-      playerVars: {
-        // https://developers.google.com/youtube/player_parameters
-        modestbranding: 1,
-        autohide: 1,
-        autoplay: 1,
-        start: 40,
-        controls: 0,
-        showinfo: 0,
-        mute: 1,
-        enablejsapi: 1,
-        origin: "https://adoring-fermat-3d4eac.netlify.com",
-				// widget_referrer: "https://adoring-fermat-3d4eac.netlify.com"
-      }
-    };
 
     return (
 			<StyledYTContainer color={color} isLoading={this.state.isLoading}>
 				<Youtube
 					videoId={videoId}
-					opts={opts}
+					opts={{
+						width: '100%',
+						height: '500',
+						playerVars: {
+							// https://developers.google.com/youtube/player_parameters
+							version: 3,
+							modestbranding: 1,
+							autohide: 1,
+							autoplay: 1,
+							start: 40,
+							end: 300,
+							loop: 1,
+							playlist: videoId,
+							controls: 0,
+							showinfo: 0,
+							mute: 1,
+							enablejsapi: 1,
+							origin: "https://adoring-fermat-3d4eac.netlify.com",
+							// widget_referrer: "https://adoring-fermat-3d4eac.netlify.com"
+						}}}
 					onReady={this.onReady}
 					onPlay={this.onPlay}
 					className='video-frame'
@@ -83,7 +83,7 @@ export default VideoHero;
 
 const StyledYTContainer = styled.div`
   position: relative;
-  background: ${props => (props.color ? props.color : '#333')};
+  background: ${props => (props.color ? props.color : '#333')} url(${texture});
   height: 300px;
   overflow: hidden;
   @media (min-width: 600px) {
@@ -109,29 +109,42 @@ const StyledYTContainer = styled.div`
     right: 0;
     bottom: 0;
     left: 0;
-    padding: 50px;
-    display: flex;
+    padding: 20px;
+		display: flex;
     align-items: center;
+		@media(min-width: 800px) {
+			padding: 50px;
+		}
+
   }
 
   .cta-button {
-    background: white;
-    font-size: 1rem;
-    color: black;
-    padding: 16px 30px 16px 20px;
-    display: inline-block;
-    margin-top: 20px;
-    border-radius: 6px;
-    text-decoration: none;
-    vertical-align: middle;
-    line-height: 2em;
-    transition: all 0.3s ease;
+		display: block;
+		padding: .5em 0em;
+		font-size: 1em;
+		color: black;
+		border-radius: 6px;
+		margin-top: 20px;
+		text-decoration: none;
+		background: white;
+		line-height: 2em;
+		transition: all 0.3s ease;
+		text-align: center;
+
+		@media (min-width: 800px) {
+			background: white;
+			vertical-align: middle;
+			padding: 16px 30px 16px 20px;
+			display: inline-block;
+		}
     &:hover {
       box-shadow: 0 19px 38px rgba(0, 0, 0, 0.2), 0 15px 12px rgba(0, 0, 0, 0.1);
     }
     &:hover .icon {
       color: ${props => (props.color ? props.color : '#333')};
     }
+
+
 
     .icon {
       font-size: 2em;
@@ -143,22 +156,33 @@ const StyledYTContainer = styled.div`
   }
 
   .text {
-    padding: 30px;
     transition: all 0.3s ease;
-    max-width: 70%;
+		width: 100%;
+
+		@media (min-width: 800px) {
+			width: auto;
+			max-width: 70%;
+			padding: 30px;
+		}
 
     h2 {
-      font-size: 4em;
+      font-size: 4rem;
       font-weight: 700;
       transition: all 0.3s ease;
       margin: 0;
       color: white;
+			@media (max-width: 600px) {
+				font-size: 2rem;
+			}
     }
 
     h3 {
       color: white;
       font-size: 4em;
       margin: 0;
+			@media (max-width: 600px) {
+				font-size: 2rem;
+			}
     }
   }
 

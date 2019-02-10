@@ -13,6 +13,10 @@ import {
 } from 'react-icons/io';
 import afov from '../../../assets/afov-logo.svg';
 
+const isActive = ({ isCurrent }) => {
+  return isCurrent ? { className: "active" } : null
+}
+
 class Nav extends Component {
   state = {
     isOpen: false
@@ -38,37 +42,37 @@ class Nav extends Component {
             <button onClick={e => this.toggleNav(e)}>{this.state.isOpen ? <IoMdClose /> : <IoMdMenu />}</button>
           </div>
           <div className='link-group'>
-            <Link onClick={this.closeNav} to='/videos'>
+            <Link getProps={isActive} onClick={this.closeNav} to='/videos'>
               <span className='icon'>
                 <IoMdTv />
               </span>
               All Videos
             </Link>
-            <Link onClick={this.closeNav} to='/music'>
+            <Link getProps={isActive} onClick={this.closeNav} to='/music'>
               <span className='icon'>
                 <IoMdMusicalNotes />
               </span>
               Music
             </Link>
-            <Link onClick={this.closeNav} to='/interviews'>
+            <Link getProps={isActive} onClick={this.closeNav} to='/interviews'>
               <span className='icon'>
                 <IoIosMicrophone />
               </span>
               Interviews
             </Link>
-            <Link onClick={this.closeNav} to='/artists'>
+            <Link getProps={isActive} onClick={this.closeNav} to='/artists'>
               <span className='icon'>
                 <IoMdPeople />
               </span>
               Artists
             </Link>
-            <Link onClick={this.closeNav} to='/booking'>
+            <Link getProps={isActive} onClick={this.closeNav} to='/booking'>
               <span className='icon'>
                 <IoMdMail />
               </span>
               Booking
             </Link>
-            <Link onClick={this.closeNav} to='/about'>
+            <Link getProps={isActive} onClick={this.closeNav} to='/about'>
               <span className='icon'>
                 <IoMdHeart />
               </span>
@@ -201,10 +205,11 @@ const StyledNav = styled.header`
         padding: 0px 20px;
         display: flex;
         align-items: center;
-        &[aria-current] {
-          background: #333;
-        }
       }
+
+			.active {
+				background: #333;
+			}
     }
   }
 
@@ -262,13 +267,14 @@ const StyledNav = styled.header`
 
       a {
         padding: 20px 40px;
-        &[aria-current] {
-          background: #444;
-          .icon {
-            color: white;
-          }
-        }
       }
+
+			.active {
+				background: #444;
+				.icon {
+					color: white;
+				}
+			}
     }
   }
 `;

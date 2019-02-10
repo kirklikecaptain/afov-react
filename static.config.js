@@ -12,20 +12,51 @@ export default {
   getRoutes: async () => {
 		const { allArtists, allVideos } = await getRouteData()
 		const totalVideoCount = allVideos.length
+		const musicVideos = allVideos.filter(video => video.fields.videoType === 'Song')
     return [
       {
         path: '/',
         component: 'src/app/pages/home/Home.js',
-        getData: () => ({ allVideos })
+        getData: () => ({ recentVideos: allVideos.slice(0, 13) })
 			},
 			{
 				path: 'artists',
 				component: 'src/app/pages/artist-index/ArtistIndex.js',
 				getData: () => ({ allArtists, allVideos })
 			},
+			// {
+			// 	path: 'music',
+			// 	component: 'src/app/pages/music-index/MusicIndex.js',
+			// 	getData: () => {
+			// 		return { music: allVideos.filter(video => video.fields.videoType === 'Song')}}
+			// },
+			...makePageRoutes({
+				items: musicVideos,
+				pageSize: 24,
+				pageToken: 'page',
+				route: {
+					path: 'music',
+					component: 'src/app/pages/music-index/MusicIndex.js'
+				},
+				decorate: (musicVideos, i, totalPages) => ({
+          // For each page, supply the posts, page and totalPages
+          getData: () => ({
+            musicVideos,
+            currentPage: i,
+						totalPages
+          }),
+        }),
+			}),
+			{
+				path: 'interviews',
+				component: 'src/app/pages/interview-index/InterviewIndex.js',
+				getData: () => {
+					return { interviews: allVideos.filter(video => video.fields.videoType === 'Interview')}
+				}
+			},
 			...makePageRoutes({
 				items: allVideos,
-				pageSize: 12,
+				pageSize: 24,
 				pageToken: 'page',
 				route: {
 					path: 'videos',
@@ -62,19 +93,6 @@ export default {
 					]
 				}
 			}),
-			{
-				path: 'music',
-				component: 'src/app/pages/music-index/MusicIndex.js',
-				getData: () => {
-					return { music: allVideos.filter(video => video.fields.videoType === 'Song')}}
-			},
-			{
-				path: 'interviews',
-				component: 'src/app/pages/interview-index/InterviewIndex.js',
-				getData: () => {
-					return { interviews: allVideos.filter(video => video.fields.videoType === 'Interview')}
-				}
-			},
 			{
 				path: 'about',
 				component: 'src/app/pages/about/About.js'

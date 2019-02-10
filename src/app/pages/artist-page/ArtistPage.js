@@ -8,7 +8,7 @@ import VideoCard from '../../components/VideoCard';
 
 class ArtistPage extends Component {
   render() {
-    const { videos, artist } = this.props;
+		const { videos, artist } = this.props;
     return (
 			<>
 				<Head>

@@ -8,8 +8,8 @@ import MissionStatement from '../../components/MissionStatement';
 
 class HomePage extends React.Component {
   render() {
-    const heroVideo = this.props.allVideos.slice(0, 1)[0];
-    const recentVideos = this.props.allVideos.slice(1, 13);
+    const heroVideo = this.props.recentVideos.slice(0, 1)[0];
+    const moreVideos = this.props.recentVideos.slice(1, 13);
 
     return (
       <>
@@ -25,7 +25,7 @@ class HomePage extends React.Component {
         <div className='container'>
           <h2 className='no-top'>Recent Videos</h2>
           <GridContainer>
-            {recentVideos.map(video => (
+            {moreVideos.map(video => (
               <VideoCard
                 key={video.sys.id}
                 songTitle={video.fields.title}

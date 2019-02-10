@@ -37,6 +37,10 @@ const StyledContainer = styled.div`
       grid-template-columns: 1fr;
       padding: 0;
     }
+		@media (min-width: 1600px) {
+      grid-template-columns: 1fr 1fr;
+      padding: 0;
+    }
   }
 
   h3 {

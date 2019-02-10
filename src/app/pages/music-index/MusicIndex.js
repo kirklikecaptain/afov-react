@@ -14,7 +14,7 @@ class MusicIndex extends Component {
 				<div className='container'>
 					<h1 className='no-top'>Music</h1>
 					<GridContainer>
-						{this.props.music.map(video => (
+						{this.props.musicVideos.map(video => (
 							<VideoCard
 								key={video.sys.id}
 								songTitle={video.fields.title}

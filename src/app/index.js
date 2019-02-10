@@ -25,6 +25,7 @@ function App(props) {
     <Root>
       <Head>
         <title>{props.title}</title>
+				<link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </Head>
 			<StyledContainer>
 				<Nav />
