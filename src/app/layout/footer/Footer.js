@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { FaInstagram, FaFacebook, FaTwitter, FaYoutube} from 'react-icons/fa'
+import { FaInstagram, FaFacebook, FaTwitter, FaYoutube, FaPatreon} from 'react-icons/fa'
 import GridContainer from '../../components/GridContainer'
 
 class Footer extends Component {
@@ -9,13 +9,14 @@ class Footer extends Component {
 			<StyledFooter>
 				<GridContainer className="container inner">
 					<div className="col">
+					<a className="social patreon" href="https://www.patreon.com/join/afistfulofvinyl" target="_blank" rel="noopener"><FaPatreon className='icon' /> Support us on Patreon</a>
 						<a className="social youtube" href="https://www.youtube.com/afistfulofvinyl" target="_blank" rel="noopener"><FaYoutube className='icon' /> AFoV on Youtube</a>
 						<a className="social instagram" href="https://www.instagram.com/afistfulofvinyl/" target="_blank" rel="noopener"><FaInstagram className='icon' /> AFoV on Instagram</a>
 						<a className="social facebook" href="https://www.facebook.com/AFistfulOfVinyl/" target="_blank" rel="noopener"><FaFacebook className='icon' /> AFoV on Facebook</a>
 						<a className="social twitter" href="https://twitter.com/afistfulofvinyl?lang=en" target="_blank" rel="noopener"><FaTwitter className='icon' /> AFoV on Twitter</a>
 					</div>
 					<div className="col">
-						<a href="#">Other Nav</a>
+						<a href="#">Info</a>
 					</div>
 					<div className="col">
 						<a href="#">Signup form</a>
@@ -34,11 +35,6 @@ const StyledFooter = styled.footer`
   background: white;
 	border-top: solid 1px #ddd;
 	.inner {
-		/* display: grid;
-		grid-gap: 20px; */
-		/* @media(min-width: 600px) {
-			grid-template-columns: 1fr 1fr 1fr;
-		} */
 		.col {
 			display: flex;
 			flex-direction: column;
@@ -52,7 +48,7 @@ const StyledFooter = styled.footer`
 					color: #222;
 				}
 				.icon {
-					margin-top: -4px;
+					margin-top: -2px;
 					margin-right: 5px;
 					display: inline-block;
 				}
@@ -60,10 +56,11 @@ const StyledFooter = styled.footer`
 
 			.social {
 				width: 100%;
+				font-size: .75rem;
 				text-align: center;
 				margin-bottom: 10px;
 				border-radius: 4px;
-				padding: .5em 1em;
+				padding: .75em;
 				@media(min-width: 600px) {
 					width: auto;
 				}
@@ -92,6 +89,15 @@ const StyledFooter = styled.footer`
 				background: transparent;
 				&:hover {
 					background: #1da1f2;
+					color: white;
+				}
+			}
+			.patreon {
+				color: #f96854;
+				border: solid 2px #f96854;
+				background: transparent;
+				&:hover {
+					background: #f96854;
 					color: white;
 				}
 			}

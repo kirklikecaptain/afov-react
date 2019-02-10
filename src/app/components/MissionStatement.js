@@ -17,12 +17,18 @@ export default MissionStatement;
 const StyledSection = styled.div`
   border-bottom: solid 1px #ddd;
   color: #222;
-  padding: 4em 1em;
+  padding: 2em 1em;
   text-align: center;
+	@media (min-width: 800px) {
+		padding: 4em 1em;
+	}
   h1 {
-    font-size: 1.7em;
+    font-size: 1em;
     margin: 0 auto;
     max-width: 25em;
     line-height: 1.5em;
+		@media (min-width: 800px) {
+			font-size: 1.7em;
+		}
   }
 `;

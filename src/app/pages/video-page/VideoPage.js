@@ -31,7 +31,7 @@ const StyledLayout = styled.div`
     grid-gap: 1.5em;
 		max-width: 2000px;
 		grid-template-columns: auto 250px;
-		@media (min-width: 1600px) {
+		@media (min-width: 1800px) {
 			grid-template-columns: auto 600px;
 		}
   }

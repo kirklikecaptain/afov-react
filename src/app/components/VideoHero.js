@@ -61,6 +61,7 @@ class VideoHero extends Component {
 				<Fade ssrReveal left duration={400} delay={1000} distance='100px'>
 					<div className='text-container'>
 						<div className='text'>
+							<div className='new-badge'>NEW</div>
 							<h2>{songTitle}</h2>
 							<h3 className='slab'>{bandName}</h3>
 							<Link className='cta-button' to={path}>
@@ -92,7 +93,7 @@ const StyledYTContainer = styled.div`
 
   .video-container {
     height: 500px;
-		transform: scale(2.2);
+		transform: scale(2.5);
     width: 100%;
     @media (min-width: 600px) {
       height: 500px;
@@ -130,6 +131,7 @@ const StyledYTContainer = styled.div`
 		line-height: 2em;
 		transition: all 0.3s ease;
 		text-align: center;
+		box-shadow: 1px 2px 3px rgba(0,0,0,.3);
 
 		@media (min-width: 800px) {
 			background: white;
@@ -143,8 +145,6 @@ const StyledYTContainer = styled.div`
     &:hover .icon {
       color: ${props => (props.color ? props.color : '#333')};
     }
-
-
 
     .icon {
       font-size: 2em;
@@ -161,8 +161,19 @@ const StyledYTContainer = styled.div`
 
 		@media (min-width: 800px) {
 			width: auto;
-			max-width: 70%;
+			/* max-width: 70%; */
 			padding: 30px;
+		}
+
+		.new-badge {
+			color: black;
+			padding: 5px;
+			border-radius: 5px;
+			background: white;
+			display: inline-block;
+			font-size: .6rem;
+			box-shadow: 1px 2px 3px rgba(0,0,0,.3);
+			margin-bottom: 5px;
 		}
 
     h2 {
@@ -171,8 +182,9 @@ const StyledYTContainer = styled.div`
       transition: all 0.3s ease;
       margin: 0;
       color: white;
+			text-shadow: 1px 2px 3px rgba(0,0,0,.3);
 			@media (max-width: 600px) {
-				font-size: 2rem;
+				font-size: 3rem;
 			}
     }
 
@@ -180,6 +192,7 @@ const StyledYTContainer = styled.div`
       color: white;
       font-size: 4em;
       margin: 0;
+			text-shadow: 1px 2px 3px rgba(0,0,0,.3);
 			@media (max-width: 600px) {
 				font-size: 2rem;
 			}

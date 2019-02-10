@@ -1,20 +1,30 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Head } from 'react-static';
+import { Head, withSiteData } from 'react-static';
 import { Link } from '@reach/router';
 import Youtube from 'react-youtube';
+import {MdPlayCircleFilled} from 'react-icons/md'
 import VideoStats from './VideoStats';
 
 class VideoPlayer extends Component {
 
+	state = {
+		isPlaying: false
+	}
+
+	playVideo = e => {
+		e.preventDefault()
+		this.setState({isPlaying: true})
+	}
+
   render() {
-    const { title, artist, videoId, uploadDate } = this.props.video.fields;
+    const { title, artist, videoId, uploadDate, thumbnail } = this.props.video.fields;
     const options = {
       // host: 'https://www.youtube.com',
       playerVars: {
         modestbranding: 1,
         rel: 0,
-        autoplay: 0,
+        autoplay: 1,
         color: 'white',
         enablejsapi: 1,
         origin: "https://adoring-fermat-3d4eac.netlify.com",
@@ -26,14 +36,26 @@ class VideoPlayer extends Component {
     return (
       <StyledVideoPlayer color={artist.fields.color}>
         <Head>
-          {/* <script src='https://apis.google.com/js/platform.js' /> */}
+          <script src='https://apis.google.com/js/platform.js' />
         </Head>
-        <Youtube
-					videoId={videoId}
-					opts={options}
-					className='video-frame'
-					containerClassName='video-container'
-				/>
+				{this.state.isPlaying
+					? (
+						<Youtube
+							videoId={videoId}
+							opts={options}
+							className='video-frame'
+							containerClassName='video-container'
+						/>
+					)
+					: (
+						<div className="thumb-box">
+							<img className="thumbnail" src={thumbnail.fields.file.url} alt=""/>
+							{/* <div className="play-button-box"> */}
+							<button onClick={e => this.playVideo(e)} className="play-button"><MdPlayCircleFilled /></button>
+							{/* </div> */}
+						</div>
+					)
+				}
         <div className='video-info'>
           <h1>{title}</h1>
           <Link to={`/${artist.fields.slug}`}>
@@ -47,9 +69,9 @@ class VideoPlayer extends Component {
           <p>Video Long Description</p>
           <p>Artist Long Description</p>
           <p>Contributors</p>
-          {/* <div className='subscribe'>
+          <div className='subscribe'>
             <div className='g-ytsubscribe' data-channel='afistfulofvinyl' data-layout='full' data-count='default' />
-          </div> */}
+          </div>
         </div>
       </StyledVideoPlayer>
     );
@@ -59,6 +81,58 @@ class VideoPlayer extends Component {
 export default VideoPlayer;
 
 const StyledVideoPlayer = styled.div`
+
+	.thumb-box {
+		position: relative;
+		width: 100%;
+		padding-bottom: 56.25%;
+
+		.thumbnail {
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: block;
+			width: 100%;
+		}
+
+		.play-button-box {
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.play-button {
+			background: #999;
+			display: block;
+			width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			padding: 0;
+			margin: 0;
+			cursor: pointer;
+			border: none;
+			background: transparent;
+			color: white;
+			font-size: 5em;
+			transition: transform .2s ease;
+			&:hover  {
+
+			}
+			&:active {
+				outline: none;
+			}
+		}
+	}
+
+
   .video-container {
     overflow: hidden;
     padding-bottom: 56.25%;

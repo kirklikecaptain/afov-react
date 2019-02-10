@@ -100,7 +100,7 @@ const StyledNav = styled.header`
     justify-content: center;
     align-items: center;
     padding: 20px;
-    background-color: #222;
+    background: black;
 
     .logo-link {
       display: block;
@@ -122,10 +122,10 @@ const StyledNav = styled.header`
       outline: none;
       border-radius: 3px;
       &:hover {
-        background: #444;
+        background: #222;
       }
       &:active {
-        background: #333;
+        background: #111;
       }
     }
   }
@@ -149,7 +149,7 @@ const StyledNav = styled.header`
       top: 100%;
       left: 0;
       right: 0;
-      background: #333;
+      background: #111;
       z-index: 1000;
       a {
         display: flex;
@@ -157,10 +157,11 @@ const StyledNav = styled.header`
         padding: 25px;
         text-decoration: none;
         &:hover {
-          background: #444;
+          background: #222;
         }
         &:active {
-          background: #222;
+          background: #111;
+					color: white;
         }
 
         .icon {
@@ -188,6 +189,7 @@ const StyledNav = styled.header`
     }
     .logo-group {
       padding: 0 0 0 16px;
+			background: transparent;
       .logo {
         width: 100px;
       }
@@ -227,7 +229,7 @@ const StyledNav = styled.header`
   @media (min-width: 1400px) {
 		overflow-y: scroll;
 		overflow-x: hidden;
-    background: #333;
+    background: #111;
     position: fixed;
     top: 0;
     left: 0;
@@ -246,6 +248,7 @@ const StyledNav = styled.header`
     }
     .logo-group {
       display: block;
+			background: black;
       padding: 40px;
       .logo {
         width: 100%;
@@ -270,7 +273,7 @@ const StyledNav = styled.header`
       }
 
 			.active {
-				background: #444;
+				background: #292929;
 				.icon {
 					color: white;
 				}
