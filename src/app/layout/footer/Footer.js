@@ -9,7 +9,7 @@ class Footer extends Component {
 			<StyledFooter>
 				<GridContainer className="container inner">
 					<div className="col">
-					<a className="social patreon" href="https://www.patreon.com/join/afistfulofvinyl" target="_blank" rel="noopener"><FaPatreon className='icon' /> Support us on Patreon</a>
+					<a className="social patreon" href="https://www.patreon.com/join/afistfulofvinyl" target="_blank" rel="noopener"><FaPatreon className='icon' /> Support AFoV on Patreon</a>
 						<a className="social youtube" href="https://www.youtube.com/afistfulofvinyl" target="_blank" rel="noopener"><FaYoutube className='icon' /> AFoV on Youtube</a>
 						<a className="social instagram" href="https://www.instagram.com/afistfulofvinyl/" target="_blank" rel="noopener"><FaInstagram className='icon' /> AFoV on Instagram</a>
 						<a className="social facebook" href="https://www.facebook.com/AFistfulOfVinyl/" target="_blank" rel="noopener"><FaFacebook className='icon' /> AFoV on Facebook</a>

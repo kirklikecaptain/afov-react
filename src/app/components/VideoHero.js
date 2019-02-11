@@ -26,7 +26,6 @@ class VideoHero extends Component {
 
   render() {
     const { bandName, songTitle, color, path, videoId } = this.props;
-
     return (
 			<StyledYTContainer color={color} isLoading={this.state.isLoading}>
 				<Youtube
@@ -117,7 +116,6 @@ const StyledYTContainer = styled.div`
 		@media(min-width: 800px) {
 			padding: 50px;
 		}
-
   }
 
   .cta-button {
@@ -162,7 +160,6 @@ const StyledYTContainer = styled.div`
 
 		@media (min-width: 800px) {
 			width: auto;
-			/* max-width: 70%; */
 			padding: 30px;
 		}
 
@@ -175,6 +172,7 @@ const StyledYTContainer = styled.div`
 			font-size: .6rem;
 			box-shadow: 1px 2px 3px rgba(0,0,0,.3);
 			margin-bottom: 5px;
+			line-height: 1;
 		}
 
     h2 {
@@ -231,9 +229,7 @@ const StyledYTContainer = styled.div`
       left: 0;
       background: ${props =>
         props.color
-          ? `linear-gradient(to right, ${props.color}, ${props.color}, transparent, transparent, transparent, ${props.color}, ${
-              props.color
-            })`
+          ? `linear-gradient(to right, ${props.color}, ${props.color}, transparent, transparent, transparent, ${props.color}, ${props.color})`
           : 'linear-gradient(to right, black, black, transparent, transparent, transparent, black, black)'};
     }
   }
