@@ -12,7 +12,7 @@ class VideoHero extends Component {
     isLoading: true
   };
 
-  onPlay = event => {
+  onPlay = () => {
     // access to player in all event handlers via event.target
     this.setState({ isLoading: false });
     // loop the video by seeking back to 'start' at 40s mark after 2m
@@ -44,6 +44,7 @@ class VideoHero extends Component {
 							end: 300,
 							loop: 1,
 							playlist: videoId,
+							cc_load_policy: 0,
 							controls: 0,
 							showinfo: 0,
 							mute: 1,
