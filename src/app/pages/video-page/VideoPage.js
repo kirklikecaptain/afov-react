@@ -9,15 +9,17 @@ class VideoPage extends Component {
   render() {
     const { video, otherVideos } = this.props;
     return (
-			<>
-				<Head>
-					<title>{video.fields.title} | {video.fields.artist.fields.artistName} | AFoV</title>
-				</Head>
-				<StyledLayout>
-					<VideoPlayer video={video} />
-					{otherVideos.length > 0 && <RelatedVideos artist={video.fields.artist} relatedVideos={otherVideos} />}
-				</StyledLayout>
-			</>
+      <>
+        <Head>
+          <title>
+            {video.fields.title} | {video.fields.artist.fields.artistName} | AFoV
+          </title>
+        </Head>
+        <StyledLayout>
+          <VideoPlayer video={video} />
+          {otherVideos.length > 0 && <RelatedVideos artist={video.fields.artist} relatedVideos={otherVideos} />}
+        </StyledLayout>
+      </>
     );
   }
 }
@@ -29,10 +31,10 @@ const StyledLayout = styled.div`
     padding: 1.5em;
     display: grid;
     grid-gap: 1.5em;
-		max-width: 2000px;
-		grid-template-columns: auto 250px;
-		@media (min-width: 1800px) {
-			grid-template-columns: auto 600px;
-		}
+    max-width: 2000px;
+    grid-template-columns: auto 250px;
+    @media (min-width: 1800px) {
+      grid-template-columns: auto 600px;
+    }
   }
 `;

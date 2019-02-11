@@ -25,15 +25,15 @@ function App(props) {
     <Root>
       <Head>
         <title>{props.title}</title>
-				<link rel="icon" href="/favicon.ico" type="image/x-icon" />
+        <link rel='icon' href='/favicon.ico' type='image/x-icon' />
       </Head>
-			<StyledContainer>
-				<Nav />
-				<div className='main-content'>
-					<Routes />
-					<Footer />
-				</div>
-			</StyledContainer>
+      <StyledContainer>
+        <Nav />
+        <div className='main-content'>
+          <Routes />
+          <Footer />
+        </div>
+      </StyledContainer>
     </Root>
   );
 }
@@ -62,7 +62,7 @@ const StyledContainer = styled.div`
     margin: 0 auto;
     max-width: 1200px;
     padding: 1em;
-	}
+  }
 
   .noselect {
     -webkit-touch-callout: none; /* iOS Safari */

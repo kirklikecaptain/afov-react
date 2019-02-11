@@ -8,34 +8,34 @@ import VideoCard from '../../components/VideoCard';
 
 class ArtistPage extends Component {
   render() {
-		const { videos, artist } = this.props;
+    const { videos, artist } = this.props;
     return (
-			<>
-				<Head>
-						<title>{artist.fields.artistName} | Artist Info | A Fistful of Vinyl</title>
-				</Head>
-				<div className='container'>
-					<StyledInfo color={artist.fields.color}>
-						<img src={artist.fields.photo.fields.file.url + '?w=180'} alt='' />
-						<div>
-							<h1 className='slab no-top'>{artist.fields.artistName}</h1>
-							<Markdown>{artist.fields.longDescription}</Markdown>
-						</div>
-					</StyledInfo>
-					<GridContainer>
-						{videos.map(video => (
-							<VideoCard
-								key={video.sys.id}
-								songTitle={video.fields.title}
-								postDate={video.fields.uploadDate}
-								thumbnail={video.fields.thumbnail.fields.file.url}
-								color={video.fields.artist.fields.color}
-								videoUrl={`/${video.fields.artist.fields.slug}/${video.fields.slug}`}
-							/>
-						))}
-					</GridContainer>
-				</div>
-			</>
+      <>
+        <Head>
+          <title>{artist.fields.artistName} | Artist Info | A Fistful of Vinyl</title>
+        </Head>
+        <div className='container'>
+          <StyledInfo color={artist.fields.color}>
+            <img src={artist.fields.photo.fields.file.url + '?w=180'} alt='' />
+            <div>
+              <h1 className='slab no-top'>{artist.fields.artistName}</h1>
+              <Markdown>{artist.fields.longDescription}</Markdown>
+            </div>
+          </StyledInfo>
+          <GridContainer>
+            {videos.map(video => (
+              <VideoCard
+                key={video.sys.id}
+                songTitle={video.fields.title}
+                postDate={video.fields.uploadDate}
+                thumbnail={video.fields.thumbnail.fields.file.url}
+                color={video.fields.artist.fields.color}
+                videoUrl={`/${video.fields.artist.fields.slug}/${video.fields.slug}`}
+              />
+            ))}
+          </GridContainer>
+        </div>
+      </>
     );
   }
 }

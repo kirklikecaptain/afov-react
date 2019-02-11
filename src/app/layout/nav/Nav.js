@@ -1,21 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from '@reach/router';
-import {
-  IoIosMicrophone,
-  IoMdPeople,
-  IoMdMenu,
-  IoMdTv,
-  IoMdClose,
-  IoMdMusicalNotes,
-  IoMdMail,
-  IoMdHeart
-} from 'react-icons/io';
+import { IoIosMicrophone, IoMdPeople, IoMdMenu, IoMdTv, IoMdClose, IoMdMusicalNotes, IoMdMail, IoMdHeart } from 'react-icons/io';
 import afov from '../../../assets/afov-logo.svg';
 
 const isActive = ({ isCurrent }) => {
-  return isCurrent ? { className: "active" } : null
-}
+  return isCurrent ? { className: 'active' } : null;
+};
 
 class Nav extends Component {
   state = {
@@ -161,7 +152,7 @@ const StyledNav = styled.header`
         }
         &:active {
           background: #111;
-					color: white;
+          color: white;
         }
 
         .icon {
@@ -189,7 +180,7 @@ const StyledNav = styled.header`
     }
     .logo-group {
       padding: 0 0 0 16px;
-			background: transparent;
+      background: transparent;
       .logo {
         width: 100px;
       }
@@ -209,9 +200,9 @@ const StyledNav = styled.header`
         align-items: center;
       }
 
-			.active {
-				background: #333;
-			}
+      .active {
+        background: #333;
+      }
     }
   }
 
@@ -227,28 +218,28 @@ const StyledNav = styled.header`
   /* part of this layout lives in app/index.js */
 
   @media (min-width: 1400px) {
-		overflow-y: scroll;
-		overflow-x: hidden;
+    overflow-y: scroll;
+    overflow-x: hidden;
     background: #111;
     position: fixed;
     top: 0;
     left: 0;
     bottom: 0;
-		width: 230px;
-		-ms-overflow-style: none;
+    width: 230px;
+    -ms-overflow-style: none;
     overflow: -moz-scrollbars-none;
-		z-index: 1000;
+    z-index: 1000;
 
-		&::-webkit-scrollbar {
-    	display: none;
-		}
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
     nav {
       display: block;
     }
     .logo-group {
       display: block;
-			background: black;
+      background: black;
       padding: 40px;
       .logo {
         width: 100%;
@@ -272,12 +263,12 @@ const StyledNav = styled.header`
         padding: 20px 40px;
       }
 
-			.active {
-				background: #292929;
-				.icon {
-					color: white;
-				}
-			}
+      .active {
+        background: #292929;
+        .icon {
+          color: white;
+        }
+      }
     }
   }
 `;

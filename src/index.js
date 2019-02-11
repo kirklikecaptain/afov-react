@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TagManager from 'react-gtm-module'
+import TagManager from 'react-gtm-module';
 
 // Your top level component
 import App from './app';
@@ -10,13 +10,11 @@ export default App;
 
 // Render your app
 if (typeof document !== 'undefined') {
+  const tagManagerArgs = {
+    gtmId: 'GTM-K7XWHDW'
+  };
 
-	const tagManagerArgs = {
-		gtmId: 'GTM-K7XWHDW'
-	}
-
-	TagManager.initialize(tagManagerArgs)
-
+  TagManager.initialize(tagManagerArgs);
 
   const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate || ReactDOM.render;
 

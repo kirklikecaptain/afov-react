@@ -3,19 +3,18 @@ import styled from 'styled-components';
 import { Head, withSiteData } from 'react-static';
 import { Link } from '@reach/router';
 import Youtube from 'react-youtube';
-import {MdPlayCircleFilled} from 'react-icons/md'
+import { MdPlayCircleFilled } from 'react-icons/md';
 import VideoStats from './VideoStats';
 
 class VideoPlayer extends Component {
+  state = {
+    isPlaying: false
+  };
 
-	state = {
-		isPlaying: false
-	}
-
-	playVideo = e => {
-		e.preventDefault()
-		this.setState({isPlaying: true})
-	}
+  playVideo = e => {
+    e.preventDefault();
+    this.setState({ isPlaying: true });
+  };
 
   render() {
     const { title, artist, videoId, uploadDate, thumbnail } = this.props.video.fields;
@@ -26,41 +25,32 @@ class VideoPlayer extends Component {
         rel: 0,
         autoplay: 1,
         color: 'white',
-				enablejsapi: 1,
-				cc_load_policy: 0,
-        origin: "https://adoring-fermat-3d4eac.netlify.com",
-				// widget_referrer: "https://adoring-fermat-3d4eac.netlify.com"
+        enablejsapi: 1,
+        cc_load_policy: 0,
+        origin: 'https://adoring-fermat-3d4eac.netlify.com'
+        // widget_referrer: "https://adoring-fermat-3d4eac.netlify.com"
         // more options here - https://developers.google.com/youtube/player_parameters
       }
     };
 
     return (
       <StyledVideoPlayer color={artist.fields.color}>
-        <Head>
-          {/* <script src='https://apis.google.com/js/platform.js' /> */}
-        </Head>
-				{this.state.isPlaying
-					? (
-						<Youtube
-							videoId={videoId}
-							opts={options}
-							className='video-frame'
-							containerClassName='video-container'
-						/>
-					)
-					: (
-						<div className="thumb-box">
-							<img className="thumbnail" src={thumbnail.fields.file.url} alt=""/>
-							<button onClick={e => this.playVideo(e)} className="play-button"><MdPlayCircleFilled /></button>
-						</div>
-					)
-				}
+        <Head>{/* <script src='https://apis.google.com/js/platform.js' /> */}</Head>
+        {this.state.isPlaying ? (
+          <Youtube videoId={videoId} opts={options} className='video-frame' containerClassName='video-container' />
+        ) : (
+          <div className='thumb-box'>
+            <img className='thumbnail' src={thumbnail.fields.file.url} alt='' />
+            <button onClick={e => this.playVideo(e)} className='play-button'>
+              <MdPlayCircleFilled />
+            </button>
+          </div>
+        )}
         <div className='video-info'>
           <h1>{title}</h1>
           <Link to={`/${artist.fields.slug}`}>
             <div className='artist-link'>
-              <img className='avatar' src={artist.fields.photo.fields.file.url + '?w=60'} alt='' />{' '}
-              <h2 className='slab no-top'>{artist.fields.artistName}</h2>
+              <img className='avatar' src={artist.fields.photo.fields.file.url + '?w=60'} alt='' /> <h2 className='slab no-top'>{artist.fields.artistName}</h2>
             </div>
           </Link>
           <p>Venue</p>
@@ -80,57 +70,54 @@ class VideoPlayer extends Component {
 export default VideoPlayer;
 
 const StyledVideoPlayer = styled.div`
+  .thumb-box {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
 
-	.thumb-box {
-		position: relative;
-		width: 100%;
-		padding-bottom: 56.25%;
+    .thumbnail {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 100%;
+    }
 
-		.thumbnail {
-			position: absolute;
-			top: 0;
-			left: 0;
-			display: block;
-			width: 100%;
-		}
+    .play-button-box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
-		.play-button-box {
-			position: absolute;
-			top: 0;
-			left: 0;
-			bottom: 0;
-			right: 0;
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-
-		.play-button {
-			background: #999;
-			display: block;
-			width: 100%;
-			position: absolute;
-			top: 0;
-			left: 0;
-			bottom: 0;
-			right: 0;
-			padding: 0;
-			margin: 0;
-			cursor: pointer;
-			border: none;
-			background: transparent;
-			color: white;
-			font-size: 5em;
-			transition: transform .2s ease;
-			&:hover  {
-
-			}
-			&:active {
-				outline: none;
-			}
-		}
-	}
-
+    .play-button {
+      background: #999;
+      display: block;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      color: white;
+      font-size: 5em;
+      transition: transform 0.2s ease;
+      &:hover {
+      }
+      &:active {
+        outline: none;
+      }
+    }
+  }
 
   .video-container {
     overflow: hidden;

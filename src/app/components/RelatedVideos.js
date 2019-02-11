@@ -37,7 +37,7 @@ const StyledContainer = styled.div`
       grid-template-columns: 1fr;
       padding: 0;
     }
-		@media (min-width: 1800px) {
+    @media (min-width: 1800px) {
       grid-template-columns: 1fr 1fr;
       padding: 0;
     }

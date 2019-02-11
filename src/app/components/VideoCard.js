@@ -96,9 +96,9 @@ const StyledCard = styled(Link)`
     overflow: hidden;
     white-space: nowrap;
     max-width: 100%;
-		@media(max-width: 600px) {
-			font-size: 18px;
-		}
+    @media (max-width: 600px) {
+      font-size: 18px;
+    }
   }
 
   .artist-row {
@@ -109,9 +109,9 @@ const StyledCard = styled(Link)`
     h3 {
       margin: 0;
       color: #666;
-			@media(max-width: 600px) {
-				font-size: 16px;
-			}
+      @media (max-width: 600px) {
+        font-size: 16px;
+      }
     }
   }
 `;

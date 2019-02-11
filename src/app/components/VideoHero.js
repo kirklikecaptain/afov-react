@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import {Head} from 'react-static'
+import { Head } from 'react-static';
 import { Link } from '@reach/router';
 import Youtube from 'react-youtube';
 import styled from 'styled-components';
 import Fade from 'react-reveal/Fade';
 import { IoIosMicrophone, IoMdMusicalNotes } from 'react-icons/io';
-import texture from '../../assets/asfalt-light.png'
+import texture from '../../assets/asfalt-light.png';
 
 class VideoHero extends Component {
   state = {
@@ -22,60 +22,57 @@ class VideoHero extends Component {
   onReady = event => {
     // lower playback quality for faster load times
     event.target.setPlaybackQuality('small');
-	};
+  };
 
   render() {
     const { bandName, songTitle, color, path, videoId } = this.props;
     return (
-			<StyledYTContainer color={color} isLoading={this.state.isLoading}>
-				<Youtube
-					videoId={videoId}
-					opts={{
-						width: '100%',
-						height: '500',
-						playerVars: {
-							// https://developers.google.com/youtube/player_parameters
-							version: 3,
-							modestbranding: 1,
-							autohide: 1,
-							autoplay: 1,
-							start: 40,
-							end: 300,
-							loop: 1,
-							playlist: videoId,
-							cc_load_policy: 0,
-							controls: 0,
-							showinfo: 0,
-							mute: 1,
-							enablejsapi: 1,
-							origin: "https://adoring-fermat-3d4eac.netlify.com",
-							// widget_referrer: "https://adoring-fermat-3d4eac.netlify.com"
-						}}}
-					onReady={this.onReady}
-					onPlay={this.onPlay}
-					className='video-frame'
-					containerClassName='video-container'
-				/>
-				<div className='overlay' />
-				<div className='overlay2' />
-				<Fade ssrReveal left duration={400} delay={1000} distance='100px'>
-					<div className='text-container'>
-						<div className='text'>
-							<div className='new-badge'>NEW</div>
-							<h2>{songTitle}</h2>
-							<h3 className='slab'>{bandName}</h3>
-							<Link className='cta-button' to={path}>
-								{this.props.videoType === 'Interview' ? (
-									<IoIosMicrophone className='icon' />
-								) : (
-									<IoMdMusicalNotes className='icon' />
-								)}
-								Watch Now
-							</Link>
-						</div>
-					</div>
-				</Fade>
-			</StyledYTContainer>
+      <StyledYTContainer color={color} isLoading={this.state.isLoading}>
+        <Youtube
+          videoId={videoId}
+          opts={{
+            width: '100%',
+            height: '500',
+            playerVars: {
+              // https://developers.google.com/youtube/player_parameters
+              version: 3,
+              modestbranding: 1,
+              autohide: 1,
+              autoplay: 1,
+              start: 40,
+              end: 300,
+              loop: 1,
+              playlist: videoId,
+              cc_load_policy: 0,
+              controls: 0,
+              showinfo: 0,
+              mute: 1,
+              enablejsapi: 1,
+              origin: 'https://adoring-fermat-3d4eac.netlify.com'
+              // widget_referrer: "https://adoring-fermat-3d4eac.netlify.com"
+            }
+          }}
+          onReady={this.onReady}
+          onPlay={this.onPlay}
+          className='video-frame'
+          containerClassName='video-container'
+        />
+        <div className='overlay' />
+        <div className='overlay2' />
+        <Fade ssrReveal left duration={400} delay={1000} distance='100px'>
+          <div className='text-container'>
+            <div className='text'>
+              <div className='new-badge'>NEW</div>
+              <h2>{songTitle}</h2>
+              <h3 className='slab'>{bandName}</h3>
+              <Link className='cta-button' to={path}>
+                {this.props.videoType === 'Interview' ? <IoIosMicrophone className='icon' /> : <IoMdMusicalNotes className='icon' />}
+                Watch Now
+              </Link>
+            </div>
+          </div>
+        </Fade>
+      </StyledYTContainer>
     );
   }
 }
@@ -93,7 +90,7 @@ const StyledYTContainer = styled.div`
 
   .video-container {
     height: 500px;
-		transform: scale(2.5);
+    transform: scale(2.5);
     width: 100%;
     @media (min-width: 600px) {
       height: 500px;
@@ -111,33 +108,33 @@ const StyledYTContainer = styled.div`
     bottom: 0;
     left: 0;
     padding: 20px;
-		display: flex;
+    display: flex;
     align-items: center;
-		@media(min-width: 800px) {
-			padding: 50px;
-		}
+    @media (min-width: 800px) {
+      padding: 50px;
+    }
   }
 
   .cta-button {
-		display: block;
-		padding: .5em 0em;
-		font-size: 1em;
-		color: black;
-		border-radius: 6px;
-		margin-top: 20px;
-		text-decoration: none;
-		background: white;
-		line-height: 2em;
-		transition: all 0.3s ease;
-		text-align: center;
-		box-shadow: 1px 2px 3px rgba(0,0,0,.3);
+    display: block;
+    padding: 0.5em 0em;
+    font-size: 1em;
+    color: black;
+    border-radius: 6px;
+    margin-top: 20px;
+    text-decoration: none;
+    background: white;
+    line-height: 2em;
+    transition: all 0.3s ease;
+    text-align: center;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
 
-		@media (min-width: 800px) {
-			background: white;
-			vertical-align: middle;
-			padding: 16px 30px 16px 20px;
-			display: inline-block;
-		}
+    @media (min-width: 800px) {
+      background: white;
+      vertical-align: middle;
+      padding: 16px 30px 16px 20px;
+      display: inline-block;
+    }
     &:hover {
       box-shadow: 0 19px 38px rgba(0, 0, 0, 0.2), 0 15px 12px rgba(0, 0, 0, 0.1);
     }
@@ -156,24 +153,24 @@ const StyledYTContainer = styled.div`
 
   .text {
     transition: all 0.3s ease;
-		width: 100%;
+    width: 100%;
 
-		@media (min-width: 800px) {
-			width: auto;
-			padding: 30px;
-		}
+    @media (min-width: 800px) {
+      width: auto;
+      padding: 30px;
+    }
 
-		.new-badge {
-			color: black;
-			padding: 5px;
-			border-radius: 5px;
-			background: white;
-			display: inline-block;
-			font-size: .6rem;
-			box-shadow: 1px 2px 3px rgba(0,0,0,.3);
-			margin-bottom: 5px;
-			line-height: 1;
-		}
+    .new-badge {
+      color: black;
+      padding: 5px;
+      border-radius: 5px;
+      background: white;
+      display: inline-block;
+      font-size: 0.6rem;
+      box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
+      margin-bottom: 5px;
+      line-height: 1;
+    }
 
     h2 {
       font-size: 4rem;
@@ -181,20 +178,20 @@ const StyledYTContainer = styled.div`
       transition: all 0.3s ease;
       margin: 0;
       color: white;
-			text-shadow: 1px 2px 3px rgba(0,0,0,.3);
-			@media (max-width: 600px) {
-				font-size: 3rem;
-			}
+      text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
+      @media (max-width: 600px) {
+        font-size: 3rem;
+      }
     }
 
     h3 {
       color: white;
       font-size: 4em;
       margin: 0;
-			text-shadow: 1px 2px 3px rgba(0,0,0,.3);
-			@media (max-width: 600px) {
-				font-size: 2rem;
-			}
+      text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.3);
+      @media (max-width: 600px) {
+        font-size: 2rem;
+      }
     }
   }
 
