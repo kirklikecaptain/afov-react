@@ -215,7 +215,7 @@ const StyledYTContainer = styled.div`
     }
   }
 
-  @media (min-width: 1900px) {
+  @media (min-width: 2000px) {
     background: ${props => (props.color ? props.color : 'black')};
 
     .overlay2 {

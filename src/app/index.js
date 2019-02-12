@@ -60,7 +60,7 @@ const StyledContainer = styled.div`
 
   .container {
     margin: 0 auto;
-    max-width: 1200px;
+    max-width: 1400px;
     padding: 1em;
   }
 

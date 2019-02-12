@@ -8,21 +8,22 @@ class Footer extends Component {
     return (
       <StyledFooter>
         <GridContainer className='container inner'>
-          <div className='col'>
+          <div className='col social-group'>
+						<h5 className='slab no-top'>SUPPORT</h5>
             <a className='social patreon' href='https://www.patreon.com/join/afistfulofvinyl' target='_blank' rel='noopener'>
               <FaPatreon className='icon' /> Support AFoV on Patreon
             </a>
             <a className='social youtube' href='https://www.youtube.com/afistfulofvinyl' target='_blank' rel='noopener'>
-              <FaYoutube className='icon' /> AFoV on Youtube
+              <FaYoutube className='icon' /> <span className='label'>AFoV on Youtube</span>
             </a>
             <a className='social instagram' href='https://www.instagram.com/afistfulofvinyl/' target='_blank' rel='noopener'>
-              <FaInstagram className='icon' /> AFoV on Instagram
+              <FaInstagram className='icon' /> <span className='label'>AFoV on Instagram</span>
             </a>
             <a className='social facebook' href='https://www.facebook.com/AFistfulOfVinyl/' target='_blank' rel='noopener'>
-              <FaFacebook className='icon' /> AFoV on Facebook
+              <FaFacebook className='icon' /> <span className='label'>AFoV on Facebook</span>
             </a>
             <a className='social twitter' href='https://twitter.com/afistfulofvinyl?lang=en' target='_blank' rel='noopener'>
-              <FaTwitter className='icon' /> AFoV on Twitter
+              <FaTwitter className='icon' /> <span className='label'>AFoV on Twitter</span>
             </a>
           </div>
           <div className='col'>
@@ -43,7 +44,9 @@ const StyledFooter = styled.footer`
   display: block;
   background: white;
   border-top: solid 1px #ddd;
+	padding: 30px 0;
   .inner {
+
     .col {
       display: flex;
       flex-direction: column;
@@ -53,14 +56,24 @@ const StyledFooter = styled.footer`
         color: #333;
         padding: 10px;
         text-decoration: none;
+				overflow: hidden;
         &:hover {
           color: #222;
         }
+				&:hover .label {
+					display: inline-block;
+					margin-left: 5px;
+				}
         .icon {
           margin-top: -2px;
-          margin-right: 5px;
           display: inline-block;
         }
+				.label {
+					display: inline-block;
+					@media (min-width: 600px) {
+						display: none;
+					}
+				}
       }
 
       .social {
@@ -72,11 +85,13 @@ const StyledFooter = styled.footer`
         padding: 0.75em;
         @media (min-width: 600px) {
           width: auto;
+					flex-grow: 1;
+					margin-right: 10px;
         }
       }
       .facebook {
         color: #3b5998;
-        border: solid 2px #3b5998;
+        border: solid 1px #3b5998;
         background: transparent;
         &:hover {
           background: #3b5998;
@@ -85,7 +100,7 @@ const StyledFooter = styled.footer`
       }
       .instagram {
         color: #bc2a8d;
-        border: solid 2px #bc2a8d;
+        border: solid 1px #bc2a8d;
         background: transparent;
         &:hover {
           background: #bc2a8d;
@@ -94,7 +109,7 @@ const StyledFooter = styled.footer`
       }
       .twitter {
         color: #1da1f2;
-        border: solid 2px #1da1f2;
+        border: solid 1px #1da1f2;
         background: transparent;
         &:hover {
           background: #1da1f2;
@@ -102,17 +117,21 @@ const StyledFooter = styled.footer`
         }
       }
       .patreon {
+				width: 100%;
         color: #f96854;
-        border: solid 2px #f96854;
+        border: solid 1px #f96854;
         background: transparent;
         &:hover {
           background: #f96854;
           color: white;
         }
+				.icon {
+					margin-right: 5px;
+				}
       }
       .youtube {
         color: #ff0000;
-        border: solid 2px #ff0000;
+        border: solid 1px #ff0000;
         background: transparent;
         &:hover {
           background: #ff0000;
@@ -120,5 +139,11 @@ const StyledFooter = styled.footer`
         }
       }
     }
+		.social-group {
+			flex-direction: row;
+			flex-wrap: wrap;
+			justify-content: space-between;
+
+		}
   }
 `;
