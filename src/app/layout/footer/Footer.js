@@ -2,16 +2,15 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { FaInstagram, FaFacebook, FaTwitter, FaYoutube, FaPatreon } from 'react-icons/fa';
 import GridContainer from '../../components/GridContainer';
-import SubscribeForm from '../../components/SubscribeForm'
+import SubscribeForm from '../../components/SubscribeForm';
 
 class Footer extends Component {
-
   render() {
     return (
       <StyledFooter>
         <GridContainer className='container inner'>
           <div className='col social-group'>
-						<h5 className='slab no-top'>SUPPORT</h5>
+            <h5 className='slab no-top'>SUPPORT</h5>
             <a className='social patreon' href='https://www.patreon.com/join/afistfulofvinyl' target='_blank' rel='noopener'>
               <FaPatreon className='icon' /> Support AFoV on Patreon
             </a>
@@ -28,9 +27,7 @@ class Footer extends Component {
               <FaTwitter className='icon' />
             </a>
           </div>
-          <div className='col'>
-						{/* <SubscribeForm /> */}
-          </div>
+          <div className='col'>{/* <SubscribeForm /> */}</div>
           <div className='col'>
             <a href='#'>More</a>
           </div>
@@ -40,16 +37,14 @@ class Footer extends Component {
   }
 }
 
-
 export default Footer;
 
 const StyledFooter = styled.footer`
   display: block;
   background: white;
   border-top: solid 1px #ddd;
-	padding: 30px 0;
+  padding: 30px 0;
   .inner {
-
     .col {
       display: flex;
       flex-direction: column;
@@ -59,7 +54,7 @@ const StyledFooter = styled.footer`
         color: #333;
         padding: 10px;
         text-decoration: none;
-				overflow: hidden;
+        overflow: hidden;
         &:hover {
           color: #222;
         }
@@ -78,8 +73,8 @@ const StyledFooter = styled.footer`
         padding: 0.75em;
         @media (min-width: 600px) {
           width: auto;
-					flex-grow: 1;
-					margin-right: 10px;
+          flex-grow: 1;
+          margin-right: 10px;
         }
       }
       .facebook {
@@ -110,7 +105,7 @@ const StyledFooter = styled.footer`
         }
       }
       .patreon {
-				width: 100%;
+        width: 100%;
         color: #f96854;
         border: solid 1px #f96854;
         background: transparent;
@@ -118,9 +113,9 @@ const StyledFooter = styled.footer`
           background: #f96854;
           color: white;
         }
-				.icon {
-					margin-right: 5px;
-				}
+        .icon {
+          margin-right: 5px;
+        }
       }
       .youtube {
         color: #ff0000;
@@ -132,11 +127,10 @@ const StyledFooter = styled.footer`
         }
       }
     }
-		.social-group {
-			flex-direction: row;
-			flex-wrap: wrap;
-			justify-content: space-between;
-
-		}
+    .social-group {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
   }
 `;
