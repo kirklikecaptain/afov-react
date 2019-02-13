@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withRouteData, Head } from 'react-static';
-import { hot } from 'react-hot-loader/root';
 import VideoCard from '../../components/VideoCard';
 import GridContainer from '../../components/GridContainer';
 
@@ -33,4 +32,4 @@ class InterviewIndex extends Component {
   }
 }
 
-export default hot(withRouteData(InterviewIndex));
+export default withRouteData(InterviewIndex);

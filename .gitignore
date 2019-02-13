@@ -5,6 +5,7 @@
 /coverage
 
 # production
+/artifacts
 /dist
 /tmp
 

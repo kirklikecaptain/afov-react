@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { FaInstagram, FaFacebook, FaTwitter, FaYoutube, FaPatreon } from 'react-icons/fa';
 import GridContainer from '../../components/GridContainer';
+import SubscribeForm from '../../components/SubscribeForm'
 
 class Footer extends Component {
+
   render() {
     return (
       <StyledFooter>
@@ -14,29 +16,30 @@ class Footer extends Component {
               <FaPatreon className='icon' /> Support AFoV on Patreon
             </a>
             <a className='social youtube' href='https://www.youtube.com/afistfulofvinyl' target='_blank' rel='noopener'>
-              <FaYoutube className='icon' /> <span className='label'>AFoV on Youtube</span>
+              <FaYoutube className='icon' />
             </a>
             <a className='social instagram' href='https://www.instagram.com/afistfulofvinyl/' target='_blank' rel='noopener'>
-              <FaInstagram className='icon' /> <span className='label'>AFoV on Instagram</span>
+              <FaInstagram className='icon' />
             </a>
             <a className='social facebook' href='https://www.facebook.com/AFistfulOfVinyl/' target='_blank' rel='noopener'>
-              <FaFacebook className='icon' /> <span className='label'>AFoV on Facebook</span>
+              <FaFacebook className='icon' />
             </a>
             <a className='social twitter' href='https://twitter.com/afistfulofvinyl?lang=en' target='_blank' rel='noopener'>
-              <FaTwitter className='icon' /> <span className='label'>AFoV on Twitter</span>
+              <FaTwitter className='icon' />
             </a>
           </div>
           <div className='col'>
-            <a href='#'>Info</a>
+						{/* <SubscribeForm /> */}
           </div>
           <div className='col'>
-            <a href='#'>Signup form</a>
+            <a href='#'>More</a>
           </div>
         </GridContainer>
       </StyledFooter>
     );
   }
 }
+
 
 export default Footer;
 
@@ -60,20 +63,10 @@ const StyledFooter = styled.footer`
         &:hover {
           color: #222;
         }
-				&:hover .label {
-					display: inline-block;
-					margin-left: 5px;
-				}
         .icon {
           margin-top: -2px;
           display: inline-block;
         }
-				.label {
-					display: inline-block;
-					@media (min-width: 600px) {
-						display: none;
-					}
-				}
       }
 
       .social {

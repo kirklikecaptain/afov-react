@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { withRouteData } from 'react-static';
-import { hot } from 'react-hot-loader/root';
-import { Link } from '@reach/router';
 
 class Booking extends Component {
   render() {
@@ -13,4 +11,4 @@ class Booking extends Component {
   }
 }
 
-export default hot(withRouteData(Booking));
+export default withRouteData(Booking);

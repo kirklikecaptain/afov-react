@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { hot } from 'react-hot-loader/root';
 import { withRouteData, Head } from 'react-static';
 import { Link } from '@reach/router';
 import styled from 'styled-components';
@@ -58,7 +57,7 @@ class VideoIndex extends Component {
   }
 }
 
-export default hot(withRouteData(VideoIndex));
+export default withRouteData(VideoIndex);
 
 const StyledHeader = styled.div`
   display: flex;

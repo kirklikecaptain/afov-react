@@ -1,5 +1,5 @@
 import { makePageRoutes } from 'react-static/node'
-import getRouteData from './src/utils/getRouteData'
+import getRouteData from './src/utilities/getRouteData'
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -24,12 +24,6 @@ export default {
 				component: 'src/app/pages/artist-index/ArtistIndex.js',
 				getData: () => ({ allArtists, allVideos })
 			},
-			// {
-			// 	path: 'music',
-			// 	component: 'src/app/pages/music-index/MusicIndex.js',
-			// 	getData: () => {
-			// 		return { music: allVideos.filter(video => video.fields.videoType === 'Song')}}
-			// },
 			...makePageRoutes({
 				items: musicVideos,
 				pageSize: 24,

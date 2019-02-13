@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withRouteData, Head } from 'react-static';
-import { hot } from 'react-hot-loader/root';
 import styled from 'styled-components';
 import Markdown from 'react-markdown';
 import GridContainer from '../../components/GridContainer';
@@ -40,7 +39,7 @@ class ArtistPage extends Component {
   }
 }
 
-export default hot(withRouteData(ArtistPage));
+export default withRouteData(ArtistPage);
 
 const StyledInfo = styled.div`
   display: flex;

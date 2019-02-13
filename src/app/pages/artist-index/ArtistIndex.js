@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withRouteData, Head } from 'react-static';
-import { hot } from 'react-hot-loader/root';
 import GridContainer from '../../components/GridContainer';
 import ArtistCard from '../../components/ArtistCard';
 
@@ -31,4 +30,4 @@ class ArtistIndex extends Component {
   }
 }
 
-export default hot(withRouteData(ArtistIndex));
+export default withRouteData(ArtistIndex);

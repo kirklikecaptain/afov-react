@@ -1,6 +1,5 @@
 import React from 'react';
 import { withRouteData } from 'react-static';
-import { hot } from 'react-hot-loader/root';
 import VideoCard from '../../components/VideoCard';
 import GridContainer from '../../components/GridContainer';
 import VideoHero from '../../components/VideoHero';
@@ -44,4 +43,4 @@ class HomePage extends React.Component {
   }
 }
 
-export default hot(withRouteData(HomePage));
+export default withRouteData(HomePage);
