@@ -28,14 +28,12 @@ const StyledCard = styled(Link)`
   display: block;
   text-decoration: none;
   color: #333;
-  border-radius: 0px;
+  border-radius: 4px;
   overflow: hidden;
   transition: all 0.2s ease;
-
-  &:hover .header,
-  &:hover p {
-    filter: saturate(100%);
-  }
+	&:hover img {
+		transform: scale(1.05);
+	}
 
   .header {
     position: relative;
@@ -44,7 +42,6 @@ const StyledCard = styled(Link)`
     background-color: ${props => (props.color ? props.color : '#333')};
     background-image: url(${bg});
     background-repeat: repeat;
-    filter: saturate(20%);
     z-index: -100;
   }
 
@@ -56,19 +53,18 @@ const StyledCard = styled(Link)`
     border-radius: 50%;
     border: 7px white solid;
     background: white;
-    transition: border 0.2s ease;
+    transition: transform 0.2s ease;
   }
 
   h2 {
-    margin: 20px auto 15px auto;
+    margin: 20px auto 0px auto;
   }
+
   p {
-    color: white;
-    background: ${props => (props.color ? props.color : '#333')};
+    color: ${props => (props.color ? props.color : '#333')};
     margin: 0px auto 20px auto;
     display: inline-block;
     padding: 5px 10px;
     border-radius: 5px;
-    filter: saturate(20%);
   }
 `;

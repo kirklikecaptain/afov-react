@@ -18,7 +18,7 @@ class InterviewIndex extends Component {
                 key={video.sys.id}
                 songTitle={video.fields.title}
                 artistName={video.fields.artist.fields.artistName}
-                postDate={video.fields.uploadDate}
+                uploadDate={video.fields.uploadDate}
                 thumbnail={video.fields.thumbnail.fields.file.url}
                 artistPhoto={video.fields.artist.fields.photo.fields.file.url}
                 color={video.fields.artist.fields.color}

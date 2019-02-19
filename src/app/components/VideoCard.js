@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import moment from 'moment'
 import { Link } from '@reach/router';
 
 class VideoCard extends Component {
   render() {
-    const { songTitle, artistName, thumbnail, artistPhoto, color, videoUrl } = this.props;
+    const { songTitle, artistName, thumbnail, artistPhoto, color, videoUrl, uploadDate } = this.props;
     return (
       <StyledCard to={videoUrl} color={color} thumbnail={thumbnail} className='card'>
         <div className='thumb-box'>
           <img src={thumbnail + '?w=400'} className='thumb' alt='' />
           <div className='overlay safari_only' />
+					<div className='date'>{moment(uploadDate).fromNow()}</div>
         </div>
         <div className='card-text'>
           <h2>{songTitle}</h2>
@@ -37,6 +39,9 @@ const StyledCard = styled(Link)`
   &:hover h2 {
     color: ${props => (props.color ? props.color : '#333')};
   }
+	&:hover .date {
+		right: 20px;
+	}
 
   &:hover {
     .overlay {
@@ -70,6 +75,18 @@ const StyledCard = styled(Link)`
     mix-blend-mode: color;
     transition: 0.25s all ease;
   }
+
+	.date {
+		position: absolute;
+		bottom: 20px;
+		right: -400px;
+		font-size: 12px;
+		color: white;
+		background: ${props => (props.color ? props.color : '#333')};
+		padding: 5px 10px;
+		border-radius: 4px;
+		transition: all .2s ease;
+	}
 
   @media not all and (min-resolution: 0.001dpcm) {
     .overlay {

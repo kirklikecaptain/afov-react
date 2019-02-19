@@ -87,22 +87,22 @@ export default {
 					]
 				}
 			}),
-			{
-				path: 'about',
-				component: 'src/app/pages/about/About.js'
-			},
-			{
-				path: 'genres',
-				component: 'src/app/pages/genre-index/GenreIndex.js'
-			},
-			{
-				path: 'blog',
-				component: 'src/app/pages/blog-index/BlogIndex.js'
-			},
-			{
-				path: 'booking',
-				component: 'src/app/pages/booking/Booking.js'
-			},
+			// {
+			// 	path: 'about',
+			// 	component: 'src/app/pages/about/About.js'
+			// },
+			// {
+			// 	path: 'genres',
+			// 	component: 'src/app/pages/genre-index/GenreIndex.js'
+			// },
+			// {
+			// 	path: 'blog',
+			// 	component: 'src/app/pages/blog-index/BlogIndex.js'
+			// },
+			// {
+			// 	path: 'booking',
+			// 	component: 'src/app/pages/booking/Booking.js'
+			// },
 			{
 				path: '404',
 				component: 'src/app/pages/404/404.js'

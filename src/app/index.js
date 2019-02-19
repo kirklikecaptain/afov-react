@@ -50,6 +50,10 @@ const StyledContainer = styled.div`
     font-weight: normal;
   }
 
+	p {
+		line-height: 1.6;
+	}
+
   .slab {
     font-family: 'Roboto Slab', serif;
   }

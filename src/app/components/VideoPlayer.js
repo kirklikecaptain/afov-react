@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Head, withSiteData } from 'react-static';
+import { Head } from 'react-static';
 import { Link } from '@reach/router';
 import Youtube from 'react-youtube';
 import { MdPlayCircleFilled } from 'react-icons/md';
+import ReactMarkdown from 'react-markdown'
+import moment from 'moment'
 import VideoStats from './VideoStats';
 
 class VideoPlayer extends Component {
@@ -17,7 +19,7 @@ class VideoPlayer extends Component {
   };
 
   render() {
-    const { title, artist, videoId, uploadDate, thumbnail } = this.props.video.fields;
+    const { title, artist, videoId, uploadDate, longDescription, thumbnail } = this.props.video.fields;
     const options = {
       // host: 'https://www.youtube.com',
       playerVars: {
@@ -53,11 +55,13 @@ class VideoPlayer extends Component {
               <img className='avatar' src={artist.fields.photo.fields.file.url + '?w=60'} alt='' /> <h2 className='slab no-top'>{artist.fields.artistName}</h2>
             </div>
           </Link>
-          <p>Venue</p>
-          <VideoStats videoId={videoId} />
-          <p>Video Long Description</p>
-          <p>Artist Long Description</p>
-          <p>Contributors</p>
+					<VideoStats videoId={videoId} />
+					<p>Posted {moment(uploadDate).fromNow()}</p>
+					<div>
+						<ReactMarkdown source={longDescription} />
+					</div>
+					<h5 className='slab'>VENUE</h5>
+          <h5 className='slab'>CONTRIBUTORS</h5>
           {/* <div className='subscribe'>
             <div className='g-ytsubscribe' data-channel='afistfulofvinyl' data-layout='full' data-count='default' />
           </div> */}

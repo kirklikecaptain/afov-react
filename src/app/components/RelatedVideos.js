@@ -12,7 +12,7 @@ class RelatedVideos extends Component {
             <VideoCard
               key={video.sys.id}
               songTitle={video.fields.title}
-              postDate={video.fields.uploadDate}
+              uploadDate={video.fields.uploadDate}
               thumbnail={video.fields.thumbnail.fields.file.url}
               color={video.fields.artist.fields.color}
               videoUrl={`/${video.fields.artist.fields.slug}/${video.fields.slug}`}

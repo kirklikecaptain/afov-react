@@ -57,7 +57,7 @@ class Nav extends Component {
               </span>
               Artists
             </Link>
-            <Link getProps={isActive} onClick={this.closeNav} to='/booking'>
+            {/* <Link getProps={isActive} onClick={this.closeNav} to='/booking'>
               <span className='icon'>
                 <IoMdMail />
               </span>
@@ -68,7 +68,7 @@ class Nav extends Component {
                 <IoMdHeart />
               </span>
               About
-            </Link>
+            </Link> */}
           </div>
         </nav>
       </StyledNav>
@@ -140,7 +140,7 @@ const StyledNav = styled.header`
       top: 100%;
       left: 0;
       right: 0;
-      background: #111;
+      background: #222;
       z-index: 1000;
       a {
         display: flex;
@@ -148,10 +148,10 @@ const StyledNav = styled.header`
         padding: 25px;
         text-decoration: none;
         &:hover {
-          background: #222;
+          background: #333;
         }
         &:active {
-          background: #111;
+          background: #222;
           color: white;
         }
 
@@ -198,6 +198,9 @@ const StyledNav = styled.header`
         padding: 0px 20px;
         display: flex;
         align-items: center;
+				&:hover {
+					background: #444;
+				}
       }
 
       .active {
@@ -220,7 +223,7 @@ const StyledNav = styled.header`
   @media (min-width: 1400px) {
     overflow-y: scroll;
     overflow-x: hidden;
-    background: #111;
+    background: #222;
     position: fixed;
     top: 0;
     left: 0;
@@ -264,7 +267,7 @@ const StyledNav = styled.header`
       }
 
       .active {
-        background: #292929;
+        background: #333;
         .icon {
           color: white;
         }
