@@ -33,7 +33,7 @@ class VideoHero extends Component {
           opts={{
             width: '100%',
             height: '500',
-						host: 'www.youtube.com',
+						host: 'https://www.youtube.com',
             playerVars: {
               // https://developers.google.com/youtube/player_parameters
               version: 3,
@@ -49,8 +49,8 @@ class VideoHero extends Component {
               showinfo: 0,
               mute: 1,
               enablejsapi: 1,
-							// origin: 'http://localhost:3000/',
-              origin: 'www.afistfulofvinyl.com/'
+              origin: 'www.afistfulofvinyl.com/',
+							widget_referrer: 'https://www.afistfulofvinyl.com'
               // widget_referrer: "https://adoring-fermat-3d4eac.netlify.com"
             }
           }}

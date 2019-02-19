@@ -21,7 +21,7 @@ class VideoPlayer extends Component {
   render() {
     const { title, artist, videoId, uploadDate, longDescription, thumbnail } = this.props.video.fields;
     const options = {
-      host: 'www.youtube.com',
+      host: 'https://www.youtube.com',
       playerVars: {
         modestbranding: 1,
         rel: 0,
@@ -29,8 +29,8 @@ class VideoPlayer extends Component {
         color: 'white',
         enablejsapi: 1,
         cc_load_policy: 0,
-        origin: 'www.afistfulofvinyl.com/'
-        // widget_referrer: "https://adoring-fermat-3d4eac.netlify.com"
+				origin: 'https://www.afistfulofvinyl.com',
+				widget_referrer: 'https://www.afistfulofvinyl.com'
         // more options here - https://developers.google.com/youtube/player_parameters
       }
     };
