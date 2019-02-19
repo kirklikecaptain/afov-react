@@ -21,7 +21,7 @@ class VideoPlayer extends Component {
   render() {
     const { title, artist, videoId, uploadDate, longDescription, thumbnail } = this.props.video.fields;
     const options = {
-      host: 'https://www.youtube.com',
+      host: 'https://youtube.com',
       playerVars: {
         modestbranding: 1,
         rel: 0,

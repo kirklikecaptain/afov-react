@@ -33,7 +33,7 @@ class VideoHero extends Component {
           opts={{
             width: '100%',
             height: '500',
-						host: 'https://www.youtube.com',
+						host: 'https://youtube.com',
             playerVars: {
               // https://developers.google.com/youtube/player_parameters
               version: 3,
