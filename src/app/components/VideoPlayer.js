@@ -29,7 +29,7 @@ class VideoPlayer extends Component {
         color: 'white',
         enablejsapi: 1,
         cc_load_policy: 0,
-        origin: 'https://adoring-fermat-3d4eac.netlify.com'
+        origin: 'http://www.afistfulofvinyl.com/'
         // widget_referrer: "https://adoring-fermat-3d4eac.netlify.com"
         // more options here - https://developers.google.com/youtube/player_parameters
       }

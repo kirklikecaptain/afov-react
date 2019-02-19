@@ -49,7 +49,7 @@ class VideoHero extends Component {
               mute: 1,
               enablejsapi: 1,
 							// origin: 'http://localhost:3000/',
-              origin: 'https://*.netlify.com'
+              origin: 'http://www.afistfulofvinyl.com/'
               // widget_referrer: "https://adoring-fermat-3d4eac.netlify.com"
             }
           }}

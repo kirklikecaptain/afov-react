@@ -5,7 +5,7 @@ dotenv.config();
 
 
 export default {
-  siteRoot: 'https://adoring-fermat-3d4eac.netlify.com/',
+  siteRoot: 'http://www.afistfulofvinyl.com/',
   getSiteData: () => ({
     title: 'A Fistful of Vinyl',
 	}),
