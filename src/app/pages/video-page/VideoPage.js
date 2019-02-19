@@ -12,7 +12,7 @@ class VideoPage extends Component {
       <>
         <Head>
           <title>
-            {video.fields.title} | {video.fields.artist.fields.artistName} | AFoV
+            {video.fields.title} | {video.fields.artist.fields.artistName} | A Fistful of Vinyl
           </title>
         </Head>
         <StyledLayout>

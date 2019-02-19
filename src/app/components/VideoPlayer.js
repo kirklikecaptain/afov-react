@@ -21,7 +21,7 @@ class VideoPlayer extends Component {
   render() {
     const { title, artist, videoId, uploadDate, longDescription, thumbnail } = this.props.video.fields;
     const options = {
-      // host: 'https://www.youtube.com',
+      host: 'https://www.youtube.com',
       playerVars: {
         modestbranding: 1,
         rel: 0,
@@ -37,7 +37,7 @@ class VideoPlayer extends Component {
 
     return (
       <StyledVideoPlayer color={artist.fields.color}>
-        <Head>{/* <script src='https://apis.google.com/js/platform.js' /> */}</Head>
+        <Head><script src='https://apis.google.com/js/platform.js' /></Head>
         {this.state.isPlaying ? (
           <Youtube videoId={videoId} opts={options} className='video-frame' containerClassName='video-container' />
         ) : (
@@ -62,9 +62,9 @@ class VideoPlayer extends Component {
 					</div>
 					<h5 className='slab'>VENUE</h5>
           <h5 className='slab'>CONTRIBUTORS</h5>
-          {/* <div className='subscribe'>
+          <div className='subscribe'>
             <div className='g-ytsubscribe' data-channel='afistfulofvinyl' data-layout='full' data-count='default' />
-          </div> */}
+          </div>
         </div>
       </StyledVideoPlayer>
     );
