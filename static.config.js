@@ -5,7 +5,7 @@ dotenv.config();
 
 
 export default {
-  siteRoot: 'http://www.afistfulofvinyl.com/',
+  siteRoot: 'https://www.afistfulofvinyl.com/',
   getSiteData: () => ({
     title: 'A Fistful of Vinyl',
 	}),

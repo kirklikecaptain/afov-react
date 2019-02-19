@@ -35,7 +35,7 @@ class Footer extends Component {
           </div>
           <div className='col'>
 					<h5 className='slab no-top'>MORE STUFF</h5>
-            <a href='#'>Links to places here</a>
+            <a href='#'>What else should we put here?</a>
           </div>
         </GridContainer>
       </StyledFooter>
