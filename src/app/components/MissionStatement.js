@@ -23,7 +23,7 @@ const StyledSection = styled.div`
   h1 {
     font-size: 1em;
     margin: 0 auto;
-    max-width: 25em;
+    max-width: 50em;
     line-height: 1.5em;
     @media (min-width: 800px) {
       font-size: 1.7em;
