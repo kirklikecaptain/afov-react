@@ -7,7 +7,7 @@ import 'sanitize.css';
 import Footer from './layout/footer/Footer';
 import Nav from './layout/nav/Nav';
 
-// Asynchronously load Open Sans font.
+// Asynchronously load Roboto font.
 // Once font is loaded, the `wf-active` class is applied on the html element - See global-style.css
 // make sure this code is only executed in-browser via if statement, otherwise it breaks during build
 
@@ -17,7 +17,7 @@ if (typeof window !== 'undefined') {
     google: {
       families: ['Roboto Slab: 400, 700', 'Roboto: 400']
     }
-  });
+	});
 }
 
 function App(props) {
@@ -26,6 +26,7 @@ function App(props) {
       <Head>
         <title>{props.title}</title>
         <link rel='icon' href='/favicon.ico' type='image/x-icon' />
+				<meta name="google-site-verification" content="VtfZPUmMgU_ym2y3tjmbWyTnup9oFJSPh75fi9MhlTQ" />
       </Head>
       <StyledContainer>
         <Nav />
