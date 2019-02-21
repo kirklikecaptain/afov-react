@@ -1,2 +1,5 @@
 /*
   X-Frame-Options: allow-from https://www.youtube.com/
+
+# Redirect default Netlify subdomain to primary domain
+https://afistfulofvinyl.netlify.com/* https://www.afistfulofvinyl.com/:splat 301!
