@@ -9,8 +9,8 @@ class ArtistPage extends Component {
 	componentDidMount() {
 		window.dataLayer = window.dataLayer || [];
 		window.dataLayer.push({
-		'event': 'Pageview',
-		'url': window.location.pathname
+		'event': 'Page View',
+		'Page Path': window.location.pathname
 		});
 	}
   render() {
