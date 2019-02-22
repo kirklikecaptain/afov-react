@@ -6,13 +6,7 @@ import GridContainer from '../../components/GridContainer';
 import VideoCard from '../../components/VideoCard';
 
 class ArtistPage extends Component {
-	componentDidMount() {
-		window.dataLayer = window.dataLayer || [];
-		window.dataLayer.push({
-		'event': 'Page View',
-		'Page Path': window.location.pathname
-		});
-	}
+
   render() {
     const { videos, artist } = this.props;
     return (

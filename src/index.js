@@ -11,7 +11,8 @@ export default App;
 // Render your app
 if (typeof document !== 'undefined') {
   const tagManagerArgs = {
-    gtmId: 'GTM-K7XWHDW'
+		gtmId: 'GTM-K7XWHDW',
+		dataLayerName: 'PageDataLayer'
   };
 
   TagManager.initialize(tagManagerArgs);
