@@ -4,8 +4,14 @@ import { Link } from '@reach/router';
 import styled from 'styled-components';
 import GridContainer from '../../components/GridContainer';
 import VideoCard from '../../components/VideoCard';
+import {trackPageView} from '../../../utilities/analytics'
 
 class VideoIndex extends Component {
+
+	componentDidMount() {
+		trackPageView()
+	}
+
   printPages() {
     let links = [];
     for (let i = 1; i < this.props.totalPages + 1; i++) {

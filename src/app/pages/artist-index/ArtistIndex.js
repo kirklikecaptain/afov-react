@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import { withRouteData, Head } from 'react-static';
 import GridContainer from '../../components/GridContainer';
 import ArtistCard from '../../components/ArtistCard';
+import {trackPageView} from '../../../utilities/analytics'
 
 class ArtistIndex extends Component {
+	componentDidMount() {
+		trackPageView()
+	}
   render() {
     return (
       <>

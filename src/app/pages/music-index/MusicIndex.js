@@ -4,8 +4,14 @@ import styled from 'styled-components'
 import {Link} from '@reach/router'
 import GridContainer from '../../components/GridContainer';
 import VideoCard from '../../components/VideoCard';
+import {trackPageView} from '../../../utilities/analytics'
+
 
 class MusicIndex extends Component {
+	componentDidMount() {
+		trackPageView()
+	}
+
 	printPages() {
     let links = [];
     for (let i = 1; i < this.props.totalPages + 1; i++) {

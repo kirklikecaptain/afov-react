@@ -2,8 +2,12 @@ import React, { Component } from 'react';
 import { withRouteData, Head } from 'react-static';
 import VideoCard from '../../components/VideoCard';
 import GridContainer from '../../components/GridContainer';
+import {trackPageView} from '../../../utilities/analytics'
 
 class InterviewIndex extends Component {
+	componentDidMount() {
+		trackPageView()
+	}
   render() {
     return (
       <>

@@ -4,8 +4,12 @@ import styled from 'styled-components';
 import Markdown from 'react-markdown';
 import GridContainer from '../../components/GridContainer';
 import VideoCard from '../../components/VideoCard';
+import {trackPageView} from '../../../utilities/analytics'
 
 class ArtistPage extends Component {
+	componentDidMount() {
+		trackPageView()
+	}
 
   render() {
     const { videos, artist } = this.props;

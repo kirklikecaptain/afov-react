@@ -4,8 +4,13 @@ import VideoCard from '../../components/VideoCard';
 import GridContainer from '../../components/GridContainer';
 import VideoHero from '../../components/VideoHero';
 import MissionStatement from '../../components/MissionStatement';
+import {trackPageView} from '../../../utilities/analytics'
 
 class HomePage extends React.Component {
+	componentDidMount() {
+		trackPageView()
+	}
+
   render() {
     const heroVideo = this.props.recentVideos.slice(0, 1)[0];
     const moreVideos = this.props.recentVideos.slice(1, 13);

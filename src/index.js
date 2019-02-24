@@ -1,21 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TagManager from 'react-gtm-module';
 
 // Your top level component
-import App from './app';
+import App from './app/App';
+import ReactGA from 'react-ga';
 
 // Export your top level component as JSX (for static rendering)
 export default App;
 
 // Render your app
 if (typeof document !== 'undefined') {
-  const tagManagerArgs = {
-		gtmId: 'GTM-K7XWHDW',
-		dataLayerName: 'PageDataLayer'
-  };
 
-  TagManager.initialize(tagManagerArgs);
+	ReactGA.initialize('UA-117674715-1');
+
 
   const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate || ReactDOM.render;
 
@@ -28,6 +25,6 @@ if (typeof document !== 'undefined') {
 
   // Hot Module Replacement
   if (module.hot) {
-    module.hot.accept('./app', () => render(require('./app').default));
+    module.hot.accept('./app/App', () => render(require('./app/App').default));
   }
 }

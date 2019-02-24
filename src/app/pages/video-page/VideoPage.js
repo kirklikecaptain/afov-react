@@ -4,8 +4,12 @@ import { withRouteData, Head } from 'react-static';
 import styled from 'styled-components';
 import VideoPlayer from '../../components/VideoPlayer';
 import RelatedVideos from '../../components/RelatedVideos';
+import {trackPageView} from '../../../utilities/analytics'
 
 class VideoPage extends Component {
+	componentDidMount() {
+		trackPageView()
+	}
   render() {
     const { video, otherVideos } = this.props;
     return (
