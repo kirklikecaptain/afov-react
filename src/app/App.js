@@ -20,11 +20,12 @@ if (typeof window !== 'undefined') {
 	});
 }
 
-function App(props) {
+const App = props => {
+	const { title } = props
   return (
     <Root>
       <Head>
-        <title>{props.title}</title>
+        <title>{title}</title>
         <link rel='icon' href='/favicon.ico' type='image/x-icon' />
 				<meta name="google-site-verification" content="VtfZPUmMgU_ym2y3tjmbWyTnup9oFJSPh75fi9MhlTQ" />
       </Head>

@@ -9,17 +9,9 @@ import moment from 'moment'
 import VideoStats from './VideoStats';
 
 class VideoPlayer extends Component {
-  state = {
-    isPlaying: false
-  };
-
-  playVideo = e => {
-    e.preventDefault();
-    this.setState({ isPlaying: true });
-  };
 
   render() {
-    const { title, artist, videoId, uploadDate, longDescription, thumbnail } = this.props.video.fields;
+    const { title, artist, videoId, uploadDate, longDescription } = this.props.video.fields;
     const options = {
       host: 'https://www.youtube.com',
       playerVars: {
@@ -30,7 +22,6 @@ class VideoPlayer extends Component {
         enablejsapi: 1,
         cc_load_policy: 0,
 				origin: 'https://www.afistfulofvinyl.com',
-				widget_referrer: 'https://www.afistfulofvinyl.com'
         // more options here - https://developers.google.com/youtube/player_parameters
       }
     };
@@ -38,16 +29,7 @@ class VideoPlayer extends Component {
     return (
       <StyledVideoPlayer color={artist.fields.color}>
         <Head><script src='https://apis.google.com/js/platform.js' /></Head>
-        {this.state.isPlaying ? (
-          <Youtube videoId={videoId} opts={options} className='video-frame' containerClassName='video-container' />
-        ) : (
-          <div className='thumb-box'>
-            <img className='thumbnail' src={thumbnail.fields.file.url} alt='' />
-            <button onClick={e => this.playVideo(e)} className='play-button'>
-              <MdPlayCircleFilled />
-            </button>
-          </div>
-        )}
+				<Youtube videoId={videoId} opts={options} className='video-frame' containerClassName='video-container' />
         <div className='video-info'>
           <h1>{title}</h1>
           <Link to={`/${artist.fields.slug}`}>

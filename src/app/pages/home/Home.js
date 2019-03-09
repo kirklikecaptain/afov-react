@@ -3,6 +3,7 @@ import { withRouteData } from 'react-static';
 import VideoCard from '../../components/VideoCard';
 import GridContainer from '../../components/GridContainer';
 import VideoHero from '../../components/VideoHero';
+import HomeHero from '../../components/HomeHero'
 import MissionStatement from '../../components/MissionStatement';
 import {trackPageView} from '../../../utilities/analytics'
 
@@ -17,14 +18,7 @@ class HomePage extends React.Component {
 
     return (
       <>
-        <VideoHero
-          bandName={heroVideo.fields.artist.fields.artistName}
-          songTitle={heroVideo.fields.title}
-          color={heroVideo.fields.artist.fields.color}
-          path={`/${heroVideo.fields.artist.fields.slug}/${heroVideo.fields.slug}`}
-          videoId={heroVideo.fields.videoId}
-          videoType={heroVideo.fields.videoType}
-        />
+				<HomeHero heroVideo={heroVideo}/>
         <MissionStatement />
         <div className='container'>
           <h2 className='no-top'>Recent Videos</h2>
