@@ -30,10 +30,14 @@ class Footer extends Component {
 						</div>
           </div>
           <div className='col'>
-					<h5 className='slab no-top'>NEWSLETTER</h5>
+						<h5 className='slab no-top'>NEWSLETTER</h5>
 						<SubscribeForm />
           </div>
           <div className='col'>
+						<h5 className='slab no-top'>SUBSCRIBE</h5>
+						<div className='subscribe'>
+							<div className='g-ytsubscribe' data-channel='afistfulofvinyl' data-layout='full' data-count='default' />
+						</div>
           </div>
         </GridContainer>
       </StyledFooter>

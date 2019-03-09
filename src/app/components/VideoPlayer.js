@@ -51,9 +51,6 @@ class VideoPlayer extends Component {
 					</div>
 					<h5 className='slab'>VENUE</h5>
           <h5 className='slab'>CONTRIBUTORS</h5>
-          <div className='subscribe'>
-            <div className='g-ytsubscribe' data-channel='afistfulofvinyl' data-layout='full' data-count='default' />
-          </div>
         </div>
       </StyledVideoPlayer>
     );

@@ -8,21 +8,23 @@ import Fade from 'react-reveal/Fade';
 const HomeHero = (props) => {
 	return (
 		<StyledHero {...props}>
-			<Fade ssrReveal duration={400} distance='50px'>
+			<Fade ssrReveal duration={700}>
 				<div className='image'>
 					<img src={props.heroVideo.fields.thumbnail.fields.file.url + '?w=1000'} alt=""/>
 					<div className="mobile-overlay"></div>
 					<Link className='mobile-button' to={`/${props.heroVideo.fields.artist.fields.slug}/${props.heroVideo.fields.slug}`}><MdPlayArrow /></Link>
 				</div>
 			</Fade>
-			<Fade ssrReveal left cascade duration={400} delay={300} distance='100px'>
+			<Fade ssrReveal left duration={500} delay={300} distance='100px'>
 				<div className="text-content">
 					<div className="badge">NEW</div>
 					<h2>{props.heroVideo.fields.title}</h2>
 					<h2 className='slab artist'>{props.heroVideo.fields.artist.fields.artistName}</h2>
-					<Link className='full-button' to={`/${props.heroVideo.fields.artist.fields.slug}/${props.heroVideo.fields.slug}`}>
-						<MdPlayArrow className='icon' /> Watch Now
-					</Link>
+					<div>
+						<Link className='full-button' to={`/${props.heroVideo.fields.artist.fields.slug}/${props.heroVideo.fields.slug}`}>
+							<MdPlayArrow className='icon' /> Watch Now
+						</Link>
+					</div>
 				</div>
 			</Fade>
 			<div className="overlay">
@@ -84,7 +86,9 @@ const StyledHero = styled.div`
 			background: white;
 			text-decoration: none;
 			color: #333;
+			transition: .2s ease-in-out transform, .2s ease-in-out background;
 			&:hover {
+				transform: translateY(-2px);
 				background: ${props => props.heroVideo.fields.artist.fields.color ? lighten(.4, props.heroVideo.fields.artist.fields.color) : "#333"};
 				.icon {
 					color:  ${props => props.heroVideo.fields.artist.fields.color ? darken(.3, props.heroVideo.fields.artist.fields.color) : "#333"};
