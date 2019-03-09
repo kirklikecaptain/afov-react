@@ -2,24 +2,29 @@ import React from 'react';
 import styled from 'styled-components'
 import {Link} from '@reach/router'
 import {MdPlayArrow} from 'react-icons/md'
-import {lighten,darken, complement} from 'polished'
+import {lighten,darken} from 'polished'
+import Fade from 'react-reveal/Fade';
 
 const HomeHero = (props) => {
 	return (
 		<StyledHero {...props}>
-			<div className='image'>
-				<img src={props.heroVideo.fields.thumbnail.fields.file.url + '?w=1000'} alt=""/>
-				<div className="mobile-overlay"></div>
-				<Link className='mobile-button' to={`/${props.heroVideo.fields.artist.fields.slug}/${props.heroVideo.fields.slug}`}><MdPlayArrow /></Link>
-			</div>
-			<div className="text-content">
-				<div className="badge">NEW</div>
-				<h2>{props.heroVideo.fields.title}</h2>
-				<h2 className='slab artist'>{props.heroVideo.fields.artist.fields.artistName}</h2>
-				<Link className='full-button' to={`/${props.heroVideo.fields.artist.fields.slug}/${props.heroVideo.fields.slug}`}>
-					<MdPlayArrow className='icon' /> Watch Now
-				</Link>
-			</div>
+			<Fade ssrReveal duration={400} distance='50px'>
+				<div className='image'>
+					<img src={props.heroVideo.fields.thumbnail.fields.file.url + '?w=1000'} alt=""/>
+					<div className="mobile-overlay"></div>
+					<Link className='mobile-button' to={`/${props.heroVideo.fields.artist.fields.slug}/${props.heroVideo.fields.slug}`}><MdPlayArrow /></Link>
+				</div>
+			</Fade>
+			<Fade ssrReveal left cascade duration={400} delay={300} distance='100px'>
+				<div className="text-content">
+					<div className="badge">NEW</div>
+					<h2>{props.heroVideo.fields.title}</h2>
+					<h2 className='slab artist'>{props.heroVideo.fields.artist.fields.artistName}</h2>
+					<Link className='full-button' to={`/${props.heroVideo.fields.artist.fields.slug}/${props.heroVideo.fields.slug}`}>
+						<MdPlayArrow className='icon' /> Watch Now
+					</Link>
+				</div>
+			</Fade>
 			<div className="overlay">
 			</div>
 		</StyledHero>
@@ -30,12 +35,6 @@ export default HomeHero;
 
 
 const StyledHero = styled.div`
-	/* display: grid;
-	background: #666;
-	height: 500px;
-	grid-template-columns: repeat(6, 1fr);
-	grid-template-rows: 200px auto 200px; */
-
 
 	.image {
 		position: relative;
@@ -100,6 +99,9 @@ const StyledHero = styled.div`
 		}
 
 	.text-content {
+		.slab {
+			font-weight: 700;
+		}
 		color: white;
 		padding: 20px;
 		background: ${props => props.heroVideo.fields.artist.fields.color ? props.heroVideo.fields.artist.fields.color : "#333"};
