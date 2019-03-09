@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: http://www.afistfulofvinyl.com/sitemap.xml
