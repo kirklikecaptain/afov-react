@@ -75,28 +75,27 @@ const StyledHero = styled.div`
 	}
 
 	.full-button {
-			display: none;
-			@media (min-width: 600px) {
-				margin-top: 20px;
-				display: inline-block;
-				padding: 10px 20px 10px 15px;
-				border-radius: 3px;
-				background: white;
-				text-decoration: none;
-				color: #333;
-				&:hover {
-					transform: translateY(-2px);
-					background: ${props => props.heroVideo.fields.artist.fields.color ? lighten(.4, props.heroVideo.fields.artist.fields.color) : "#333"};
-					.icon {
-						color:  ${props => props.heroVideo.fields.artist.fields.color ? darken(.3, props.heroVideo.fields.artist.fields.color) : "#333"};
-					}
-				}
+		display: none;
+		@media (min-width: 600px) {
+			margin-top: 20px;
+			display: inline-block;
+			padding: 10px 20px 10px 15px;
+			border-radius: 3px;
+			background: white;
+			text-decoration: none;
+			color: #333;
+			&:hover {
+				background: ${props => props.heroVideo.fields.artist.fields.color ? lighten(.4, props.heroVideo.fields.artist.fields.color) : "#333"};
 				.icon {
-					transform: translateY(-1px);
-					color: ${props => props.heroVideo.fields.artist.fields.color ? props.heroVideo.fields.artist.fields.color : "#333"};
+					color:  ${props => props.heroVideo.fields.artist.fields.color ? darken(.3, props.heroVideo.fields.artist.fields.color) : "#333"};
 				}
 			}
+			.icon {
+				transform: translateY(-1px);
+				color: ${props => props.heroVideo.fields.artist.fields.color ? props.heroVideo.fields.artist.fields.color : "#333"};
+			}
 		}
+	}
 
 	.text-content {
 		.slab {
@@ -121,6 +120,10 @@ const StyledHero = styled.div`
 		h2 {
 			margin: 0;
 		}
+
+		.artist {
+			font-size: 2.3rem;
+		}
 	}
 	.overlay {
 		background: ${props => props.heroVideo.fields.artist.fields.color ? props.heroVideo.fields.artist.fields.color : "#333"};
@@ -142,6 +145,7 @@ const StyledHero = styled.div`
 			z-index: 50;
 		}
 		.text-content {
+			padding-left: 40px;
 			background: transparent;
 			grid-column-start: 1;
 			grid-column-end: 3;
@@ -158,15 +162,21 @@ const StyledHero = styled.div`
 		}
 	}
 
-	@media (min-width: 1400px) {
+	@media (min-width: 1200px) {
 		.text-content {
 			h2 {
 				font-size: 4rem;
 			}
-
 			.artist {
 				font-size: 5rem;
 			}
+		}
+	}
+
+	@media (min-width: 1400px) {
+		padding: 40px;
+		.text-content {
+			padding-left: 50px;
 
 			.full-button {
 				font-size: 1.2rem;
@@ -174,12 +184,3 @@ const StyledHero = styled.div`
 		}
 	}
 `
-
-{/* <VideoHero
-          bandName={heroVideo.fields.artist.fields.artistName}
-          songTitle={heroVideo.fields.title}
-          color={heroVideo.fields.artist.fields.color}
-          path={`/${heroVideo.fields.artist.fields.slug}/${heroVideo.fields.slug}`}
-          videoId={heroVideo.fields.videoId}
-          videoType={heroVideo.fields.videoType}
-        /> */}

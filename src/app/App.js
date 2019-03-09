@@ -28,6 +28,7 @@ const App = props => {
         <title>{title}</title>
         <link rel='icon' href='/favicon.ico' type='image/x-icon' />
 				<meta name="google-site-verification" content="VtfZPUmMgU_ym2y3tjmbWyTnup9oFJSPh75fi9MhlTQ" />
+				<script src="https://apis.google.com/js/platform.js" />
       </Head>
       <StyledContainer>
         <Nav />
