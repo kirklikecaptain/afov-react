@@ -6,9 +6,14 @@ dotenv.config();
 
 export default {
   siteRoot: 'https://www.afistfulofvinyl.com/',
-  getSiteData: () => ({
-    title: 'A Fistful of Vinyl',
-	}),
+  getSiteData: async () => {
+		const { allVideos, allArtists } = await getRouteData()
+		return {
+			title: 'A Fistful of Vinyl',
+			videos: allVideos,
+			artists: allArtists
+		}
+	},
   getRoutes: async () => {
 		const { allArtists, allVideos } = await getRouteData()
 		const totalVideoCount = allVideos.length

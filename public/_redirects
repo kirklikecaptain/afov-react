@@ -1,0 +1,4 @@
+/sessions	/videos
+/sessions/*	/videos
+
+/artist/* /artists

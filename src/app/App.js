@@ -6,6 +6,7 @@ import 'sanitize.css';
 
 import Footer from './layout/footer/Footer';
 import Nav from './layout/nav/Nav';
+import Search from './layout/search/Search';
 
 // Asynchronously load Roboto font.
 // Once font is loaded, the `wf-active` class is applied on the html element - See global-style.css
@@ -33,6 +34,7 @@ const App = props => {
       <StyledContainer>
         <Nav />
         <div className='main-content'>
+					<Search videos={props.videos} artists={props.artists}/>
           <Routes />
           <Footer />
         </div>
@@ -79,6 +81,10 @@ const StyledContainer = styled.div`
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none;
   }
+
+	.main-content {
+		position: relative;
+	}
 
   @media (min-width: 1400px) {
     position: absolute;

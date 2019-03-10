@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from '@reach/router';
-import { IoIosMicrophone, IoMdPeople, IoMdMenu, IoMdTv, IoMdClose, IoMdMusicalNotes, IoMdMail, IoMdHeart } from 'react-icons/io';
+import { IoIosMicrophone, IoMdPeople, IoMdMenu, IoMdTv, IoMdClose, IoMdMusicalNotes, IoMdSearch } from 'react-icons/io';
 import afov from '../../../assets/afov-logo.svg';
 
 const isActive = ({ isCurrent }) => {

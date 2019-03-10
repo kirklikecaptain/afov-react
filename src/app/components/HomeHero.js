@@ -12,7 +12,9 @@ const HomeHero = (props) => {
 				<div className='image'>
 					<img src={props.heroVideo.fields.thumbnail.fields.file.url + '?w=1000'} alt=""/>
 					<div className="mobile-overlay"></div>
-					<Link className='mobile-button' to={`/${props.heroVideo.fields.artist.fields.slug}/${props.heroVideo.fields.slug}`}><MdPlayArrow /></Link>
+					<Fade ssrReveal right duration={500} delay={300} distance='100px'>
+						<Link className='mobile-button' to={`/${props.heroVideo.fields.artist.fields.slug}/${props.heroVideo.fields.slug}`}><MdPlayArrow /></Link>
+					</Fade>
 				</div>
 			</Fade>
 			<Fade ssrReveal left duration={500} delay={300} distance='100px'>
@@ -37,6 +39,7 @@ export default HomeHero;
 
 
 const StyledHero = styled.div`
+	background: ${props => props.heroVideo.fields.artist.fields.color ? props.heroVideo.fields.artist.fields.color : "#333"};
 
 	.image {
 		position: relative;
