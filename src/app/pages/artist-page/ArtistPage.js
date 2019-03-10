@@ -20,7 +20,7 @@ class ArtistPage extends Component {
         </Head>
         <div className='container'>
           <StyledInfo color={artist.fields.color}>
-            <img src={artist.fields.photo.fields.file.url + '?w=180'} alt='' />
+            <img src={artist.fields.photo.fields.file.url + '?w=360'} alt='' />
             <div className='info'>
               <h1 className='slab no-top'>{artist.fields.artistName}</h1>
               <Markdown>{artist.fields.longDescription}</Markdown>
@@ -71,6 +71,7 @@ const StyledInfo = styled.div`
 
   img {
     margin: 0 auto 20px auto;
+		flex-shrink: 0;
 		display: block;
     width: 180px;
     height: 180px;
