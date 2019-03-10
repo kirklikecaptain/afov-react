@@ -68,7 +68,6 @@ export default class Search extends Component {
 const StyledSearch = styled.div`
 	background: white;
 	width: 100%;
-	z-index: 1000;
 	position: relative;
 
 	.search-bar {
@@ -79,6 +78,10 @@ const StyledSearch = styled.div`
 			margin: 20px;
 		}
 		input {
+			font-size: 12px;
+			@media (min-width: 600px) {
+				font-size: 14px;
+			}
 			width: 300px;
 			padding: 10px 0px;
 			border: none;
