@@ -69,21 +69,22 @@ const StyledSearch = styled.div`
 	background: white;
 	width: 100%;
 	position: relative;
+	z-index: 900;
 
 	.search-bar {
 		display: flex;
 		align-items: center;
 		border-bottom: 1px solid #ccc;
 		.search {
-			margin: 20px;
+			margin: 10px;
 		}
 		input {
-			font-size: 12px;
+			font-size: 14px;
 			@media (min-width: 600px) {
 				font-size: 14px;
 			}
 			width: 300px;
-			padding: 10px 0px;
+			padding: 5px 0px;
 			border: none;
 			border-bottom: solid 1px transparent;
 			transition: border .2s ease-in-out;

@@ -142,6 +142,7 @@ const StyledNav = styled.header`
       right: 0;
       background: #222;
       z-index: 1000;
+			padding-bottom: 10px;
       a {
         display: flex;
         align-items: center;
