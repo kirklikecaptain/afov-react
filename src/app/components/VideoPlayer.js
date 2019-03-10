@@ -1,21 +1,11 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Head } from 'react-static';
 import { Link } from '@reach/router';
 import Youtube from 'react-youtube';
-import { MdPlayCircleFilled } from 'react-icons/md';
 import ReactMarkdown from 'react-markdown'
 import moment from 'moment'
 import VideoStats from './VideoStats';
 
-
-let origin = ''
-
-if (process.env.REACT_STATIC_ENV === 'production') {
-	origin = 'https://www.afistfulofvinyl.com'
-} else {
-	origin = 'http://localhost:3000'
-}
 class VideoPlayer extends Component {
 
   render() {
@@ -29,7 +19,7 @@ class VideoPlayer extends Component {
         color: 'white',
         enablejsapi: 1,
         cc_load_policy: 0,
-				origin: origin,
+				origin: 'https://www.afistfulofvinyl.com',
         // more options here - https://developers.google.com/youtube/player_parameters
 			}
     };
@@ -49,8 +39,8 @@ class VideoPlayer extends Component {
 					<div>
 						<ReactMarkdown source={longDescription} />
 					</div>
-					<h5 className='slab'>VENUE</h5>
-          <h5 className='slab'>CONTRIBUTORS</h5>
+					{/* <h5 className='slab'>VENUE</h5>
+          <h5 className='slab'>CONTRIBUTORS</h5> */}
         </div>
       </StyledVideoPlayer>
     );

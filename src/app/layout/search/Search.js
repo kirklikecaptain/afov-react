@@ -77,6 +77,10 @@ const StyledSearch = styled.div`
 		border-bottom: 1px solid #ccc;
 		.search {
 			margin: 10px;
+			@media (min-width: 600px) {
+				margin: 15px;
+			}
+
 		}
 		input {
 			font-size: 14px;
