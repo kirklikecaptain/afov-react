@@ -19,7 +19,7 @@ class VideoPlayer extends Component {
         color: 'white',
         enablejsapi: 1,
         cc_load_policy: 0,
-				origin: 'https://www.afistfulofvinyl.com',
+				origin: 'https://www.afistfulofvinyl.com/',
         // more options here - https://developers.google.com/youtube/player_parameters
 			}
     };
