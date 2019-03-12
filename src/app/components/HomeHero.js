@@ -13,7 +13,7 @@ const HomeHero = (props) => {
 					<img src={props.heroVideo.fields.thumbnail.fields.file.url + '?w=1000'} alt=""/>
 					<div className="mobile-overlay"></div>
 					<Fade ssrReveal right duration={700} delay={300} distance='100px'>
-						<Link className='mobile-button' to={`/${props.heroVideo.fields.artist.fields.slug}/${props.heroVideo.fields.slug}`}><MdPlayArrow /></Link>
+						<Link className='mobile-button' id='hero-button-mobile' to={`/${props.heroVideo.fields.artist.fields.slug}/${props.heroVideo.fields.slug}`}><MdPlayArrow /></Link>
 					</Fade>
 				</div>
 			</Fade>
