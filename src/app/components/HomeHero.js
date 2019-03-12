@@ -23,7 +23,7 @@ const HomeHero = (props) => {
 					<h2>{props.heroVideo.fields.title}</h2>
 					<h2 className='slab artist'>{props.heroVideo.fields.artist.fields.artistName}</h2>
 					<div>
-						<Link className='full-button' to={`/${props.heroVideo.fields.artist.fields.slug}/${props.heroVideo.fields.slug}`}>
+						<Link className='full-button' id='hero-button' to={`/${props.heroVideo.fields.artist.fields.slug}/${props.heroVideo.fields.slug}`}>
 							<MdPlayArrow className='icon' /> Watch Now
 						</Link>
 					</div>
