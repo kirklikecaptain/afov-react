@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Head } from 'react-static';
 import { Link } from '@reach/router';
 import Youtube from 'react-youtube';
 import styled from 'styled-components';
@@ -33,7 +32,7 @@ class VideoHero extends Component {
           opts={{
             width: '100%',
             height: '500',
-						host: 'https://www.youtube.com',
+            host: 'https://www.youtube.com',
             playerVars: {
               // https://developers.google.com/youtube/player_parameters
               version: 3,
@@ -50,7 +49,7 @@ class VideoHero extends Component {
               mute: 1,
               enablejsapi: 1,
               origin: 'https://www.afistfulofvinyl.com/',
-							widget_referrer: 'https://www.afistfulofvinyl.com'
+              widget_referrer: 'https://www.afistfulofvinyl.com'
               // widget_referrer: "https://adoring-fermat-3d4eac.netlify.com"
             }
           }}

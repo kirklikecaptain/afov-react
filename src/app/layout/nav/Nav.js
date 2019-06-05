@@ -142,7 +142,7 @@ const StyledNav = styled.header`
       right: 0;
       background: #222;
       z-index: 1000;
-			padding-bottom: 10px;
+      padding-bottom: 10px;
       a {
         display: flex;
         align-items: center;
@@ -199,9 +199,9 @@ const StyledNav = styled.header`
         padding: 0px 20px;
         display: flex;
         align-items: center;
-				&:hover {
-					background: #444;
-				}
+        &:hover {
+          background: #444;
+        }
       }
 
       .active {

@@ -31,9 +31,9 @@ const StyledCard = styled(Link)`
   border-radius: 4px;
   overflow: hidden;
   transition: all 0.2s ease;
-	&:hover img {
-		transform: scale(1.05);
-	}
+  &:hover img {
+    transform: scale(1.05);
+  }
 
   .header {
     position: relative;

@@ -1,33 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import ReactGA from 'react-ga';
-import TagManager from 'react-gtm-module'
+import { AppContainer } from 'react-hot-loader';
 
 // Your top level component
 import App from './app/App';
-
-
-// Export your top level component as JSX (for static rendering)
 export default App;
 
-// Render your app
+// Render method as defined by React-static spec
+// document check prevents node from running this block
+
 if (typeof document !== 'undefined') {
-
-	ReactGA.initialize('UA-117674715-1');
-	TagManager.initialize({ gtmId: 'GTM-K7XWHDW' })
-
-  const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate || ReactDOM.render;
+  const target = document.getElementById('root');
+  const renderMethod = target.hasChildNodes() ? ReactDOM.hydrate : ReactDOM.render;
 
   const render = Comp => {
-    renderMethod(<Comp />, document.getElementById('root'));
+    renderMethod(
+      <AppContainer>
+        <Comp />
+      </AppContainer>,
+      target
+    );
   };
 
-  // Render!
   render(App);
 
   // Hot Module Replacement
-  if (module.hot) {
-    module.hot.accept('./app/App', () => render(require('./app/App').default));
+  if (module && module.hot) {
+    module.hot.accept('./app/App', () => {
+      render(App);
+    });
   }
 }

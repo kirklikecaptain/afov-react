@@ -1,5 +1,5 @@
-import React from 'react';
-import { Root, Routes, Head, withSiteData } from 'react-static';
+import React, { Suspense } from 'react';
+import { Root, Routes, Head, useSiteData } from 'react-static';
 import styled from 'styled-components';
 
 import 'sanitize.css';
@@ -18,34 +18,40 @@ if (typeof window !== 'undefined') {
     google: {
       families: ['Roboto Slab: 400, 700', 'Roboto: 400']
     }
-	});
+  });
 }
 
-const App = props => {
-	const { title } = props
+const App = () => {
+  // const { videos, artists } = useSiteData();
   return (
     <Root>
       <Head>
-        <title>{title}</title>
+        <title>A Fistful of Vinyl</title>
         <link rel='icon' href='/favicon.ico' type='image/x-icon' />
-				<meta name="google-site-verification" content="VtfZPUmMgU_ym2y3tjmbWyTnup9oFJSPh75fi9MhlTQ" />
-				<script src="https://apis.google.com/js/platform.js" />
+        <meta name='google-site-verification' content='VtfZPUmMgU_ym2y3tjmbWyTnup9oFJSPh75fi9MhlTQ' />
+        <script src='https://apis.google.com/js/platform.js' />
       </Head>
       <StyledContainer>
         <Nav />
         <div className='main-content'>
-					<Search videos={props.videos} artists={props.artists}/>
-          <Routes />
-          <Footer />
+
+            {/* <Search videos={videos} artists={artists} /> */}
+						<Suspense fallback={<em>Loading</em>}>
+            	<Routes />
+						</Suspense>
+            <Footer />
+
         </div>
       </StyledContainer>
     </Root>
   );
-}
+};
 
-export default withSiteData(App);
+export default App;
 
 const StyledContainer = styled.div`
+  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+
   h1,
   h2,
   h3,
@@ -55,9 +61,9 @@ const StyledContainer = styled.div`
     font-weight: normal;
   }
 
-	p {
-		line-height: 1.6;
-	}
+  p {
+    line-height: 1.6;
+  }
 
   .slab {
     font-family: 'Roboto Slab', serif;
@@ -82,9 +88,9 @@ const StyledContainer = styled.div`
     user-select: none;
   }
 
-	.main-content {
-		position: relative;
-	}
+  .main-content {
+    position: relative;
+  }
 
   @media (min-width: 1400px) {
     position: absolute;
