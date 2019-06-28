@@ -1,51 +1,62 @@
-import React from 'react';
-import { Root, Routes, Head, withSiteData } from 'react-static';
+import React, { Suspense } from 'react';
+import { Root, Routes, Head } from 'react-static';
 import styled from 'styled-components';
 
 import 'sanitize.css';
+import 'sanitize.css/typography.css';
+import 'sanitize.css/forms.css';
 
 import Footer from './layout/footer/Footer';
 import Nav from './layout/nav/Nav';
 import Search from './layout/search/Search';
 
-// Asynchronously load Roboto font.
-// Once font is loaded, the `wf-active` class is applied on the html element - See global-style.css
+// Asynchronously load webfonts.
+// Once font is loaded, the `wf-active` class is applied on the html element
 // make sure this code is only executed in-browser via if statement, otherwise it breaks during build
 
 if (typeof window !== 'undefined') {
   const WebFont = require('webfontloader');
   WebFont.load({
     google: {
-      families: ['Roboto Slab: 400, 700', 'Roboto: 400']
+      families: ['Roboto Slab:400,700', 'Roboto:400']
     }
-	});
+  });
 }
 
-const App = props => {
-	const { title } = props
+const App = () => {
   return (
     <Root>
       <Head>
-        <title>{title}</title>
+        <title>A Fistful of Vinyl</title>
         <link rel='icon' href='/favicon.ico' type='image/x-icon' />
-				<meta name="google-site-verification" content="VtfZPUmMgU_ym2y3tjmbWyTnup9oFJSPh75fi9MhlTQ" />
-				<script src="https://apis.google.com/js/platform.js" />
+        <meta
+          name='google-site-verification'
+          content='VtfZPUmMgU_ym2y3tjmbWyTnup9oFJSPh75fi9MhlTQ'
+        />
+        <script src='https://apis.google.com/js/platform.js' />
       </Head>
       <StyledContainer>
         <Nav />
         <div className='main-content'>
-					<Search videos={props.videos} artists={props.artists}/>
-          <Routes />
+          <Suspense fallback={<em>Loading...</em>}>
+            <Search />
+          </Suspense>
+          <Suspense fallback={<em>Loading...</em>}>
+            <Routes />
+          </Suspense>
           <Footer />
         </div>
       </StyledContainer>
     </Root>
   );
-}
+};
 
-export default withSiteData(App);
+export default App;
 
 const StyledContainer = styled.div`
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+    'Helvetica Neue', sans-serif;
+
   h1,
   h2,
   h3,
@@ -55,9 +66,18 @@ const StyledContainer = styled.div`
     font-weight: normal;
   }
 
-	p {
-		line-height: 1.6;
-	}
+  p {
+    line-height: 1.6;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  .wf-active {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans,
+      Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  }
 
   .slab {
     font-family: 'Roboto Slab', serif;
@@ -82,9 +102,9 @@ const StyledContainer = styled.div`
     user-select: none;
   }
 
-	.main-content {
-		position: relative;
-	}
+  .main-content {
+    position: relative;
+  }
 
   @media (min-width: 1400px) {
     position: absolute;

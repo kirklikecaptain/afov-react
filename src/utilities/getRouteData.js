@@ -7,34 +7,6 @@ const client = createClient({
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 });
 
-export default async function getRouteData() {
-  try {
-    // page content queries
-    const allArtists = await getAll('artist', 'fields.artistName');
-    const allVideos = await getAll('video', '-fields.uploadDate');
-    // returns an array of case study objects that will be used
-    // to programmatically build pages using a template component
-
-    // assemble content object
-    const allData = {
-      allArtists,
-      allVideos
-    };
-    // send to static.config.js
-    return allData;
-  } catch (e) {
-    console.error(e);
-  }
-}
-
-async function getOne(modelName, order) {
-  const { items } = await client.getEntries({
-    content_type: modelName,
-    order: order ? order : '-sys.updatedAt'
-  });
-  return items;
-}
-
 async function getAll(modelName, order) {
   const { items } = await client.getEntries({
     content_type: modelName,
@@ -42,4 +14,36 @@ async function getAll(modelName, order) {
     limit: 1000
   });
   return items;
+}
+
+export default async function getRouteData() {
+  const [allArtists, allVideos] = await Promise.all([
+    getAll('artist', 'fields.artistName'),
+    getAll('video', '-fields.uploadDate')
+  ]);
+
+  const trimmedArtistList = allArtists.map(artist => ({
+    id: artist.sys.id,
+    color: artist.fields.color,
+    artistName: artist.fields.artistName,
+    photo: artist.fields.photo.fields.file.url,
+    slug: artist.fields.slug
+  }));
+
+  const trimmedVideoList = allVideos.map(video => ({
+    id: video.sys.id,
+    color: video.fields.artist.fields.color,
+    artistName: video.fields.artist.fields.artistName,
+    title: video.fields.title,
+    artistSlug: video.fields.artist.fields.slug,
+    videoSlug: video.fields.slug,
+    thumbnail: video.fields.thumbnail.fields.file.url
+  }));
+
+  return {
+    allArtists,
+    allVideos,
+    trimmedArtistList,
+    trimmedVideoList
+  };
 }

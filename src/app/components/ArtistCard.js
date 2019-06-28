@@ -1,25 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Link } from '@reach/router';
-import bg from '../../assets/asfalt-light.png';
 
-class ArtistCard extends Component {
-  render() {
-    const { color, path, image, artistName, videoCount } = this.props;
-    return (
-      <StyledCard to={path} color={color}>
-        <div className='header' />
-        <img src={image} alt='' />
-        <div className='info'>
-          <h2 className='slab'>{artistName}</h2>
-          <p>
-            {videoCount} {videoCount === 1 ? 'Video' : 'Videos'}
-          </p>
-        </div>
-      </StyledCard>
-    );
-  }
-}
+const ArtistCard = ({ color, path, image, artistName, videoCount }) => {
+  return (
+    <StyledCard to={path} color={color}>
+      <img src={image} alt={artistName} />
+      <div className='info'>
+        <h2 className='slab'>{artistName}</h2>
+        <p>
+          {videoCount} {videoCount === 1 ? 'Video' : 'Videos'}
+        </p>
+      </div>
+    </StyledCard>
+  );
+};
 
 export default ArtistCard;
 
@@ -28,31 +23,18 @@ const StyledCard = styled(Link)`
   display: block;
   text-decoration: none;
   color: #333;
-  border-radius: 4px;
-  overflow: hidden;
   transition: all 0.2s ease;
-	&:hover img {
-		transform: scale(1.05);
-	}
-
-  .header {
-    position: relative;
-    opacity: 1;
-    height: 120px;
-    background-color: ${props => (props.color ? props.color : '#333')};
-    background-image: url(${bg});
-    background-repeat: repeat;
-    z-index: -100;
+  &:hover img {
+    transform: scale(1.05);
   }
 
   img {
-    margin-top: -100px;
     display: inline-block;
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    border: 7px white solid;
-    background: white;
+    border: 12px solid ${props => (props.color ? props.color : '#333')};
+    background: ${props => (props.color ? props.color : '#333')};
     transition: transform 0.2s ease;
   }
 

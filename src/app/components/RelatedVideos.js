@@ -1,28 +1,26 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import VideoCard from './VideoCard';
 
-class RelatedVideos extends Component {
-  render() {
-    return (
-      <StyledContainer color={this.props.artist.fields.color}>
-        <h3 className='slab'>More by {this.props.artist.fields.artistName}</h3>
-        <div className='grid'>
-          {this.props.relatedVideos.map(video => (
-            <VideoCard
-              key={video.sys.id}
-              songTitle={video.fields.title}
-              uploadDate={video.fields.uploadDate}
-              thumbnail={video.fields.thumbnail.fields.file.url}
-              color={video.fields.artist.fields.color}
-              videoUrl={`/${video.fields.artist.fields.slug}/${video.fields.slug}`}
-            />
-          ))}
-        </div>
-      </StyledContainer>
-    );
-  }
-}
+const RelatedVideos = props => {
+  return (
+    <StyledContainer color={props.artist.fields.color}>
+      <h3 className='slab'>More by {props.artist.fields.artistName}</h3>
+      <div className='grid'>
+        {props.relatedVideos.map(video => (
+          <VideoCard
+            key={video.sys.id}
+            songTitle={video.fields.title}
+            uploadDate={video.fields.uploadDate}
+            thumbnail={video.fields.thumbnail.fields.file.url}
+            color={video.fields.artist.fields.color}
+            videoUrl={`/${video.fields.artist.fields.slug}/${video.fields.slug}`}
+          />
+        ))}
+      </div>
+    </StyledContainer>
+  );
+};
 
 export default RelatedVideos;
 

@@ -1,120 +1,107 @@
-import { makePageRoutes } from 'react-static/node'
-import getRouteData from './src/utilities/getRouteData'
+import { makePageRoutes } from 'react-static/node';
+import getRouteData from './src/utilities/getRouteData';
 import dotenv from 'dotenv';
 dotenv.config();
 
+const routeData = getRouteData();
 
 export default {
   siteRoot: 'https://www.afistfulofvinyl.com/',
   getSiteData: async () => {
-		const { allVideos, allArtists } = await getRouteData()
-		return {
-			title: 'A Fistful of Vinyl',
-			videos: allVideos,
-			artists: allArtists
-		}
-	},
+    const { trimmedArtistList, trimmedVideoList } = await routeData;
+    return {
+      videos: trimmedVideoList,
+      artists: trimmedArtistList
+    };
+  },
   getRoutes: async () => {
-		const { allArtists, allVideos } = await getRouteData()
-		const totalVideoCount = allVideos.length
-		const musicVideos = allVideos.filter(video => video.fields.videoType === 'Song')
+    const { allVideos, allArtists } = await routeData;
+    const totalVideoCount = allVideos.length;
+    const musicVideos = allVideos.filter(video => video.fields.videoType === 'Song');
+    const interviews = allVideos.filter(video => video.fields.videoType === 'Interview');
     return [
       {
         path: '/',
-        component: 'src/app/pages/home/Home.js',
+        template: 'src/app/pages/home/Home.js',
         getData: () => ({ recentVideos: allVideos.slice(0, 13) })
-			},
-			{
-				path: 'artists',
-				component: 'src/app/pages/artist-index/ArtistIndex.js',
-				getData: () => ({ allArtists, allVideos })
-			},
-			...makePageRoutes({
-				items: musicVideos,
-				pageSize: 24,
-				pageToken: 'page',
-				route: {
-					path: 'music',
-					component: 'src/app/pages/music-index/MusicIndex.js'
-				},
-				decorate: (musicVideos, i, totalPages) => ({
-          // For each page, supply the posts, page and totalPages
+      },
+      {
+        path: 'artists',
+        template: 'src/app/pages/artist-index/ArtistIndex.js',
+        getData: () => ({ allArtists, allVideos })
+      },
+      ...makePageRoutes({
+        items: musicVideos,
+        pageSize: 24,
+        pageToken: 'page',
+        route: {
+          path: 'music',
+          template: 'src/app/pages/music-index/MusicIndex.js'
+        },
+        decorate: (musicVideos, i, totalPages) => ({
           getData: () => ({
             musicVideos,
             currentPage: i,
-						totalPages
-          }),
-        }),
-			}),
-			{
-				path: 'interviews',
-				component: 'src/app/pages/interview-index/InterviewIndex.js',
-				getData: () => {
-					return { interviews: allVideos.filter(video => video.fields.videoType === 'Interview')}
-				}
-			},
-			...makePageRoutes({
-				items: allVideos,
-				pageSize: 24,
-				pageToken: 'page',
-				route: {
-					path: 'videos',
-					component: 'src/app/pages/video-index/VideoIndex.js'
-				},
-				decorate: (allVideos, i, totalPages) => ({
-          // For each page, supply the posts, page and totalPages
+            totalPages
+          })
+        })
+      }),
+      {
+        path: 'interviews',
+        template: 'src/app/pages/interview-index/InterviewIndex.js',
+        getData: () => {
+          return { interviews: interviews };
+        }
+      },
+      ...makePageRoutes({
+        items: allVideos,
+        pageSize: 24,
+        pageToken: 'page',
+        route: {
+          path: 'videos',
+          template: 'src/app/pages/video-index/VideoIndex.js'
+        },
+        decorate: (allVideos, i, totalPages) => ({
           getData: () => ({
             allVideos,
             currentPage: i,
-						totalPages,
-						totalVideoCount
+            totalPages,
+            totalVideoCount
+          })
+        })
+      }),
+      ...allArtists.map(artist => {
+        const filteredVideos = allVideos.filter(
+          video => video.fields.artist.fields.artistName === artist.fields.artistName
+        );
+        return {
+          path: artist.fields.slug,
+          template: 'src/app/pages/artist-page/ArtistPage.js',
+          getData: () => ({
+            artist,
+            videos: filteredVideos
           }),
-        }),
-			}),
-			...allArtists.map(artist => {
-				const filteredVideos = allVideos.filter(video => video.fields.artist.fields.artistName === artist.fields.artistName )
-				return {
-					path: artist.fields.slug,
-					component: 'src/app/pages/artist-page/ArtistPage.js',
-					getData: () => ({
-						artist,
-						videos: filteredVideos
-					}),
-					children: [
-						...filteredVideos.map(video => {
-							const otherVideos = filteredVideos.filter(v => v.fields.title !== video.fields.title)
-							return {
-								path: video.fields.slug,
-								component: 'src/app/pages/video-page/VideoPage.js',
-								getData: () => ({video, otherVideos})
-							}
-						})
-					]
-				}
-			}),
-			// {
-			// 	path: 'about',
-			// 	component: 'src/app/pages/about/About.js'
-			// },
-			// {
-			// 	path: 'genres',
-			// 	component: 'src/app/pages/genre-index/GenreIndex.js'
-			// },
-			// {
-			// 	path: 'blog',
-			// 	component: 'src/app/pages/blog-index/BlogIndex.js'
-			// },
-			// {
-			// 	path: 'booking',
-			// 	component: 'src/app/pages/booking/Booking.js'
-			// },
-			{
-				path: '404',
-				component: 'src/app/pages/404/404.js'
-			}
-    ]
+          children: [
+            ...filteredVideos.map(video => {
+              const otherVideos = filteredVideos.filter(v => v.fields.title !== video.fields.title);
+              return {
+                path: video.fields.slug,
+                template: 'src/app/pages/video-page/VideoPage.js',
+                getData: () => ({ video, otherVideos })
+              };
+            })
+          ]
+        };
+      }),
+      {
+        path: '404',
+        template: 'src/app/pages/404/404.js'
+      }
+    ];
   },
   plugins: [
-		'react-static-plugin-styled-components'
+    'react-static-plugin-reach-router',
+    'react-static-plugin-sitemap',
+    'react-static-plugin-styled-components'
   ]
-}
+};

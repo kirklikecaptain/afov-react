@@ -1,46 +1,38 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Link } from '@reach/router';
-import Youtube from 'react-youtube';
-import ReactMarkdown from 'react-markdown'
-import moment from 'moment'
+import ReactMarkdown from 'react-markdown';
+import moment from 'moment';
 import VideoStats from './VideoStats';
 
 class VideoPlayer extends Component {
-
   render() {
     const { title, artist, videoId, uploadDate, longDescription } = this.props.video.fields;
-    const options = {
-      host: 'https://www.youtube.com',
-      playerVars: {
-        modestbranding: 1,
-        rel: 0,
-        autoplay: 1,
-        color: 'white',
-        enablejsapi: 1,
-        cc_load_policy: 0,
-				origin: 'https://www.afistfulofvinyl.com/',
-        // more options here - https://developers.google.com/youtube/player_parameters
-			}
-    };
 
     return (
       <StyledVideoPlayer color={artist.fields.color}>
-				<Youtube videoId={videoId} opts={options} className='video-frame' containerClassName='video-container' />
+        <div className='video-container'>
+          <iframe
+            className='video-frame'
+            src={`https://www.youtube.com/embed/${videoId}`}
+            frameBorder='0'
+            allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
+            allowFullScreen
+          />
+        </div>
         <div className='video-info'>
           <h1>{title}</h1>
           <Link to={`/${artist.fields.slug}`}>
             <div className='artist-link'>
-              <img className='avatar' src={artist.fields.photo.fields.file.url + '?w=60'} alt='' /> <h2 className='slab no-top'>{artist.fields.artistName}</h2>
+              <img className='avatar' src={artist.fields.photo.fields.file.url + '?w=60'} alt='' />{' '}
+              <h2 className='slab no-top'>{artist.fields.artistName}</h2>
             </div>
           </Link>
-					<VideoStats videoId={videoId} />
-					<p>Posted {moment(uploadDate).fromNow()}</p>
-					<div>
-						<ReactMarkdown source={longDescription} />
-					</div>
-					{/* <h5 className='slab'>VENUE</h5>
-          <h5 className='slab'>CONTRIBUTORS</h5> */}
+          <VideoStats videoId={videoId} />
+          <p>Posted {moment(uploadDate).fromNow()}</p>
+          <div>
+            <ReactMarkdown source={longDescription} />
+          </div>
         </div>
       </StyledVideoPlayer>
     );
