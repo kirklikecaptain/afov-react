@@ -4,8 +4,10 @@ import styled from 'styled-components';
 import Markdown from 'react-markdown';
 import GridContainer from '../../components/GridContainer';
 import VideoCard from '../../components/VideoCard';
+import useTrackPageView from '../../hooks/useTrackPageView';
 
 const ArtistPage = () => {
+  useTrackPageView();
   const { videos, artist } = useRouteData();
   return (
     <Fragment>

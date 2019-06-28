@@ -1,32 +1,15 @@
 import React, { Fragment } from 'react';
 import { useRouteData, Head } from 'react-static';
-import { Link } from '@reach/router';
 import styled from 'styled-components';
 import GridContainer from '../../components/GridContainer';
+import Pagination from '../../components/Pagination';
 import VideoCard from '../../components/VideoCard';
+import useTrackPageView from '../../hooks/useTrackPageView';
 
 const VideoIndex = () => {
-  // printPages() {
-  //   let links = [];
-  //   for (let i = 1; i < this.props.totalPages + 1; i++) {
-  //     if (i === this.props.currentPage) {
-  //       links.push(
-  //         <span className='page current' key={i}>
-  //           {this.props.currentPage}
-  //         </span>
-  //       );
-  //     } else {
-  //       links.push(
-  //         <Link className='page link' key={i} to={`/videos/page/${i}`}>
-  //           {i}
-  //         </Link>
-  //       );
-  //     }
-  //   }
-  //   return links;
-  // }
+  useTrackPageView();
 
-  const { allVideos } = useRouteData();
+  const { allVideos, totalPages, currentPage } = useRouteData();
   return (
     <Fragment>
       <Head>
@@ -35,7 +18,6 @@ const VideoIndex = () => {
       <div className='container'>
         <StyledHeader>
           <h1 className='no-top'>All Videos</h1>
-          {/* <div className='pagination'>Page {this.printPages()}</div> */}
         </StyledHeader>
         <GridContainer gap='20px'>
           {allVideos.map(video => (
@@ -51,6 +33,7 @@ const VideoIndex = () => {
             />
           ))}
         </GridContainer>
+        <Pagination totalPages={totalPages} currentPage={currentPage} />
       </div>
     </Fragment>
   );

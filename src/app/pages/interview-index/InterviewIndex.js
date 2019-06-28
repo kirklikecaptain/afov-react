@@ -2,8 +2,10 @@ import React, { Fragment } from 'react';
 import { useRouteData, Head } from 'react-static';
 import VideoCard from '../../components/VideoCard';
 import GridContainer from '../../components/GridContainer';
+import useTrackPageView from '../../hooks/useTrackPageView';
 
 const InterviewIndex = () => {
+  useTrackPageView();
   const { interviews } = useRouteData();
   return (
     <Fragment>

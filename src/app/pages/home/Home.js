@@ -4,8 +4,10 @@ import VideoCard from '../../components/VideoCard';
 import GridContainer from '../../components/GridContainer';
 import HomeHero from '../../components/HomeHero';
 import MissionStatement from '../../components/MissionStatement';
+import useTrackPageView from '../../hooks/useTrackPageView';
 
 const HomePage = () => {
+  useTrackPageView();
   const { recentVideos } = useRouteData();
   const heroVideo = recentVideos[0];
   const moreVideos = recentVideos.slice(1, 13);

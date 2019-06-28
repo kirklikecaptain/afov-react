@@ -70,6 +70,10 @@ const StyledContainer = styled.div`
     line-height: 1.6;
   }
 
+  img {
+    max-width: 100%;
+  }
+
   .wf-active {
     font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans,
       Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;

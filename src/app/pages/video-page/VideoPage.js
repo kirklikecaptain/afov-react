@@ -3,8 +3,10 @@ import { useRouteData, Head } from 'react-static';
 import styled from 'styled-components';
 import VideoPlayer from '../../components/VideoPlayer';
 import RelatedVideos from '../../components/RelatedVideos';
+import useTrackPageView from '../../hooks/useTrackPageView';
 
 const VideoPage = () => {
+  useTrackPageView();
   const { video, otherVideos } = useRouteData();
   return (
     <Fragment>

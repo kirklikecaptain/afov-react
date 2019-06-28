@@ -2,8 +2,10 @@ import React, { Fragment } from 'react';
 import { useRouteData, Head } from 'react-static';
 import GridContainer from '../../components/GridContainer';
 import ArtistCard from '../../components/ArtistCard';
+import useTrackPageView from '../../hooks/useTrackPageView';
 
 const ArtistIndex = () => {
+  useTrackPageView();
   const { allArtists, allVideos } = useRouteData();
   return (
     <Fragment>

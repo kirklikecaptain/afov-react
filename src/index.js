@@ -1,10 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
+import { initSegmentAnalytics } from './libraries/segment';
 
 // Your top level component
 import App from './app/App';
 export default App;
+
+// Initialize Segment analytics
+if (typeof document !== 'undefined') {
+  initSegmentAnalytics();
+}
 
 // Render method as defined by React-static spec
 // document check prevents node from running this block

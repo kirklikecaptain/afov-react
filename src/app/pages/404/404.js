@@ -1,12 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import balls from './404.jpg';
+import useTrackPageView from '../../hooks/useTrackPageView';
 
 const NotFound = () => {
+  useTrackPageView();
   return (
-    <div className='full-width'>
-      <div style={{ maxWidth: '500px', margin: 'auto' }} className='container'>
+    <div>
+      <div
+        style={{
+          border: 'solid 1px #ddd',
+          textAlign: 'center',
+          padding: '30px',
+          maxWidth: '500px',
+          margin: '50px auto'
+        }}
+        className='container'
+      >
         <img src={balls} alt="Ain't found it!" />
-        <h1>404: We ain't found shit!</h1>
+        <h1 style={{ marginBottom: 0 }}>404 - Page Not Found</h1>
       </div>
     </div>
   );
