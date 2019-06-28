@@ -6,36 +6,36 @@ import GridContainer from '../../components/GridContainer';
 import VideoCard from '../../components/VideoCard';
 
 const ArtistPage = () => {
-	const { videos, artist } = useRouteData();
-	return (
-		<Fragment>
-			<Head>
-				<title>{artist.fields.artistName} | Artist Info | A Fistful of Vinyl</title>
-			</Head>
-			<div className='container'>
-				<StyledInfo color={artist.fields.color}>
-					<img src={artist.fields.photo.fields.file.url + '?w=360'} alt='' />
-					<div className='info'>
-						<h1 className='slab no-top'>{artist.fields.artistName}</h1>
-						<Markdown>{artist.fields.longDescription}</Markdown>
-					</div>
-				</StyledInfo>
-				<GridContainer>
-					{videos.map(video => (
-						<VideoCard
-							key={video.sys.id}
-							songTitle={video.fields.title}
-							uploadDate={video.fields.uploadDate}
-							thumbnail={video.fields.thumbnail.fields.file.url}
-							color={video.fields.artist.fields.color}
-							videoUrl={`/${video.fields.artist.fields.slug}/${video.fields.slug}`}
-						/>
-					))}
-				</GridContainer>
-			</div>
-		</Fragment>
-	);
-}
+  const { videos, artist } = useRouteData();
+  return (
+    <Fragment>
+      <Head>
+        <title>{artist.fields.artistName} | Artist Info | A Fistful of Vinyl</title>
+      </Head>
+      <div className='container'>
+        <StyledInfo color={artist.fields.color}>
+          <img src={artist.fields.photo.fields.file.url + '?w=360'} alt='' />
+          <div className='info'>
+            <h1 className='slab no-top'>{artist.fields.artistName}</h1>
+            <Markdown>{artist.fields.longDescription}</Markdown>
+          </div>
+        </StyledInfo>
+        <GridContainer>
+          {videos.map(video => (
+            <VideoCard
+              key={video.sys.id}
+              songTitle={video.fields.title}
+              uploadDate={video.fields.uploadDate}
+              thumbnail={video.fields.thumbnail.fields.file.url}
+              color={video.fields.artist.fields.color}
+              videoUrl={`/${video.fields.artist.fields.slug}/${video.fields.slug}`}
+            />
+          ))}
+        </GridContainer>
+      </div>
+    </Fragment>
+  );
+};
 
 export default ArtistPage;
 

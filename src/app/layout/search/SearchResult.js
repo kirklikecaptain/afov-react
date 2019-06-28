@@ -2,32 +2,32 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from '@reach/router';
 
-const SearchResult = props => {
-  if (props.artist) {
+const SearchResult = ({ video, artist, info, onClick }) => {
+  if (artist) {
     return (
       <div>
-        <StyledResultCard color={props.info.fields.color} onClick={props.onClick} to={`/${props.info.fields.slug}`}>
+        <StyledResultCard color={info.color} onClick={onClick} to={`/${info.slug}`}>
           <div className='flex'>
-            <img className='artist' src={props.info.fields.photo.fields.file.url + '?w=100'} alt='Image' />
-            <div className='artist-name slab'>{props.info.fields.artistName}</div>
+            <img className='artist' src={info.photo + '?w=100'} alt='Image' />
+            <div className='artist-name slab'>{info.artistName}</div>
           </div>
         </StyledResultCard>
       </div>
     );
   }
-  if (props.video) {
+  if (video) {
     return (
       <div>
         <StyledResultCard
-          color={props.info.fields.artist.fields.color}
-          onClick={props.onClick}
-          to={`/${props.info.fields.artist.fields.slug}/${props.info.fields.slug}`}
+          color={info.color}
+          onClick={onClick}
+          to={`/${info.artistSlug}/${info.videoSlug}`}
         >
           <div className='flex'>
-            <img className='video' src={props.info.fields.thumbnail.fields.file.url + '?w=180'} alt='Image' />
+            <img className='video' src={info.thumbnail + '?w=180'} alt='Image' />
             <div className='info'>
-              <div className='song-title'>{props.info.fields.title}</div>
-              <div className='artist-name slab'>{props.info.fields.artist.fields.artistName}</div>
+              <div className='song-title'>{info.title}</div>
+              <div className='artist-name slab'>{info.artistName}</div>
             </div>
           </div>
         </StyledResultCard>
@@ -42,7 +42,7 @@ const StyledResultCard = styled(Link)`
   color: #333;
   text-decoration: none;
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   @media (min-width: 600px) {
     display: inline-block;
   }
@@ -51,7 +51,11 @@ const StyledResultCard = styled(Link)`
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    padding-right: 20px;
+    padding: 5px 20px 5px 0;
+
+    .artist-name {
+      font-weight: bold;
+    }
 
     &:hover {
       border-right: solid 3px ${props => (props.color ? props.color : '#333')};
@@ -60,10 +64,6 @@ const StyledResultCard = styled(Link)`
     &:hover .artist-name {
       color: ${props => (props.color ? props.color : '#333')};
     }
-  }
-
-  .song-title {
-    margin-bottom: 5px;
   }
 
   .artist {

@@ -1,80 +1,72 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Link } from '@reach/router';
-import { IoIosMicrophone, IoMdPeople, IoMdMenu, IoMdTv, IoMdClose, IoMdMusicalNotes, IoMdSearch } from 'react-icons/io';
+import {
+  IoIosMicrophone,
+  IoMdPeople,
+  IoMdMenu,
+  IoMdTv,
+  IoMdClose,
+  IoMdMusicalNotes,
+  IoMdSearch
+} from 'react-icons/io';
 import afov from '../../../assets/afov-logo.svg';
 
 const isActive = ({ isCurrent }) => {
   return isCurrent ? { className: 'active' } : null;
 };
 
-class Nav extends Component {
-  state = {
-    isOpen: false
+const Nav = props => {
+  const [navOpen, setNavOpen] = useState(false);
+
+  const toggleNav = event => {
+    event.preventDefault();
+    setNavOpen(!navOpen);
   };
 
-  toggleNav = e => {
-    e.preventDefault();
-    this.setState({ isOpen: !this.state.isOpen });
+  const closeNav = () => {
+    setNavOpen(false);
   };
 
-  closeNav = () => {
-    this.setState({ isOpen: false });
-  };
-
-  render() {
-    return (
-      <StyledNav className='noselect-app' isOpen={this.state.isOpen}>
-        <nav className='container-app'>
-          <div className='logo-group'>
-            <Link to='/' className='logo-link' onClick={e => this.closeNav(e)}>
-              <img className='logo' src={afov} alt='AFoV' />
-            </Link>
-            <button onClick={e => this.toggleNav(e)}>{this.state.isOpen ? <IoMdClose /> : <IoMdMenu />}</button>
-          </div>
-          <div className='link-group'>
-            <Link getProps={isActive} onClick={this.closeNav} to='/videos'>
-              <span className='icon'>
-                <IoMdTv />
-              </span>
-              All Videos
-            </Link>
-            <Link getProps={isActive} onClick={this.closeNav} to='/music'>
-              <span className='icon'>
-                <IoMdMusicalNotes />
-              </span>
-              Music
-            </Link>
-            <Link getProps={isActive} onClick={this.closeNav} to='/interviews'>
-              <span className='icon'>
-                <IoIosMicrophone />
-              </span>
-              Interviews
-            </Link>
-            <Link getProps={isActive} onClick={this.closeNav} to='/artists'>
-              <span className='icon'>
-                <IoMdPeople />
-              </span>
-              Artists
-            </Link>
-            {/* <Link getProps={isActive} onClick={this.closeNav} to='/booking'>
-              <span className='icon'>
-                <IoMdMail />
-              </span>
-              Booking
-            </Link>
-            <Link getProps={isActive} onClick={this.closeNav} to='/about'>
-              <span className='icon'>
-                <IoMdHeart />
-              </span>
-              About
-            </Link> */}
-          </div>
-        </nav>
-      </StyledNav>
-    );
-  }
-}
+  return (
+    <StyledNav className='noselect-app' isOpen={navOpen}>
+      <nav className='container-app'>
+        <div className='logo-group'>
+          <Link to='/' className='logo-link' onClick={e => closeNav(e)}>
+            <img className='logo' src={afov} alt='AFoV' />
+          </Link>
+          <button onClick={e => toggleNav(e)}>{navOpen ? <IoMdClose /> : <IoMdMenu />}</button>
+        </div>
+        <div className='link-group'>
+          <Link getProps={isActive} onClick={closeNav} to='/videos'>
+            <span className='icon'>
+              <IoMdTv />
+            </span>
+            All Videos
+          </Link>
+          <Link getProps={isActive} onClick={closeNav} to='/music'>
+            <span className='icon'>
+              <IoMdMusicalNotes />
+            </span>
+            Music
+          </Link>
+          <Link getProps={isActive} onClick={closeNav} to='/interviews'>
+            <span className='icon'>
+              <IoIosMicrophone />
+            </span>
+            Interviews
+          </Link>
+          <Link getProps={isActive} onClick={closeNav} to='/artists'>
+            <span className='icon'>
+              <IoMdPeople />
+            </span>
+            Artists
+          </Link>
+        </div>
+      </nav>
+    </StyledNav>
+  );
+};
 
 export default Nav;
 

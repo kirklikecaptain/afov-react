@@ -1,67 +1,88 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { useSiteData } from 'react-static';
 import styled from 'styled-components';
 import { MdSearch } from 'react-icons/md';
 import SearchResult from './SearchResult';
 
-export default class Search extends Component {
-  state = {
-    searchTerm: '',
+const Search = () => {
+  const { videos, artists } = useSiteData();
+
+  const [searchTerm, setSearchTerm] = useState('');
+  const [results, setResults] = useState({
     artistResults: [],
     videoResults: []
-  };
+  });
 
-  handleChange = event => {
-    this.setState({ searchTerm: event.target.value });
-    const capitalizedSearchTerm = this.state.searchTerm.toUpperCase();
-    const filteredArtists = this.props.artists.filter(artist => artist.fields.artistName.toUpperCase().includes(capitalizedSearchTerm));
-    const filteredVideos = this.props.videos.filter(video => video.fields.title.toUpperCase().includes(capitalizedSearchTerm));
-    const filteredVideosByArtist = this.props.videos.filter(video => video.fields.artist.fields.artistName.toUpperCase().includes(capitalizedSearchTerm));
+  const handleChange = event => {
+    setSearchTerm(event.target.value);
+    const normalizedSearchTerm = searchTerm.toLowerCase();
+
+    const filteredArtists = artists.filter(artist =>
+      artist.artistName.toLowerCase().includes(normalizedSearchTerm)
+    );
+    const filteredVideos = videos.filter(video =>
+      video.title.toLowerCase().includes(normalizedSearchTerm)
+    );
+    const filteredVideosByArtist = videos.filter(video =>
+      video.artistName.toLowerCase().includes(normalizedSearchTerm)
+    );
+
     if (event.target.value.length === 0) {
-      this.setState({
+      setResults({
         artistResults: [],
         videoResults: []
       });
     } else {
       const combinedVideos = filteredVideos.concat(filteredVideosByArtist);
       const dedupedVideos = [...new Set(combinedVideos)];
-      this.setState({
+      setResults({
         artistResults: filteredArtists,
         videoResults: dedupedVideos
       });
     }
   };
 
-  clearSearch = () => {
-    this.setState(() => ({
-      searchTerm: '',
+  const clearSearch = () => {
+    setSearchTerm('');
+    setResults({
       artistResults: [],
       videoResults: []
-    }));
+    });
   };
-  render() {
-    const { searchTerm, artistResults, videoResults } = this.state;
-    return (
-      <StyledSearch>
-        <div className='search-bar'>
-          <MdSearch className='search' />
-          <input type='text' value={searchTerm} onChange={this.handleChange} placeholder='Search by song name or artist' />
-        </div>
-        <div className='search-results'>
-          {searchTerm.length > 0 && artistResults.length === 0 && videoResults.length === 0 && <p>No Results :(</p>}
-          {artistResults.length > 0 && <h5 className='slab'>Artist Profile</h5>}
-          {artistResults.map(artist => (
-            <SearchResult onClick={this.clearSearch} key={artist.sys.id} artist info={artist} />
-          ))}
-          {videoResults.length > 0 && <h5 className='slab'>Videos</h5>}
-          {this.state.videoResults.map(video => (
-            <SearchResult onClick={this.clearSearch} key={video.sys.id} video info={video} />
-          ))}
-          {videoResults.length > 0 || artistResults.length > 0 ? <div style={{ height: 10 }} /> : null}
-        </div>
-      </StyledSearch>
-    );
-  }
-}
+
+  const { artistResults, videoResults } = results;
+  return (
+    <StyledSearch>
+      <div className='search-bar'>
+        <MdSearch className='search' />
+        <input
+          type='text'
+          value={searchTerm}
+          onChange={e => handleChange(e)}
+          placeholder='Search by song name or artist'
+        />
+      </div>
+      <div className='search-results'>
+        {searchTerm.length > 0 && artistResults.length === 0 && videoResults.length === 0 && (
+          <p>No Results :(</p>
+        )}
+        {artistResults.length > 0 && <h5 className='slab'>Artist Profile</h5>}
+        {artistResults.map(artist => (
+          <SearchResult onClick={clearSearch} key={artist.id} artist info={artist} />
+        ))}
+        {videoResults.length > 0 && <h5 className='slab'>Videos</h5>}
+        {videoResults.map(video => (
+          <SearchResult onClick={clearSearch} key={video.id} video info={video} />
+        ))}
+        {videoResults.length > 0 || artistResults.length > 0 ? (
+          <div style={{ height: 10 }} />
+        ) : null}
+      </div>
+    </StyledSearch>
+  );
+};
+
+export default Search;
 
 const StyledSearch = styled.div`
   background: white;

@@ -1,46 +1,50 @@
 import React, { Suspense } from 'react';
-import { Root, Routes, Head, useSiteData } from 'react-static';
+import { Root, Routes, Head } from 'react-static';
 import styled from 'styled-components';
 
 import 'sanitize.css';
+import 'sanitize.css/typography.css';
+import 'sanitize.css/forms.css';
 
 import Footer from './layout/footer/Footer';
 import Nav from './layout/nav/Nav';
 import Search from './layout/search/Search';
 
-// Asynchronously load Roboto font.
-// Once font is loaded, the `wf-active` class is applied on the html element - See global-style.css
+// Asynchronously load webfonts.
+// Once font is loaded, the `wf-active` class is applied on the html element
 // make sure this code is only executed in-browser via if statement, otherwise it breaks during build
 
 if (typeof window !== 'undefined') {
   const WebFont = require('webfontloader');
   WebFont.load({
     google: {
-      families: ['Roboto Slab: 400, 700', 'Roboto: 400']
+      families: ['Roboto Slab:400,700', 'Roboto:400']
     }
   });
 }
 
 const App = () => {
-  // const { videos, artists } = useSiteData();
   return (
     <Root>
       <Head>
         <title>A Fistful of Vinyl</title>
         <link rel='icon' href='/favicon.ico' type='image/x-icon' />
-        <meta name='google-site-verification' content='VtfZPUmMgU_ym2y3tjmbWyTnup9oFJSPh75fi9MhlTQ' />
+        <meta
+          name='google-site-verification'
+          content='VtfZPUmMgU_ym2y3tjmbWyTnup9oFJSPh75fi9MhlTQ'
+        />
         <script src='https://apis.google.com/js/platform.js' />
       </Head>
       <StyledContainer>
         <Nav />
         <div className='main-content'>
-
-            {/* <Search videos={videos} artists={artists} /> */}
-						<Suspense fallback={<em>Loading</em>}>
-            	<Routes />
-						</Suspense>
-            <Footer />
-
+          <Suspense fallback={<em>Loading...</em>}>
+            <Search />
+          </Suspense>
+          <Suspense fallback={<em>Loading...</em>}>
+            <Routes />
+          </Suspense>
+          <Footer />
         </div>
       </StyledContainer>
     </Root>
@@ -50,7 +54,8 @@ const App = () => {
 export default App;
 
 const StyledContainer = styled.div`
-  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+    'Helvetica Neue', sans-serif;
 
   h1,
   h2,
@@ -63,6 +68,11 @@ const StyledContainer = styled.div`
 
   p {
     line-height: 1.6;
+  }
+
+  .wf-active {
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans,
+      Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   }
 
   .slab {

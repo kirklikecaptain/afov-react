@@ -11,20 +11,45 @@ class Footer extends Component {
         <GridContainer className='container inner'>
           <div className='social-group'>
             <h5 className='slab no-top'>SUPPORT</h5>
-            <a className='social patreon' href='https://www.patreon.com/join/afistfulofvinyl' target='_blank' rel='noopener'>
+            <a
+              className='social patreon'
+              href='https://www.patreon.com/join/afistfulofvinyl'
+              target='_blank'
+              rel='noopener'
+            >
               <FaPatreon className='icon' /> Support AFoV on Patreon
             </a>
             <div className='button-row'>
-              <a className='social youtube' href='https://www.youtube.com/afistfulofvinyl' target='_blank' rel='noopener'>
+              <a
+                className='social youtube'
+                href='https://www.youtube.com/afistfulofvinyl'
+                target='_blank'
+                rel='noopener'
+              >
                 <FaYoutube className='icon' />
               </a>
-              <a className='social instagram' href='https://www.instagram.com/afistfulofvinyl/' target='_blank' rel='noopener'>
+              <a
+                className='social instagram'
+                href='https://www.instagram.com/afistfulofvinyl/'
+                target='_blank'
+                rel='noopener'
+              >
                 <FaInstagram className='icon' />
               </a>
-              <a className='social facebook' href='https://www.facebook.com/AFistfulOfVinyl/' target='_blank' rel='noopener'>
+              <a
+                className='social facebook'
+                href='https://www.facebook.com/AFistfulOfVinyl/'
+                target='_blank'
+                rel='noopener'
+              >
                 <FaFacebook className='icon' />
               </a>
-              <a className='social twitter' href='https://twitter.com/afistfulofvinyl?lang=en' target='_blank' rel='noopener'>
+              <a
+                className='social twitter'
+                href='https://twitter.com/afistfulofvinyl?lang=en'
+                target='_blank'
+                rel='noopener'
+              >
                 <FaTwitter className='icon' />
               </a>
             </div>
@@ -36,7 +61,12 @@ class Footer extends Component {
           <div className='col'>
             <h5 className='slab no-top'>SUBSCRIBE</h5>
             <div className='subscribe'>
-              <div className='g-ytsubscribe' data-channel='afistfulofvinyl' data-layout='full' data-count='default' />
+              <div
+                className='g-ytsubscribe'
+                data-channel='afistfulofvinyl'
+                data-layout='full'
+                data-count='default'
+              />
             </div>
           </div>
         </GridContainer>

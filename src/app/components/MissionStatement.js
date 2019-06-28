@@ -4,9 +4,13 @@ import styled from 'styled-components';
 const MissionStatement = () => (
   <StyledSection>
     <h1 className='slab'>
-      A Fistful of Vinyl provides a platform to under-appreciated and DIY artists that perform meaningful music to better help them find a new audience.
+      A Fistful of Vinyl provides a platform to under-appreciated and DIY artists that perform
+      meaningful music to better help them find a new audience.
     </h1>
-    <p>We bring our audience uniquely human interviews and performances every Friday and live on-air Thursdays at 9pm Pacific on KXLU 88.9FM and KXLU.com</p>
+    <p>
+      We bring our audience uniquely human interviews and performances every Friday and live on-air
+      Thursdays at 9pm Pacific on KXLU 88.9FM and KXLU.com
+    </p>
   </StyledSection>
 );
 

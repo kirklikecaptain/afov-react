@@ -25,35 +25,35 @@ const MusicIndex = () => {
   //   }
   //   return links;
   // }
-	const { musicVideos } = useRouteData();
-	return (
-		<Fragment>
-			<Head>
-				<title>Music Videos | A Fistful of Vinyl</title>
-			</Head>
-			<div className='container'>
-				<StyledHeader>
-					<h1 className='no-top'>Music Videos</h1>
-					{/* <div className='pagination'>Page {this.printPages()}</div> */}
-				</StyledHeader>
-				<GridContainer>
-					{musicVideos.map(video => (
-						<VideoCard
-							key={video.sys.id}
-							songTitle={video.fields.title}
-							artistName={video.fields.artist.fields.artistName}
-							uploadDate={video.fields.uploadDate}
-							thumbnail={video.fields.thumbnail.fields.file.url}
-							artistPhoto={video.fields.artist.fields.photo.fields.file.url}
-							color={video.fields.artist.fields.color}
-							videoUrl={`/${video.fields.artist.fields.slug}/${video.fields.slug}`}
-						/>
-					))}
-				</GridContainer>
-			</div>
-		</Fragment>
-	);
-}
+  const { musicVideos } = useRouteData();
+  return (
+    <Fragment>
+      <Head>
+        <title>Music Videos | A Fistful of Vinyl</title>
+      </Head>
+      <div className='container'>
+        <StyledHeader>
+          <h1 className='no-top'>Music Videos</h1>
+          {/* <div className='pagination'>Page {this.printPages()}</div> */}
+        </StyledHeader>
+        <GridContainer>
+          {musicVideos.map(video => (
+            <VideoCard
+              key={video.sys.id}
+              songTitle={video.fields.title}
+              artistName={video.fields.artist.fields.artistName}
+              uploadDate={video.fields.uploadDate}
+              thumbnail={video.fields.thumbnail.fields.file.url}
+              artistPhoto={video.fields.artist.fields.photo.fields.file.url}
+              color={video.fields.artist.fields.color}
+              videoUrl={`/${video.fields.artist.fields.slug}/${video.fields.slug}`}
+            />
+          ))}
+        </GridContainer>
+      </div>
+    </Fragment>
+  );
+};
 
 export default MusicIndex;
 

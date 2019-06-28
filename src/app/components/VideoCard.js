@@ -1,31 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
 import { Link } from '@reach/router';
 
-class VideoCard extends Component {
-  render() {
-    const { songTitle, artistName, thumbnail, artistPhoto, color, videoUrl, uploadDate } = this.props;
-    return (
-      <StyledCard to={videoUrl} color={color} thumbnail={thumbnail} className='card'>
-        <div className='thumb-box'>
-          <img src={thumbnail + '?w=400'} className='thumb' alt='' />
-          <div className='overlay safari_only' />
-          <div className='date'>{moment(uploadDate).fromNow()}</div>
-        </div>
-        <div className='card-text'>
-          <h2>{songTitle}</h2>
-          {artistName && (
-            <div className='artist-row'>
-              <img src={artistPhoto + '?w=60'} className='avatar' alt='' />
-              <h3 className='slab'>{artistName}</h3>
-            </div>
-          )}
-        </div>
-      </StyledCard>
-    );
-  }
-}
+const VideoCard = props => {
+  const { songTitle, artistName, thumbnail, artistPhoto, color, videoUrl, uploadDate } = props;
+  return (
+    <StyledCard to={videoUrl} color={color} thumbnail={thumbnail} className='card'>
+      <div className='thumb-box'>
+        <img src={thumbnail + '?w=400'} className='thumb' alt='' />
+        <div className='overlay safari_only' />
+        <div className='date'>{moment(uploadDate).fromNow()}</div>
+      </div>
+      <div className='card-text'>
+        <h2>{songTitle}</h2>
+        {artistName && (
+          <div className='artist-row'>
+            <img src={artistPhoto + '?w=60'} className='avatar' alt='' />
+            <h3 className='slab'>{artistName}</h3>
+          </div>
+        )}
+      </div>
+    </StyledCard>
+  );
+};
 
 export default VideoCard;
 

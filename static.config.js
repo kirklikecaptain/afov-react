@@ -3,20 +3,22 @@ import getRouteData from './src/utilities/getRouteData'
 import dotenv from 'dotenv';
 dotenv.config();
 
+const routeData = getRouteData()
 
 export default {
   siteRoot: 'https://www.afistfulofvinyl.com/',
   getSiteData: async () => {
-		const { allVideos, allArtists } = await getRouteData()
+		const { trimmedArtistList, trimmedVideoList } = await routeData;
 		return {
-			videos: allVideos,
-			artists: allArtists
+			videos: trimmedVideoList,
+			artists: trimmedArtistList
 		}
 	},
   getRoutes: async () => {
-		const { allArtists, allVideos } = await getRouteData()
+		const { allVideos, allArtists } = await routeData
 		const totalVideoCount = allVideos.length
 		const musicVideos = allVideos.filter(video => video.fields.videoType === 'Song')
+		const interviews = allVideos.filter(video => video.fields.videoType === 'Interview')
     return [
       {
         path: '/',
@@ -37,7 +39,6 @@ export default {
 					template: 'src/app/pages/music-index/MusicIndex.js'
 				},
 				decorate: (musicVideos, i, totalPages) => ({
-          // For each page, supply the posts, page and totalPages
           getData: () => ({
             musicVideos,
             currentPage: i,
@@ -49,7 +50,7 @@ export default {
 				path: 'interviews',
 				template: 'src/app/pages/interview-index/InterviewIndex.js',
 				getData: () => {
-					return { interviews: allVideos.filter(video => video.fields.videoType === 'Interview')}
+					return { interviews: interviews}
 				}
 			},
 			...makePageRoutes({
@@ -61,7 +62,6 @@ export default {
 					template: 'src/app/pages/video-index/VideoIndex.js'
 				},
 				decorate: (allVideos, i, totalPages) => ({
-          // For each page, supply the posts, page and totalPages
           getData: () => ({
             allVideos,
             currentPage: i,
