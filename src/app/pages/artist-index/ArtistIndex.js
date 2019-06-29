@@ -11,6 +11,8 @@ const ArtistIndex = () => {
     <Fragment>
       <Head>
         <title>All Artists | A Fistful of Vinyl</title>
+        <link rel='canonical' href='http://www.afistfulofvinyl.com/artists/' />
+        <meta name='description' content='All artists featured on AFoV.' />
       </Head>
       <div className='container'>
         <h1 className='no-top'>Artists</h1>
@@ -23,9 +25,7 @@ const ArtistIndex = () => {
               image={artist.fields.photo.fields.file.url + '?w=300'}
               artistName={artist.fields.artistName}
               videoCount={
-                allVideos.filter(
-                  video => video.fields.artist.fields.artistName === artist.fields.artistName
-                ).length
+                allVideos.filter(video => video.fields.artist.fields.artistName === artist.fields.artistName).length
               }
             />
           ))}

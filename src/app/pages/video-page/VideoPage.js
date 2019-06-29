@@ -8,18 +8,22 @@ import useTrackPageView from '../../hooks/useTrackPageView';
 const VideoPage = () => {
   useTrackPageView();
   const { video, otherVideos } = useRouteData();
+
   return (
     <Fragment>
       <Head>
         <title>
           {video.fields.title} | {video.fields.artist.fields.artistName} | A Fistful of Vinyl
         </title>
+        <meta name='description' content={video.fields.shortDescription} />
+        <link
+          rel='canonical'
+          href={`http://www.afistfulofvinyl.com/${video.fields.artist.fields.artistName}/${video.fields.title}/`}
+        />
       </Head>
       <StyledLayout>
         <VideoPlayer video={video} />
-        {otherVideos.length > 0 && (
-          <RelatedVideos artist={video.fields.artist} relatedVideos={otherVideos} />
-        )}
+        {otherVideos.length > 0 && <RelatedVideos artist={video.fields.artist} relatedVideos={otherVideos} />}
       </StyledLayout>
     </Fragment>
   );
