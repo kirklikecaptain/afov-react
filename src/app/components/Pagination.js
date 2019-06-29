@@ -4,7 +4,6 @@ import { Link } from '@reach/router';
 
 const Pagination = props => {
   let links = [];
-  console.log(props);
 
   function createLinks() {
     for (let i = 1; i < props.totalPages + 1; i++) {

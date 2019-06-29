@@ -18,7 +18,7 @@ const VideoPage = () => {
         <meta name='description' content={video.fields.shortDescription} />
         <link
           rel='canonical'
-          href={`https://www.afistfulofvinyl.com/${video.fields.artist.fields.artistName}/${video.fields.title}/`}
+          href={`https://www.afistfulofvinyl.com/${video.fields.artist.fields.slug}/${video.fields.slug}/`}
         />
       </Head>
       <StyledLayout>
