@@ -11,7 +11,7 @@ const ArtistIndex = () => {
     <Fragment>
       <Head>
         <title>All Artists | A Fistful of Vinyl</title>
-        <link rel='canonical' href='http://www.afistfulofvinyl.com/artists/' />
+        <link rel='canonical' href='https://www.afistfulofvinyl.com/artists/' />
         <meta name='description' content='All artists featured on AFoV.' />
       </Head>
       <div className='container'>

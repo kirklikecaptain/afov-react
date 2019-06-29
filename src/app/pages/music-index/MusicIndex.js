@@ -13,7 +13,7 @@ const MusicIndex = () => {
     <Fragment>
       <Head>
         <title>Music Videos | A Fistful of Vinyl</title>
-        <link rel='canonical' href='http://www.afistfulofvinyl.com/music/' />
+        <link rel='canonical' href='https://www.afistfulofvinyl.com/music/' />
         <meta name='description' content='All AFoV music videos.' />
       </Head>
       <div className='container'>

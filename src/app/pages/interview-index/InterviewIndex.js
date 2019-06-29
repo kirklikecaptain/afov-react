@@ -11,6 +11,8 @@ const InterviewIndex = () => {
     <Fragment>
       <Head>
         <title>Interviews | A Fistful of Vinyl</title>
+        <meta name='description' content='All Interviews.' />
+        <link rel='canonical' href='https://www.afistfulofvinyl.com/interviews/' />
       </Head>
       <div className='container'>
         <h1 className='no-top'>Interviews</h1>

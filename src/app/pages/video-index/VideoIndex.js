@@ -14,7 +14,7 @@ const VideoIndex = () => {
     <Fragment>
       <Head>
         <title>All Videos | A Fistful of Vinyl</title>
-        <link rel='canonical' href='http://www.afistfulofvinyl.com/videos/' />
+        <link rel='canonical' href='https://www.afistfulofvinyl.com/videos/' />
         <meta name='description' content='All AFoV music videos and interviews.' />
       </Head>
       <div className='container'>

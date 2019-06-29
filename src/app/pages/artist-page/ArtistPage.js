@@ -13,7 +13,7 @@ const ArtistPage = () => {
     <Fragment>
       <Head>
         <title>{artist.fields.artistName} | Artist Info | A Fistful of Vinyl</title>
-        <link rel='canonical' href={`http://www.afistfulofvinyl.com/${artist.fields.slug}/`} />
+        <link rel='canonical' href={`https://www.afistfulofvinyl.com/${artist.fields.slug}/`} />
         <meta name='description' content={`Artist profile: ${artist.fields.artistName}`} />
       </Head>
       <div className='container'>
