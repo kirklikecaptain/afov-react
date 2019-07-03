@@ -14,7 +14,9 @@ const VideoPage = () => {
     '@context': 'http://schema.org',
     '@type': 'VideoObject',
     name: `${video.fields.title} | ${video.fields.artist.fields.artistName} | A Fistful of Vinyl`,
-    description: video.fields.shortDescription,
+    description: video.fields.shortDescription
+      ? video.fields.shortDescription
+      : `${video.fields.artist.fields.artistName} performing ${video.fields.title}`,
     thumbnailUrl: [`https:${video.fields.thumbnail.fields.file.url}?w=1200`],
     uploadDate: video.fields.uploadDate,
     contentUrl: 'https://www.youtube.com/watch?v=' + video.fields.videoId,
