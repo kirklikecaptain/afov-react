@@ -22,8 +22,8 @@ const HomePage = () => {
           content='Live music sessions and interviews. A media platform whose mission is to help under-appreciated and DIY artists find the audience they deserve.'
         />
         <link rel='canonical' href='https://www.afistfulofvinyl.com/' />
-        <JsonLd json={json} />
       </Head>
+      <JsonLd json={json} />
 
       <HomeHero heroVideo={heroVideo} />
       <MissionStatement />
