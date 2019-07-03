@@ -29,10 +29,7 @@ const App = () => {
       <Head>
         <title>A Fistful of Vinyl</title>
         <link rel='icon' href='/favicon.ico' type='image/x-icon' />
-        <meta
-          name='google-site-verification'
-          content='VtfZPUmMgU_ym2y3tjmbWyTnup9oFJSPh75fi9MhlTQ'
-        />
+        <meta name='google-site-verification' content='VtfZPUmMgU_ym2y3tjmbWyTnup9oFJSPh75fi9MhlTQ' />
         <script src='https://apis.google.com/js/platform.js' />
       </Head>
       <StyledContainer>
@@ -54,8 +51,8 @@ const App = () => {
 export default App;
 
 const StyledContainer = styled.div`
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
-    'Helvetica Neue', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue',
+    sans-serif;
 
   h1,
   h2,
@@ -75,8 +72,8 @@ const StyledContainer = styled.div`
   }
 
   .wf-active {
-    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans,
-      Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell,
+      'Helvetica Neue', sans-serif;
   }
 
   .slab {
