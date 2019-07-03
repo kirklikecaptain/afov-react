@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react';
-import { useRouteData } from 'react-static';
+import { useRouteData, Head } from 'react-static';
 import VideoCard from '../../components/VideoCard';
 import GridContainer from '../../components/GridContainer';
 import HomeHero from '../../components/HomeHero';
 import MissionStatement from '../../components/MissionStatement';
 import useTrackPageView from '../../hooks/useTrackPageView';
+import JsonLd from '../../components/JsonLd';
 
 const HomePage = () => {
   useTrackPageView();
@@ -14,6 +15,16 @@ const HomePage = () => {
 
   return (
     <Fragment>
+      <Head>
+        <title>A Fistful of Vinyl | Music and Interviews</title>
+        <meta
+          name='description'
+          content='Live music sessions and interviews. A media platform whose mission is to help under-appreciated and DIY artists find the audience they deserve.'
+        />
+        <link rel='canonical' href='https://www.afistfulofvinyl.com/' />
+      </Head>
+      <JsonLd json={json} />
+
       <HomeHero heroVideo={heroVideo} />
       <MissionStatement />
       <div className='container'>
@@ -38,3 +49,18 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+const json = {
+  '@context': 'http://schema.org',
+  '@type': 'Organization',
+  name: 'A Fistful of Vinyl',
+  url: 'https://www.afistfulofvinyl.com',
+  logo: 'https://www.goguardian.com/afov.jpg',
+  sameAs: [
+    'https://youtube.com/afistfulofvinyl',
+    'https://facebook.com/afistfulofvinyl',
+    'https://instagram.com/afistfulofvinyl',
+    'https://twitter.com/afistfulofvinyl',
+    'https://www.linkedin.com/company/afistfulofvinyl'
+  ]
+};
