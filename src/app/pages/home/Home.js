@@ -24,6 +24,7 @@ const HomePage = () => {
         <link rel='canonical' href='https://www.afistfulofvinyl.com/' />
       </Head>
       <JsonLd json={json} />
+
       <HomeHero heroVideo={heroVideo} />
       <MissionStatement />
       <div className='container'>
