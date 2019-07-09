@@ -8,28 +8,19 @@ import Fade from 'react-reveal/Fade';
 const HomeHero = props => {
   return (
     <StyledHero {...props}>
-      <Fade ssrReveal delay={1500}>
-        <div className='video-container'>
-          {/* <img src={props.heroVideo.fields.thumbnail.fields.file.url + '?w=1000'} alt='' /> */}
-
-          <iframe
-            className='video-frame'
-            src={`https://www.youtube.com/embed/${
-              props.heroVideo.fields.videoId
-            }?autoplay=1&start=30&showinfo=0&controls=0&mute=1`}
-            frameBorder='0'
-            allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
-            allowFullScreen
-          />
-
+      <Fade ssrReveal duration={700}>
+        <div className='image'>
+          <img src={props.heroVideo.fields.thumbnail.fields.file.url + '?w=1000'} alt='' />
           <div className='mobile-overlay' />
-          <Link
-            className='mobile-button'
-            id='hero-button-mobile'
-            to={`/${props.heroVideo.fields.artist.fields.slug}/${props.heroVideo.fields.slug}`}
-          >
-            <MdPlayArrow />
-          </Link>
+          <Fade ssrReveal right duration={700} delay={300} distance='100px'>
+            <Link
+              className='mobile-button'
+              id='hero-button-mobile'
+              to={`/${props.heroVideo.fields.artist.fields.slug}/${props.heroVideo.fields.slug}`}
+            >
+              <MdPlayArrow />
+            </Link>
+          </Fade>
         </div>
       </Fade>
       <Fade ssrReveal left duration={500} delay={300} distance='100px'>
@@ -57,7 +48,9 @@ export default HomeHero;
 
 const StyledHero = styled.div`
   background: ${props =>
-    props.heroVideo.fields.artist.fields.color ? props.heroVideo.fields.artist.fields.color : '#333'};
+    props.heroVideo.fields.artist.fields.color
+      ? props.heroVideo.fields.artist.fields.color
+      : '#333'};
 
   .image {
     position: relative;
@@ -76,9 +69,10 @@ const StyledHero = styled.div`
       bottom: 0;
       left: 0;
       mix-blend-mode: color;
-      z-index: 1000;
       background: ${props =>
-        props.heroVideo.fields.artist.fields.color ? props.heroVideo.fields.artist.fields.color : '#333'};
+        props.heroVideo.fields.artist.fields.color
+          ? props.heroVideo.fields.artist.fields.color
+          : '#333'};
     }
     .mobile-button {
       height: 60px;
@@ -92,9 +86,10 @@ const StyledHero = styled.div`
       font-size: 2.5rem;
       justify-content: center;
       background: white;
-      z-index: 2000;
       color: ${props =>
-        props.heroVideo.fields.artist.fields.color ? props.heroVideo.fields.artist.fields.color : '#333'};
+        props.heroVideo.fields.artist.fields.color
+          ? props.heroVideo.fields.artist.fields.color
+          : '#333'};
       @media (min-width: 600px) {
         display: none;
       }
@@ -129,70 +124,10 @@ const StyledHero = styled.div`
       .icon {
         transform: translateY(-1px);
         color: ${props =>
-          props.heroVideo.fields.artist.fields.color ? props.heroVideo.fields.artist.fields.color : '#333'};
+          props.heroVideo.fields.artist.fields.color
+            ? props.heroVideo.fields.artist.fields.color
+            : '#333'};
       }
-    }
-  }
-  .mobile-overlay {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    mix-blend-mode: color;
-    z-index: 1000;
-    background: ${props =>
-      props.heroVideo.fields.artist.fields.color ? props.heroVideo.fields.artist.fields.color : '#333'};
-  }
-
-  .mobile-button {
-    height: 60px;
-    width: 60px;
-    border-radius: 50%;
-    position: absolute;
-    bottom: 20px;
-    right: 20px;
-    display: flex;
-    align-items: center;
-    font-size: 2.5rem;
-    justify-content: center;
-    background: white;
-    z-index: 2000;
-    color: ${props =>
-      props.heroVideo.fields.artist.fields.color ? props.heroVideo.fields.artist.fields.color : '#333'};
-    @media (min-width: 600px) {
-      display: none;
-    }
-  }
-
-  .video-container {
-    overflow: hidden;
-    padding-bottom: 56.25%;
-    position: relative;
-    height: 0;
-    width: 100%;
-    display: block;
-    grid-column-start: 2;
-    grid-column-end: 4;
-    grid-row-start: 1;
-    grid-row-end: 2;
-    z-index: 50;
-  }
-
-  .video-frame {
-    overflow: hidden;
-    display: block;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: 10;
-    transform: scale(1.5);
-    @media (min-width: 600px) {
-      transform: scale(1.3);
     }
   }
 
@@ -200,7 +135,9 @@ const StyledHero = styled.div`
     color: white;
     padding: 20px;
     background: ${props =>
-      props.heroVideo.fields.artist.fields.color ? props.heroVideo.fields.artist.fields.color : '#333'};
+      props.heroVideo.fields.artist.fields.color
+        ? props.heroVideo.fields.artist.fields.color
+        : '#333'};
     .badge {
       font-size: 10px;
       display: none;
@@ -236,9 +173,10 @@ const StyledHero = styled.div`
     }
   }
   .overlay {
-    z-index: 1000;
     background: ${props =>
-      props.heroVideo.fields.artist.fields.color ? props.heroVideo.fields.artist.fields.color : '#333'};
+      props.heroVideo.fields.artist.fields.color
+        ? props.heroVideo.fields.artist.fields.color
+        : '#333'};
   }
 
   @media (min-width: 600px) {
@@ -247,7 +185,9 @@ const StyledHero = styled.div`
     grid-template-rows: 1fr;
     align-items: center;
     background: ${props =>
-      props.heroVideo.fields.artist.fields.color ? props.heroVideo.fields.artist.fields.color : '#333'};
+      props.heroVideo.fields.artist.fields.color
+        ? props.heroVideo.fields.artist.fields.color
+        : '#333'};
     padding: 20px;
     .image {
       grid-column-start: 2;

@@ -14,7 +14,7 @@ class VideoPlayer extends Component {
         <div className='video-container'>
           <iframe
             className='video-frame'
-            src={`https://www.youtube.com/embed/${videoId}`}
+            src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
             frameBorder='0'
             allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
             allowFullScreen
@@ -25,7 +25,7 @@ class VideoPlayer extends Component {
           <Link to={`/${artist.fields.slug}`}>
             <div className='artist-link'>
               <img className='avatar' src={artist.fields.photo.fields.file.url + '?w=60'} alt='' />{' '}
-              <h2 className='slab no-top'>{artist.fields.artistName}</h2>
+              <h2 className='slab'>{artist.fields.artistName}</h2>
             </div>
           </Link>
           <VideoStats videoId={videoId} />
@@ -123,8 +123,10 @@ const StyledVideoPlayer = styled.div`
 
   .artist-link {
     display: flex;
+    align-items: center;
+    margin-bottom: 24px;
     h2 {
-      margin-top: 6px;
+      margin: 0;
     }
   }
 
