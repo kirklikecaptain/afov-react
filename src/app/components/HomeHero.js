@@ -10,7 +10,11 @@ const HomeHero = props => {
     <StyledHero {...props}>
       <Fade ssrReveal delay={1500}>
         <div className='video-container'>
-          {/* <img src={props.heroVideo.fields.thumbnail.fields.file.url + '?w=1000'} alt='' /> */}
+          <img
+            className='mobile-img'
+            src={props.heroVideo.fields.thumbnail.fields.file.url + '?w=600'}
+            alt={`${props.heroVideo.fields.slug} by ${props.heroVideo.fields.artist.fields.slug}`}
+          />
 
           <iframe
             className='video-frame'
@@ -59,45 +63,15 @@ const StyledHero = styled.div`
   background: ${props =>
     props.heroVideo.fields.artist.fields.color ? props.heroVideo.fields.artist.fields.color : '#333'};
 
-  .image {
-    position: relative;
-    padding-top: 56.3%;
-    img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      max-width: 100%;
-    }
-    .mobile-overlay {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      mix-blend-mode: color;
-      z-index: 1000;
-      background: ${props =>
-        props.heroVideo.fields.artist.fields.color ? props.heroVideo.fields.artist.fields.color : '#333'};
-    }
-    .mobile-button {
-      height: 60px;
-      width: 60px;
-      border-radius: 50%;
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      display: flex;
-      align-items: center;
-      font-size: 2.5rem;
-      justify-content: center;
-      background: white;
-      z-index: 2000;
-      color: ${props =>
-        props.heroVideo.fields.artist.fields.color ? props.heroVideo.fields.artist.fields.color : '#333'};
-      @media (min-width: 600px) {
-        display: none;
-      }
+  .mobile-img {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 100%;
+    @media (min-width: 600px) {
+      display: none;
     }
   }
 
@@ -180,19 +154,19 @@ const StyledHero = styled.div`
   }
 
   .video-frame {
-    overflow: hidden;
-    display: block;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: 10;
-    transform: scale(1.5);
+    display: none;
     @media (min-width: 600px) {
+      overflow: hidden;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: 10;
       transform: scale(1.3);
+      display: block;
     }
   }
 
