@@ -107,6 +107,7 @@ const StyledHero = styled.div`
       }
     }
   }
+
   .mobile-overlay {
     position: absolute;
     top: 0;
@@ -209,6 +210,7 @@ const StyledHero = styled.div`
           : lighten(0.3, '#333')};
     }
   }
+
   .overlay {
     z-index: 1000;
     background: ${props =>
@@ -266,6 +268,17 @@ const StyledHero = styled.div`
 
       .full-button {
         font-size: 1.2rem;
+      }
+    }
+  }
+
+  @media not all and (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance: none) {
+      .overlay {
+        display: none;
+      }
+      .mobile-overlay {
+        background: none;
       }
     }
   }
