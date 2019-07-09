@@ -272,12 +272,14 @@ const StyledHero = styled.div`
     }
   }
 
-  @media screen and (min-color-index: 0) and (-webkit-min-device-pixel-ratio: 0) {
-    .overlay {
-      display: none;
-    }
-    .mobile-overlay {
-      background: none;
+  @media not all and (min-resolution: 0.001dpcm) {
+    @supports (-webkit-appearance: none) {
+      .overlay {
+        display: none;
+      }
+      .mobile-overlay {
+        background: none;
+      }
     }
   }
 `;
